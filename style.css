@@ -1,0 +1,616 @@
+/* General Content (to appear on top) */
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    position: relative;
+}
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+header, .main-content, .featured-baskets, .contact-us, .testimonials, .newsletter, footer {
+    position: relative;
+    z-index: 1; /* Ensures content is above slideshow */
+}
+
+/* Navigation Bar */
+header.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #179c9c;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    text-align: center;
+    margin-right: auto;
+    padding-left: 25px; /* Space for alignment */
+}
+
+header .logo h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+header .logo h2 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #d3f4dd;
+    margin: 0;
+}
+
+header nav {
+    margin-left: auto;
+    padding-right: 25px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #f7f9fc;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+header nav ul li a:hover {
+    background-color: #abd1c6; /* Soft green */
+    color: #004643;
+}
+header nav ul li a.active {
+    border-bottom: 2px solid #ffa07a;
+ }
+/* Currency Selector */
+.currency-selector {
+    position: relative;
+    display: inline-flex;  /* Use inline-flex for compactness */
+    align-items: center;   /* Align the flag and label */
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px; /* Default size */
+    cursor: pointer;
+    user-select: none;
+}
+
+.currency-selector .currency-icon {
+    margin-right: 4px; /* Reduced space between icon and label */
+    font-size: 16px;    /* Icon size */
+}
+
+.currency-selector .currency-label {
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+/* When a currency is selected, the label becomes smaller */
+.currency-selector .currency-label.smaller {
+    font-size: 12px;
+}
+
+/* Dropdown Menu */
+.currency-selector .currency-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    border-radius: 5px;
+    padding: 5px 0; /* Reduced padding */
+    z-index: 10;
+    width: 100px; /* Set a specific width for the dropdown */
+    margin-top: 4px;
+}
+
+.currency-selector .currency-menu li {
+    padding: 8px 12px; /* Reduced padding for smaller options */
+    font-size: 12px;   /* Smaller text for dropdown items */
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+.currency-selector .currency-menu li:hover {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+/* Show menu when clicked */
+.currency-selector.open .currency-menu {
+    display: block;
+}
+
+/* Remove list-style from the dropdown */
+.currency-selector .currency-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Search Section */
+.search-section {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    max-width: 600px;
+    margin: 0px auto 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.search-input {
+    flex: 1;
+    padding: 20px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 40px 0 0 40px;
+}
+
+.search-button {
+    padding: 20px 30px;
+    font-size: 20px;
+    border: none;
+    background-color: #ffa07a;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 40px 40px 0;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #ff6f61;
+}
+
+/* Main Image Section with Slideshow */
+.main-image-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack the content vertically */
+    overflow: hidden; /* Prevent scrollbars for the background slideshow */
+    z-index: 1;
+}
+
+.main-image-section:hover {
+    filter: brightness(100%) contrast(110%);
+}
+
+.main-image-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+    z-index: 1; /* Ensure it's above the slideshow but below the content */
+}
+
+/* Slideshow Styles */
+.background-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Background layer */
+}
+
+.background-slideshow .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1s ease-in-out;
+}
+
+.background-slideshow .slide.active {
+    opacity: 1; /* Show only the active slide */
+}
+background-slideshow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: -1; /* Below content but above background */
+}
+
+
+/* Featured Baskets Section */
+.featured-baskets {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(90deg, rgba(255, 245, 245, 0.9), rgba(240, 255, 250, 0.9)), url('basket-bg.jpg') no-repeat center center/cover;
+    background-blend-mode: overlay;
+}
+
+/* Testimonials Section */
+.testimonials {
+    text-align: center;
+    padding: 50px 20px;
+    background: radial-gradient(circle, rgba(240, 248, 255, 0.9), rgba(255, 240, 245, 0.9)), url('testimonial-bg.jpg') no-repeat center center/cover;
+    background-blend-mode: overlay;
+}
+
+/* Newsletter Section */
+.newsletter {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to bottom, rgba(255, 250, 240, 0.8), rgba(255, 245, 245, 0.8)), url('newsletter-bg.jpg') no-repeat center center/cover;
+    background-blend-mode: overlay;
+}
+
+/* Welcome Message */
+.welcome-message {
+    text-align: center;
+    color: #ff1a85;
+    font-weight: bold;
+    padding: 20px;
+    z-index: 2;
+    margin-bottom: 30px; /* Space between welcome message and options */
+}
+
+.welcome-message h2 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #f3f8f8;
+}
+
+.welcome-message p {
+    color: #f7f9fc;
+    font-size: 18px;
+}
+
+/* Main Content */
+main.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #2d2d2d;
+    z-index: 2;
+    padding-top: 20px;
+}
+
+main .options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+main .option {
+    flex: 1;
+    padding: 100px 30px;
+    font-size: 36px;
+    color: #f7f9fc;
+    background-color: #89c9b8;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+main .option:hover {
+    background-color: #62a39f;
+}
+
+/* Disabled Options Styling */
+.option.disabled {
+    background-color: #d3d3d3;
+    color: #a1a1a1;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.option.disabled:hover {
+    background-color: #d3d3d3;
+}
+/* General Slideshow Styles */
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: none;
+    position: relative;
+    width: 100%;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffa07a;
+    color: #fef5e7;
+    font-size: 14px;
+}
+/* Breadcrumb Style */
+.breadcrumb {
+    background-color: rgba(161, 225, 221, 0.85); /* Match navbar color */
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #213032;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #213032;
+    font-weight: bold;
+}
+
+.breadcrumb span {
+    color: #666;
+}
+/* Featured Baskets Section */
+.featured-baskets {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+}
+
+.featured-baskets h3 {
+    font-size: 36px;
+    color: #213032;
+    margin-bottom: 30px;
+}
+
+.basket-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+    justify-items: center;
+    align-items: start;
+    padding: 0 20px;
+}
+
+.basket-card {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.basket-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.basket-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.basket-hover p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+.basket-hover .view-basket {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.basket-hover .view-basket:hover {
+    background-color: #ff3e32;
+}
+
+.basket-card:hover .basket-hover {
+    opacity: 1;
+}
+.basket-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.view-basket-link:hover {
+    color: #ff3e32;
+    text-decoration: underline;
+}
+
+/* Contact Us Section */
+.contact-us {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+}
+
+.contact-us .contact-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-us .contact-button:hover {
+    background-color: #ff3e32;
+}
+
+/* Testimonials Section */
+.testimonials {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+}
+
+.testimonial-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.testimonial-card {
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-style: italic;
+}
+
+/* Newsletter Section */
+.newsletter {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #ff6f61;
+    color: white;
+}
+
+.newsletter h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.newsletter-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.subscribe-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #ff6f61;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #213032;
+    color: white;
+    font-size: 14px;
+}
+
+footer .social-media {
+    margin-top: 10px;
+}
+
+footer .social-media a {
+    margin: 0 15px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .social-media a:hover {
+    color: #ff6f61;
+}
+

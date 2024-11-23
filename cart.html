@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - GEMSS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="basket.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>GEMSS</h1>
+            <h2>Gift Baskets</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Wishlist</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <h2>Your Cart</h2>
+        <div class="cart-container">
+            <!-- Example Cart Item -->
+            <div class="cart-item">
+                <img src="basket1.png" alt="Luxury Basket">
+                <div class="item-details">
+                    <p>Luxury Gift Basket</p>
+                    <p>Price: $100</p>
+                    <p>Quantity: <input type="number" value="1" min="1"></p>
+                </div>
+                <button class="remove-button">Remove</button>
+            </div>
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h3>Summary</h3>
+                <p>Subtotal: $100</p>
+                <button class="checkout-button">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GEMSS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Gift Basket - GEMSS</title>
+    <link rel="stylesheet" href="basket.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>GEMSS</h1>
+            <h2>Gift Baskets</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+        <!-- Currency Selector -->
+        <div class="currency-selector" onclick="toggleCurrencyMenu()">
+            <span class="currency-icon">🇺🇸</span>
+            <span class="currency-label">USD</span>
+            <ul class="currency-menu">
+                <li data-value="USD" onclick="changeCurrency('USD', '🇺🇸')">🇺🇸 USD</li>
+                <li data-value="CAD" onclick="changeCurrency('CAD', '🇨🇦')">🇨🇦 CAD</li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html" class="breadcrumb-link">Home</a> >
+        <span class="breadcrumb-current">Custom Gift Basket</span>
+    </div>
+
+    <!-- Progress Bar Container -->
+    <div class="progress-bar-container">
+        <div class="progress-bar active"></div> <!-- Update the width dynamically based on the current step -->
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <a href="custom-basket.html" class="step active">Step 1: Name Your Basket</a>
+        <a href="select-basket.html" class="step">Step 2: Select a Basket</a>
+        <a href="select-items.html" class="step">Step 3: Select Your Items</a>
+        <a href="add-card.html" class="step">Step 4: Add a Card</a>
+        <a href="review-basket.html" class="step">Step 5: Review Basket</a>
+    </div>
+
+    <!-- Content Area -->
+    <main class="main-content custom-basket-page">
+        <h2>Create Your Custom Gift Basket</h2>
+        <p class="instructions">Give your gift basket a name that makes it special! This name will appear on the basket tag.</p>
+
+        <form action="select-basket.html" method="POST" class="basket-form">
+            <label for="basket-name" class="hidden-label">Basket Name</label>
+            <div class="input-container">
+                <input type="text" id="basket-name" name="basket-name" maxlength="25" placeholder="Enter Basket Name (e.g., Birthday Bliss)" class="input-box">
+                <span id="char-counter" class="char-counter">25 characters remaining</span>
+                <span id="feedback" class="feedback"></span>
+                <button id="reset-basket" type="button">Reset Basket Name</button>
+
+            </div>
+
+            <!-- Sample Ideas -->
+            <div class="sample-names">
+                <p>Need inspiration? Try these:</p>
+                <ul>
+                    <li>Sweet Surprises</li>
+                    <li>Gourmet Delight</li>
+                    <li>Holiday Cheer</li>
+                    <li>Celebration Bliss</li>
+                </ul>
+            </div>
+
+            <!-- Placeholder Basket Image with Live Preview -->
+            <div class="basket-preview">
+                <img src="demo.png" alt="Placeholder basket image" class="basket-image">
+                <div class="basket-name-preview">Your Basket Name Here</div>
+            </div>
+
+            <button type="submit" class="proceed-button">Proceed to Next Step</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GEMSS. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <!--  script  -->
+<script src="script.js"></script>
+</body>
+</html>

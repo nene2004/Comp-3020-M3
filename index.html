@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEMSS - Gift Baskets</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="basket.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+    
+    <!-- Navigation Bar and Search Section -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>GEMSS</h1>
+            <h2>Gift Baskets</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+         <!-- Currency Selector -->
+         <div class="currency-selector" onclick="toggleCurrencyMenu()">
+            <span class="currency-icon">🇺🇸</span>
+            <span class="currency-label">USD</span>
+            <ul class="currency-menu">
+                <li data-value="USD" onclick="changeCurrency('USD', '🇺🇸')">🇺🇸 USD</li>
+                <li data-value="CAD" onclick="changeCurrency('CAD', '🇨🇦')">🇨🇦 CAD</li>
+            </ul>
+        </div>
+        
+        
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <input type="text" placeholder="Search for items..." class="search-input">
+        <button class="search-button">Search</button>
+    </div>
+
+   <!-- Main Image Section with Slideshow -->
+<div class="main-image-section">
+    <!-- Slideshow Container -->
+    <div class="background-slideshow">
+        <div class="slide" style="background-image: url('basket1.png');"></div>
+        <div class="slide" style="background-image: url('basket2.png');"></div>
+        <div class="slide" style="background-image: url('basket3.png');"></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+    
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+        <h2>Welcome to GEMSS</h2>
+        <p>The Perfect Gift for Every Occasion!</p>
+    </div>
+
+    <!-- Main Content with Options -->
+    <main class="main-content">
+        <div class="options">
+            <a href="#" class="option browse-items disabled">Browse All Items</a>
+            <a href="#" class="option pre-made-basket disabled">Pre-Made Gift Basket</a>
+            <a href="custom_basket.html" class="option custom-basket">Create Custom Gift Basket</a>
+        </div>
+    </main>
+</div>
+
+
+   <!-- Featured Pre-Made Baskets Section -->
+<section class="featured-baskets">
+    <h3>Featured Pre-Made Baskets</h3>
+    <div class="basket-cards">
+        <!-- Sample Basket Cards  -->
+        <div class="basket-card">
+            <img src="f1.png" alt="Luxury Gift Basket">
+            <div class="basket-hover">
+                <p>Luxury Gift Basket with premium treats and accessories.</p>
+                <a href="basket.details.html" class="view-basket-link">View Basket</a>
+            </div>
+        </div>
+        <div class="basket-card">
+            <img src="f2.png" alt="Basket 2">
+            <div class="basket-hover">
+                <p>Birthday Special Basket with themed items for celebrations.</p>
+                <a href="basket.details.html" class="view-basket-link">View Basket</a>
+            </div>
+        </div>
+        <div class="basket-card">
+            <img src="f3.png" alt="Basket 3">
+            <div class="basket-hover">
+                <p>Holiday Delight Basket with festive treats and gifts.</p>
+                <a href="basket.details.html" class="view-basket-link">View Basket</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us">
+        <h3>Contact Us</h3>
+        <p>If you have any questions or need assistance, feel free to reach out to us!</p>
+        <button class="contact-button">Contact Support</button>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h3>What Our Customers Say</h3>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"The gift baskets from GEMSS were perfect for our anniversary! The quality was amazing." - Sarah</p>
+            </div>
+            <div class="testimonial-card">
+                <p>"A wonderful selection of gift baskets! I’ll be ordering more for upcoming holidays." - James</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="newsletter">
+        <h3>Stay Updated</h3>
+        <p>Sign up for our newsletter to receive promotions and new product updates.</p>
+        <form>
+            <input type="email" placeholder="Enter your email" class="newsletter-input">
+            <button type="submit" class="subscribe-button">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+  <!-- Footer -->
+<footer>
+    <p>&copy; 2024 GEMSS Gift Baskets. All rights reserved.</p>
+    <div class="social-media">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+    </div>
+</footer>
+<!--  script  -->
+<script src="script.js"></script>
+</body>
+</html>
