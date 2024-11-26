@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Basket - GEMSS</title>
+    <link rel="stylesheet" href="select_item.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>GEMSS</h1>
+            <h2>Gift Baskets</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+        <!-- Currency Selector -->
+        <div class="currency-selector" onclick="toggleCurrencyMenu()">
+            <span class="currency-icon">🇺🇸</span>
+            <span class="currency-label">USD</span>
+            <ul class="currency-menu">
+                <li data-value="USD" onclick="changeCurrency('USD', '🇺🇸')">🇺🇸 USD</li>
+                <li data-value="CAD" onclick="changeCurrency('CAD', '🇨🇦')">🇨🇦 CAD</li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html" class="breadcrumb-link">Home</a> >
+        <span class="breadcrumb-current">Custom Gift Basket</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 40%;"></div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <a href="custom_basket.html" class="step completed">Step 1: Name Your Basket</a>
+        <a href="select_basket.html" class="step">Step 2: Select a Basket</a>
+        <span class="step active">Step 3: Select Your Items</span>
+        <a href="add-card.html" class="step">Step 4: Add a Card</a>
+        <a href="review-basket.html" class="step">Step 5: Review Basket</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content select-basket-page">
+        <h2>Select Items</h2>
+
+     <!-- Filter and Sort Options -->
+     <div class="filter-container">
+        <label for="basket-filter">Categories:</label>
+        <select id="basket-filter" onchange="filterBaskets()">
+            <option value="all">All</option>
+            <option value="gift">Gifts</option>
+            <option value="holiday">Holiday</option>
+            <option value="custom">Custom</option>
+        </select>
+
+        <label for="sort-options">Sort By:</label>
+        <select id="sort-options" onchange="sortBaskets()">
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name">Name</option>
+        </select>
+
+        <button onclick="clearFilters()" class="clear-filters">Clear All</button>
+    </div>
+     <!-- Toggle Layout Icon -->
+<div class="view-toggle">
+    <button class="toggle-layout" onclick="toggleLayout()">
+        <i class="fas fa-th-large"></i>  <!-- Font Awesome icon for layout toggle -->
+    </button>
+</div>
+     
+    <!-- Grid of Images -->
+    <div class="image-grid" id="basketGrid">
+       
+        <!--  similar blocks for other images -->
+        <div class="image-box ">
+            <!-- Wishlist heart icon inside a white circle -->
+            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+                </svg>
+            </div>
+            <!-- Image of the item// need to change / update this -->
+            <img src="I1.jpeg" alt="Small Basket">
+            <!-- Basket details -->
+            <p class="basket-name">Modern Basket</p>
+            <p class="basket-size">Size: S</p>
+            <p class="basket-price">$20 CAD</p>
+             <!-- Add to basket button visible on hover -->
+        <div class="add-to-cart">
+            <button>Add to Basket</button>
+        </div>
+            <!-- Confirmation message -->
+            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+        </div>
+        <div class="image-box ">
+            <!-- Wishlist heart icon inside a white circle -->
+            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+                </svg>
+            </div>
+            <!-- Image of the basket -->
+            <img src="I1.jpeg" alt="Small Basket">
+            <!-- Basket details -->
+            <p class="basket-name">Small Basket</p>
+            <p class="basket-size">Size: Small</p>
+            <p class="basket-price">Price: $20 CAD</p>
+             <!-- Add to Cart button visible on hover -->
+        <div class="add-to-cart" style="display:none;">
+            <button>Add to Cart</button>
+        </div>
+            <!-- Confirmation message -->
+            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+        </div>
+        <div class="image-box ">
+            <!-- Wishlist heart icon inside a white circle -->
+            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+                </svg>
+            </div>
+            <!-- Image of the basket -->
+            <img src="b4.png" alt="Small Basket">
+            <!-- Basket details -->
+            <p class="basket-name">Small Basket</p>
+            <p class="basket-size">Size: Small</p>
+            <p class="basket-price">Price: $20 CAD</p>
+            <!-- Confirmation message -->
+            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+        </div>
+        <div class="image-box ">
+            <!-- Wishlist heart icon inside a white circle -->
+            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+                </svg>
+            </div>
+            <!-- Image of the basket -->
+            <img src="b2.png" alt="Small Basket">
+            <!-- Basket details -->
+            <p class="basket-name">Small Basket</p>
+            <p class="basket-size">Size: Small</p>
+            <p class="basket-price">Price: $20 CAD</p>
+            <!-- Confirmation message -->
+            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+        </div>
+      
+    </div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <a href="select_basket.html" class="back-button">Previous</a>
+            <a href="select_card.html" class="proceed-button">Proceed to Next Step</a>
+        </div>
+    </main>
+
+    <!-- Collapsible Sidebar -->
+    <button class="sidebar-toggle" id="basketButton" onclick="toggleSidebar()">🛒 Basket</button>
+    <div class="collapsible-sidebar" id="basketSidebar">
+        <h3>Basket Summary</h3>
+        <ul id="basketItems">
+            <!-- Dynamically added items go here -->
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GEMSS. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="select_basket.js"></script>
+    <script src="script.js"></script>
+    <script src="basketName.js"></script>
+</body>
+</html>

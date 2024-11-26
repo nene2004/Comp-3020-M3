@@ -1,0 +1,537 @@
+/* General Body Styles */
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header - Matching main page design */
+header.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #179c9c; /* Use the same background color as the main page */
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    text-align: center;
+    margin-right: auto;
+    padding-left: 25px; /* Space for alignment */
+}
+
+header .logo h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+header .logo h2 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #d3f4dd; /* Lighter text color for the subtitle */
+    margin: 0;
+}
+
+header nav {
+    margin-left: auto;
+    padding-right: 25px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #f7f9fc;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #abd1c6; /* Soft green to match theme */
+    color: #004643;
+}
+
+header nav ul li a.active {
+    border-bottom: 2px solid #ffa07a;
+}
+/* Currency Selector */
+.currency-selector {
+    position: relative;
+    display: inline-flex;  /* Use inline-flex for compactness */
+    align-items: center;   /* Align the flag and label */
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px; /* Default size */
+    cursor: pointer;
+    user-select: none;
+}
+
+.currency-selector .currency-icon {
+    margin-right: 4px; /* Reduced space between icon and label */
+    font-size: 16px;    /* Icon size */
+}
+
+.currency-selector .currency-label {
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+/* When a currency is selected, the label becomes smaller */
+.currency-selector .currency-label.smaller {
+    font-size: 12px;
+}
+
+/* Dropdown Menu */
+.currency-selector .currency-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    border-radius: 5px;
+    padding: 5px 0; /* Reduced padding */
+    z-index: 10;
+    width: 100px; /* Set a specific width for the dropdown */
+    margin-top: 4px;
+}
+
+.currency-selector .currency-menu li {
+    padding: 8px 12px; /* Reduced padding for smaller options */
+    font-size: 12px;   /* Smaller text for dropdown items */
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+.currency-selector .currency-menu li:hover {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+/* Show menu when clicked */
+.currency-selector.open .currency-menu {
+    display: block;
+}
+
+/* Remove list-style from the dropdown */
+.currency-selector .currency-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* Breadcrumb Styles */
+.breadcrumb {
+    margin: 15px 20px;
+    padding: 10px;
+    background-color: #ffffff; /* Soft yellow for contrast */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight elevation */
+}
+
+.breadcrumb a.breadcrumb-link {
+    text-decoration: none;
+    color: #179c9c; /* Vibrant link color */
+    font-weight: bold;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.breadcrumb a.breadcrumb-link:hover {
+    color: #ff6f61; /* Peach for hover effect */
+    text-decoration: underline;
+}
+
+.breadcrumb-current {
+    color: #555; /* Muted color for current location */
+    font-weight: normal;
+}
+
+/* Add arrow styling */
+.breadcrumb a::after {
+    content: '>';
+    margin: 0 8px;
+    color: #bbb; /* Arrow color */
+}
+
+.breadcrumb a:last-child::after {
+    content: ''; /* Remove arrow after last item */
+}
+
+/* Progress Indicator (Steps) */
+.progress-indicator {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Reduced gap for a compact layout */
+    padding: 15px 20px; /* Smaller padding */
+    background-color: #e8f7f7; /* Soft teal background */
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 30px; /* Reduced margin below the progress indicator */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Elevated look */
+}
+
+/* Individual Steps */
+.step {
+    padding: 10px 20px; /* Reduced padding for smaller steps */
+    border: 2px solid #a1e1dd; /* Light teal border for neutral steps */
+    border-radius: 50px; /* Make steps more pill-shaped */
+    color: #333;
+    text-decoration: none;
+    background-color: #ffffff; /* Neutral background for pending steps */
+    transition: all 0.3s ease;
+    font-size: 14px; /* Reduced font size */
+    text-align: center;
+    flex: 1; /* Equal space for each step */
+    position: relative;
+}
+
+/* Completed Step */
+.step.completed {
+    background-color: #56bdb1; /* Teal for completed steps */
+    color: white;
+    border-color: #3b998f; /* Slightly darker teal for border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+}
+
+/* Active Step */
+.step.active {
+    background-color: #ffa07a; /* Peach for the current step */
+    color: white;
+    border-color: #ff6f61; /* Darker peach border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* More pronounced shadow for focus */
+}
+
+/* Pending Step (Default) */
+.step {
+    background-color: #ffffff; /* White for pending steps */
+    color: #999; /* Gray text for pending steps */
+    border-color: #e8f7f7; /* Light teal border */
+}
+
+/* Hover Effect for Pending Steps */
+.step:hover {
+    background-color: #f5fafa; /* Subtle highlight on hover */
+    border-color: #a1e1dd; /* Teal border on hover */
+}
+
+.step::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -50%; /* Start the line from the previous step */
+    height: 3px;
+    width: 100%; /* Length of the line */
+    background-color: #e0e0e0; /* Default line color */
+    z-index: -1; /* Place behind the steps */
+}
+
+/* Update line for completed steps */
+.step.completed + .step::before {
+    background-color: #56bdb1; /* Teal line for completed steps */
+}
+
+
+/* Remove Border for First and Last Steps */
+.step:first-child {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.step:last-child {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+/* Collapsible Sidebar */
+.collapsible-sidebar {
+    position: fixed;
+    top: 150px; /* Below the progress bar */
+    left: 0;
+    height: calc(100% - 150px); /* Adjusted for progress bar height */
+    width: 200px; /* Halved to make it thinner */
+    background-color: #fef5e7;
+    border-right: 2px solid #ffa07a;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%); /* Hidden by default */
+    z-index: 1000;
+}
+
+.collapsible-sidebar.open {
+    transform: translateX(0); /* Slide in when open */
+}
+
+.collapsible-sidebar h3 {
+    padding: 10px;
+    background-color: #ffa07a;
+    color: white;
+    text-align: center;
+    font-size: 16px; /* Slightly smaller font for thin sidebar */
+}
+
+.collapsible-sidebar ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0; /* Remove default margin */
+}
+
+.collapsible-sidebar ul li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px; /* Slightly smaller font for narrow space */
+    color: #333;
+}
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 121px; /* Adjusted to be above the sidebar (right above basket name area) */
+    left: 10px; /* Slightly offset from the sidebar edge */
+    background-color: #ffa07a;
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Slightly smaller for a cleaner look */
+    border-radius: 5px; /* Rounded edges for aesthetics */
+    cursor: pointer;
+    z-index: 1100; /* Stays above all elements, including the sidebar */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+}
+
+/* Adjust toggle position when sidebar is open */
+.sidebar-toggle.open {
+    left: 160px; /* Aligned to the sidebar width */
+}
+/* Filter and Sort Container */
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.filter-container label {
+    margin-right: 10px;
+}
+
+/* View Toggle Button with icon */
+.view-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+}
+
+.toggle-layout {
+    font-size: 24px;
+    cursor: pointer;
+}
+/* Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Image Box */
+.image-box {
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%; /* Ensure image-box takes full width of grid */
+    text-align: center; /* Center text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    overflow: hidden;
+}
+
+/* Make sure the images inside the image-box fit */
+.image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Basket name, size, and price styling */
+.image-box .basket-name{
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 100%;
+    text-align: center;
+}
+.image-box .basket-size,
+.image-box .basket-price {
+    margin: 5px 0;
+    text-align: left;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Wishlist heart icon styles */
+.wishlist-heart {
+    position: absolute;
+    top: 15px; /* Adjusted for smaller position */
+    right: 15px; /* Adjusted for smaller position */
+    cursor: pointer;
+    width: 30px; /* Small circle size */
+    height: 30px; /* Small circle size */
+    border-radius: 50%; /* Make it a circle */
+    background-color: white; /* White background */
+    border: 2px solid white; /* Black border for the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Heart icon styling */
+.wishlist-heart svg {
+    fill: none;
+    stroke: black; /* Black outline for the heart */
+    stroke-width: 2;
+    width: 17px; /* Smaller heart size */
+    height: 17px; /* Smaller heart size */
+}
+
+/* Active state for the heart (when clicked) */
+.wishlist-heart.active {
+    background-color: white; /* Keep the circle white */
+    border-color: white; /* Keep the border color black */
+}
+
+.wishlist-heart.active svg path {
+    fill: red;
+    stroke: red; /* Heart outline turns red when clicked */
+}
+/* Add to Cart Button */
+.add-to-cart {
+    display: block; /* Always visible */
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000; /* Black background for the oval */
+    color: #fff; /* White text */
+    border: none; /* No border around the oval */
+    border-radius: 50px; /* Rounded edges for the oval */
+    padding: 10px 30px; /* Padding to create the oval shape */
+    font-size: 20px;
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center the text */
+    cursor: pointer;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Subtle text shadow for visibility */
+    box-shadow: none; /* No inner shadow or border */
+    background: none; /* Ensure no inner background box */
+    z-index: 10; /* Ensure it sits above everything */
+}
+
+/* Optional: Styling for the image box */
+.image-box {
+    position: relative; /* Ensure the button is positioned correctly */
+    overflow: visible; /* Make sure the button appears outside the image box if necessary */
+}
+
+
+
+/* Confirmation message */
+.wishlist-confirmation {
+    font-size: 14px;
+    color: green;
+    margin-top: 10px;
+    display: none; /* Initially hidden */
+}
+
+/* Basket Grid */
+#basketGrid {
+    display: grid; /* Ensure basket grid is displayed as grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    gap: 20px; /* Space between items */
+}
+
+/* Default to vertical layout */
+#basketGrid.vertical-layout {
+    grid-template-columns: repeat(6, 1fr); /* 4 items per row */
+    gap: 17px;
+}
+
+#basketGrid.horizontal-layout {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 item per row */
+    gap: 15px;
+}
+
+/* Navigation Buttons Container */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between; /* Align the buttons to opposite sides */
+    padding: 15px; /* Optional padding for spacing */
+    width: 98%; /* Full width of the parent container */
+}
+
+/* Previous Button */
+.back-button {
+    padding: 15px 30px;
+    background-color: #ffa07a;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Proceed Button */
+.proceed-button {
+    padding: 15px 30px;
+    background-color: #ffa07a;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Hover Effects for Both Buttons */
+.back-button:hover, .proceed-button:hover {
+    background-color: #ff6f61;
+    transform: scale(1.05); /* Slight scale on hover for interactive effect */
+}
+
+/* Footer - Matching main page design */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #179c9c; /* Same background color as header */
+    color: #fef5e7; /* Lighter text color for footer */
+    font-size: 14px;
+}
+
+footer .social-media a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+/* Optional Footer styling for better integration with main page */
+footer a:hover {
+    color: #ffa07a;
+}

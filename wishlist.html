@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Basket - GEMSS</title>
+    <link rel="stylesheet" href="select_item.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>GEMSS</h1>
+            <h2>Gift Baskets</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" class="active">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+        <div class="currency-selector" onclick="toggleCurrencyMenu()">
+            <span class="currency-icon">🇺🇸</span>
+            <span class="currency-label">USD</span>
+            <ul class="currency-menu">
+                <li data-value="USD" onclick="changeCurrency('USD', '🇺🇸')">🇺🇸 USD</li>
+                <li data-value="CAD" onclick="changeCurrency('CAD', '🇨🇦')">🇨🇦 CAD</li>
+            </ul>
+        </div>
+    </header>
+   <!-- Footer -->
+   <footer>
+    <p>&copy; 2024 GEMSS. All rights reserved.</p>
+    <div class="social-media">
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="wishlist.js"></script>
+
+</body>
+</html>

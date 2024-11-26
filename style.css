@@ -391,14 +391,7 @@ main .option:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #ffa07a;
-    color: #fef5e7;
-    font-size: 14px;
-}
+
 /* Breadcrumb Style */
 .breadcrumb {
     background-color: rgba(161, 225, 221, 0.85); /* Match navbar color */
@@ -589,28 +582,23 @@ footer {
     cursor: pointer;
 }
 
-/* Footer */
+
+/* Footer - Matching main page design */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #213032;
-    color: white;
+    background-color: #179c9c; /* Same background color as header */
+    color: #fef5e7; /* Lighter text color for footer */
     font-size: 14px;
 }
 
-footer .social-media {
-    margin-top: 10px;
-}
-
 footer .social-media a {
-    margin: 0 15px;
     color: white;
-    font-size: 20px;
+    margin: 0 15px;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-footer .social-media a:hover {
-    color: #ff6f61;
+/* Optional Footer styling for better integration with main page */
+footer a:hover {
+    color: #ffa07a;
 }
-

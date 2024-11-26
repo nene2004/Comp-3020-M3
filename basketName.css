@@ -1,12 +1,13 @@
 /* General Body Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #f3f4f9 0%, #d1e6e0 100%); /* Soft gradient for depth */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+ 
 }
 
 /* Header - Matching main page design */
@@ -28,7 +29,8 @@ header .logo {
 }
 
 header .logo h1 {
-    font-size: 30px;
+   font-weight: 700;
+   font-weight: 700;
     font-weight: bold;
     color: #ffffff;
     margin: 0;
@@ -36,6 +38,7 @@ header .logo h1 {
 
 header .logo h2 {
     font-size: 15px;
+    font-weight: 400;
     font-weight: normal;
     color: #d3f4dd; /* Lighter text color for the subtitle */
     margin: 0;
@@ -137,67 +140,129 @@ header nav ul li a.active {
     margin: 0;
     padding: 0;
 }
-
+/* Breadcrumb Styles */
 .breadcrumb {
-    margin: 10px 20px;
-    font-size: 14px;
-    color: #555;
+    margin: 15px 20px;
+    padding: 10px;
+    background-color: #ffffff; /* Soft yellow for contrast */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight elevation */
 }
 
-.breadcrumb-link {
+.breadcrumb a.breadcrumb-link {
     text-decoration: none;
-    color: #007BFF;
+    color: #179c9c; /* Vibrant link color */
+    font-weight: bold;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
-.breadcrumb-link:hover {
+.breadcrumb a.breadcrumb-link:hover {
+    color: #ff6f61; /* Peach for hover effect */
     text-decoration: underline;
 }
 
 .breadcrumb-current {
-    color: #333;
+    color: #555; /* Muted color for current location */
+    font-weight: normal;
+}
+
+/* Add arrow styling */
+.breadcrumb a::after {
+    content: '>';
+    margin: 0 8px;
+    color: #bbb; /* Arrow color */
+}
+
+.breadcrumb a:last-child::after {
+    content: ''; /* Remove arrow after last item */
 }
 
 /* Progress Indicator (Steps) */
 .progress-indicator {
     display: flex;
     justify-content: space-between;
-    gap: 15px;
-    padding: 20px 0;
-    background-color: #fef5e7;
+    gap: 10px; /* Reduced gap for a compact layout */
+    padding: 15px 20px; /* Smaller padding */
+    background-color: #e8f7f7; /* Soft teal background */
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 2px solid #ffa07a; /* Border to separate steps from content */
-    margin-bottom: 40px; /* Space below the progress indicator */
+    margin-bottom: 30px; /* Reduced margin below the progress indicator */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Elevated look */
 }
 
+/* Individual Steps */
 .step {
-    padding: 15px 30px;
-    border: 2px solid #ffa07a;
-    border-radius: 20px;
+    padding: 10px 20px; /* Reduced padding for smaller steps */
+    border: 2px solid #a1e1dd; /* Light teal border for neutral steps */
+    border-radius: 50px; /* Make steps more pill-shaped */
     color: #333;
     text-decoration: none;
-    background-color: #fff;
+    background-color: #ffffff; /* Neutral background for pending steps */
     transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 14px; /* Reduced font size */
     text-align: center;
-    flex: 1; /* Each step takes equal space */
+    flex: 1; /* Equal space for each step */
+    position: relative;
 }
 
-.step:hover {
-    background-color: #ffefde; /* Highlight step on hover */
-}
-
-.step.active {
-    background-color: #ffa07a;
-    color: white;
-    border-color: #ff6f61; /* Active step highlighted */
-}
-
+/* Completed Step */
 .step.completed {
-    background-color: #a1e1dd;
+    background-color: #56bdb1; /* Teal for completed steps */
     color: white;
-    border-color: #56bdb1; /* Completed step color */
+    border-color: #3b998f; /* Slightly darker teal for border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
 }
+
+/* Active Step */
+.step.active {
+    background-color: #ffa07a; /* Peach for the current step */
+    color: white;
+    border-color: #ff6f61; /* Darker peach border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* More pronounced shadow for focus */
+}
+
+/* Pending Step (Default) */
+.step {
+    background-color: #ffffff; /* White for pending steps */
+    color: #999; /* Gray text for pending steps */
+    border-color: #e8f7f7; /* Light teal border */
+}
+
+/* Hover Effect for Pending Steps */
+.step:hover {
+    background-color: #f5fafa; /* Subtle highlight on hover */
+    border-color: #a1e1dd; /* Teal border on hover */
+}
+
+.step::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -50%; /* Start the line from the previous step */
+    height: 3px;
+    width: 100%; /* Length of the line */
+    background-color: #e0e0e0; /* Default line color */
+    z-index: -1; /* Place behind the steps */
+}
+
+/* Update line for completed steps */
+.step.completed + .step::before {
+    background-color: #56bdb1; /* Teal line for completed steps */
+}
+
+
+/* Remove Border for First and Last Steps */
+.step:first-child {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.step:last-child {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
 
 /* Main Content */
 .custom-basket-page {
@@ -235,6 +300,7 @@ header nav ul li a.active {
     border: 1px solid #ccc;
     border-radius: 10px;
     outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
 .input-box:focus {
@@ -270,11 +336,16 @@ header nav ul li a.active {
 .basket-preview {
     position: relative;
     text-align: center;
+    background-color: #ffffff; /* Card-like background */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Card shadow for depth */
 }
 
 .basket-image {
     width: 250px;
     height: auto;
+    border-radius: 8px; /* Rounded image corners */
 }
 
 .basket-name-preview {
@@ -298,85 +369,14 @@ header nav ul li a.active {
     border-radius: 25px;
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 .proceed-button:hover {
     background-color: #ff6f61;
+    transform: scale(1.05); /* Slight scale on hover for interactive effect */
 }
-.cart-page {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.cart-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.cart-item img {
-    width: 100px;
-    border-radius: 10px;
-}
-
-.item-details {
-    flex: 1;
-    text-align: left;
-}
-
-.item-details p {
-    margin: 5px 0;
-}
-
-.remove-button {
-    background-color: #ff6f61;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.remove-button:hover {
-    background-color: #ff3e32;
-}
-
-.cart-summary {
-    text-align: left;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.checkout-button {
-    background-color: #ffa07a;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.checkout-button:hover {
-    background-color: #ff6f61;
-}
-
 /* Footer - Matching main page design */
 footer {
     text-align: center;

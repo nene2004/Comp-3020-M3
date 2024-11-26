@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Gift Basket - GEMSS</title>
-    <link rel="stylesheet" href="basket.css">
+    <link rel="stylesheet" href="basketName.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
     <header class="navbar">
         <div class="logo">
-            <h1>GEMSS</h1>
+            <h1><a href="index.html" class="logo">GEMSS</a>
+    
+            </h1>
             <h2>Gift Baskets</h2>
         </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">Wishlist</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
                 <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
@@ -45,27 +51,29 @@
     <!-- Progress Indicator -->
     <div class="progress-indicator">
         <a href="custom-basket.html" class="step active">Step 1: Name Your Basket</a>
-        <a href="select-basket.html" class="step">Step 2: Select a Basket</a>
-        <a href="select-items.html" class="step">Step 3: Select Your Items</a>
+        <a href="select_basket.html" class="step">Step 2: Select a Basket</a>
+        <a href="select_item.html" class="step">Step 3: Select Your Items</a>
         <a href="add-card.html" class="step">Step 4: Add a Card</a>
         <a href="review-basket.html" class="step">Step 5: Review Basket</a>
     </div>
 
-    <!-- Content Area -->
     <main class="main-content custom-basket-page">
         <h2>Create Your Custom Gift Basket</h2>
-        <p class="instructions">Give your gift basket a name that makes it special! This name will appear on the basket tag.</p>
-
+        <p class="instructions">Personalize your gift basket with a name, or skip this step and proceed.</p>
+    
         <form action="select-basket.html" method="POST" class="basket-form">
-            <label for="basket-name" class="hidden-label">Basket Name</label>
+            <!-- Input Container -->
             <div class="input-container">
-                <input type="text" id="basket-name" name="basket-name" maxlength="25" placeholder="Enter Basket Name (e.g., Birthday Bliss)" class="input-box">
+                <label for="basket-name" class="hidden-label">Basket Name (Optional)</label>
+                <input type="text" id="basket-name" name="basket-name" maxlength="25" placeholder="Enter Basket Name (Optional)" class="input-box">
                 <span id="char-counter" class="char-counter">25 characters remaining</span>
                 <span id="feedback" class="feedback"></span>
-                <button id="reset-basket" type="button">Reset Basket Name</button>
-
+                <button id="reset-basket" type="button" class="reset-button">Reset Basket Name</button>
             </div>
-
+    
+            <!-- Error Message -->
+            <div id="error-message" class="error-message hidden">Please enter a valid basket name.</div>
+    
             <!-- Sample Ideas -->
             <div class="sample-names">
                 <p>Need inspiration? Try these:</p>
@@ -76,17 +84,18 @@
                     <li>Celebration Bliss</li>
                 </ul>
             </div>
-
+    
             <!-- Placeholder Basket Image with Live Preview -->
             <div class="basket-preview">
                 <img src="demo.png" alt="Placeholder basket image" class="basket-image">
-                <div class="basket-name-preview">Your Basket Name Here</div>
+                <div id="basket-preview-name" class="basket-name-preview">Your Basket Name Here</div>
             </div>
-
+    
+            <!-- Proceed Button -->
             <button type="submit" class="proceed-button">Proceed to Next Step</button>
         </form>
     </main>
-
+    
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 GEMSS. All rights reserved.</p>
@@ -98,6 +107,6 @@
         </div>
     </footer>
     <!--  script  -->
-<script src="script.js"></script>
+<script src="basketName.js"></script>
 </body>
 </html>
