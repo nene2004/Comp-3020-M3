@@ -1,0 +1,472 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+/* General Styles */
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+
+button {
+    border: 0;
+}
+
+/* Navigation Bar */
+header.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #179c9c;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    text-align: center;
+    margin-right: auto;
+    padding-left: 25px; /* Space for alignment */
+}
+
+    header .logo h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #ffffff;
+        margin: 0;
+    }
+
+    header .logo h2 {
+        font-size: 15px;
+        font-weight: normal;
+        color: #d3f4dd;
+        margin: 0;
+    }
+
+header nav {
+    margin-left: auto;
+    padding-right: 25px;
+}
+
+    header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+        header nav ul li a {
+            color: #f7f9fc;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+            header nav ul li a:hover {
+                background-color: #abd1c6; /* Soft green */
+                color: #004643;
+            }
+
+            header nav ul li a.active {
+                border-bottom: 2px solid #ffa07a;
+            }
+
+/* Currency Selector */
+.currency-selector {
+    position: relative;
+    display: inline-flex; /* Use inline-flex for compactness */
+    align-items: center; /* Align the flag and label */
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px; /* Default size */
+    cursor: pointer;
+    user-select: none;
+}
+
+    .currency-selector .currency-icon {
+        margin-right: 4px; /* Reduced space between icon and label */
+        font-size: 16px; /* Icon size */
+    }
+
+    .currency-selector .currency-label {
+        font-weight: 600;
+        font-size: 14px;
+        transition: color 0.3s ease, font-size 0.3s ease;
+    }
+
+        /* When a currency is selected, the label becomes smaller */
+        .currency-selector .currency-label.smaller {
+            font-size: 12px;
+        }
+
+    /* Dropdown Menu */
+    .currency-selector .currency-menu {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 120%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+        border-radius: 5px;
+        padding: 5px 0; /* Reduced padding */
+        z-index: 10;
+        width: 100px; /* Set a specific width for the dropdown */
+        margin-top: 4px;
+    }
+
+        .currency-selector .currency-menu li {
+            padding: 8px 12px; /* Reduced padding for smaller options */
+            font-size: 12px; /* Smaller text for dropdown items */
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+
+            .currency-selector .currency-menu li:hover {
+                background-color: #f4f4f4;
+                color: #000;
+            }
+
+    /* Show menu when clicked */
+    .currency-selector.open .currency-menu {
+        display: block;
+    }
+
+    /* Remove list-style from the dropdown */
+    .currency-selector .currency-menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+
+/* Main Content */
+main.main-content {
+    display: flex;
+    flex-direction: column;
+    color: #2d2d2d;
+    z-index: 2;
+    padding-top: 20px;
+}
+
+main .options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+main .option {
+    flex: 1;
+    padding: 100px 30px;
+    font-size: 36px;
+    color: #f7f9fc;
+    background-color: #89c9b8;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+    main .option:hover {
+        background-color: #62a39f;
+    }
+
+
+/* Card Icons*/
+
+main .blue-button {
+    width: 70%;
+    max-width: 500px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* Disabled Options Styling */
+.option.disabled {
+    background-color: #d3d3d3;
+    color: #a1a1a1;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+    .option.disabled:hover {
+        background-color: #d3d3d3;
+    }
+
+
+/* Breadcrumb Style */
+.breadcrumb {
+    margin: 10px 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+    .breadcrumb-link:hover {
+        text-decoration: underline;
+    }
+
+.breadcrumb-current {
+    color: #333;
+}
+
+/* Step Tracker */
+/* Progress Indicator (Steps) */
+.progress-indicator {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px 0;
+    background-color: #fef5e7;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 2px solid #ffa07a; /* Border to separate steps from content */
+    margin-bottom: 40px; /* Space below the progress indicator */
+}
+
+.step {
+    padding: 15px 30px;
+    border: 2px solid #ffa07a;
+    border-radius: 20px;
+    color: #333;
+    text-decoration: none;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    text-align: center;
+    flex: 1; /* Each step takes equal space */
+}
+
+    .step:hover {
+        background-color: #ffefde; /* Highlight step on hover */
+    }
+
+    .step.active {
+        background-color: #ffa07a;
+        color: white;
+        border-color: #ff6f61; /* Active step highlighted */
+    }
+
+    .step.completed {
+        background-color: #a1e1dd;
+        color: white;
+        border-color: #56bdb1; /* Completed step color */
+    }
+
+
+/*----My Stuff---*/
+
+.header-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+
+.item-section {
+    display: flex;
+    width: 100%;
+}
+
+/*Basket Side-Panel*/
+.basket-container {
+    width: 15%;
+    display: flex;
+    justify-content: start;
+    background-color: white;
+    box-shadow: 0 0 30px rgba(71, 71, 71, 0.1);
+    position: relative;
+}
+
+.basket-text-container {
+    padding: 6px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+    .basket-text-container h1 {
+        color: black;
+        font-size: 20px;
+        font-weight: 580;
+        margin-bottom: 2px;
+        margin: 0px;
+    }
+
+.basket-item-container {
+    display: flex;
+    justify-content: start;
+}
+
+    .basket-item-container ul {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+
+    .basket-item-container .cart-item-card {
+        background-color: bisque;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(71, 71, 71, 0.1);
+        text-align: center;
+        height: 20px;
+        margin: 10px;
+    }
+
+
+/*Item Section*/
+.item-card-container {
+    width: 85%;
+    display: flex;
+    justify-content: start;
+}
+
+    .item-card-container ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+
+    .item-card-container .item-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(71, 71, 71, 0.1);
+        text-align: center;
+        overflow: hidden;
+        transition: 0.2s ease-in-out;
+        width: 300px;
+        height: 260px;
+        margin: 10px;
+    }
+
+        .item-card-container .item-card:hover {
+            transform: scale(1.05);
+        }
+
+.item-image-container {
+    background-color: none;
+    padding: 2px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+    .item-image-container img {
+        width: 130px;
+        height: 130px;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .item-image-container .heart-button {
+        background-color: #fef5e7;
+        color: rgb(64, 64, 64);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        place-items: center;
+        padding: 8px;
+        cursor: pointer;
+        border-style: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+        .item-image-container .heart-button svg {
+            stroke: rgb(64, 64, 64);
+            fill: none;
+        }
+
+.heart-button:active svg {
+    fill: red;
+}
+
+.item-text-container {
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+    .item-text-container h1 {
+        color: black;
+        font-size: 18px;
+        font-weight: 580;
+        margin-bottom: 2px;
+        margin: 0px;
+    }
+
+    .item-text-container p {
+        color: rgb(102, 102, 102);
+        font-size: 15px;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin: 0;
+        padding-top: 2px; /* Add a slight top padding to control spacing */
+        padding-bottom: 2px;
+        margin-bottom: 4px; /* Optional: Space between paragraphs if needed */
+    }
+
+.blue-button {
+    background-color: #0b5345;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    transition: 0.3s ease-in-out;
+}
+
+    .blue-button:hover {
+        background-color: #138d75;
+    }
+
+.item-text-container .blue-button {
+    padding: 5px 50px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Footer - Matching main page design */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #179c9c; /* Same background color as header */
+    color: #fef5e7; /* Lighter text color for footer */
+    font-size: 14px;
+}
+
+    footer .social-media a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+    }
+
+    /* Optional Footer styling for better integration with main page */
+    footer a:hover {
+        color: #ffa07a;
+    }
