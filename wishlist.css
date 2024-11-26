@@ -1,0 +1,157 @@
+/* General Content (to appear on top) */
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    position: relative;
+}
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Navigation Bar */
+header.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #179c9c;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    text-align: center;
+    margin-right: auto;
+    padding-left: 25px; /* Space for alignment */
+}
+
+header .logo h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+header .logo h2 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #d3f4dd;
+    margin: 0;
+}
+
+header nav {
+    margin-left: auto;
+    padding-right: 25px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #f7f9fc;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+header nav ul li a:hover {
+    background-color: #abd1c6; /* Soft green */
+    color: #004643;
+}
+header nav ul li a.active {
+    border-bottom: 2px solid #ffa07a;
+ }
+/* Currency Selector */
+.currency-selector {
+    position: relative;
+    display: inline-flex;  /* Use inline-flex for compactness */
+    align-items: center;   /* Align the flag and label */
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px; /* Default size */
+    cursor: pointer;
+    user-select: none;
+}
+
+.currency-selector .currency-icon {
+    margin-right: 4px; /* Reduced space between icon and label */
+    font-size: 16px;    /* Icon size */
+}
+
+.currency-selector .currency-label {
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+/* When a currency is selected, the label becomes smaller */
+.currency-selector .currency-label.smaller {
+    font-size: 12px;
+}
+
+/* Dropdown Menu */
+.currency-selector .currency-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    border-radius: 5px;
+    padding: 5px 0; /* Reduced padding */
+    z-index: 10;
+    width: 100px; /* Set a specific width for the dropdown */
+    margin-top: 4px;
+}
+
+.currency-selector .currency-menu li {
+    padding: 8px 12px; /* Reduced padding for smaller options */
+    font-size: 12px;   /* Smaller text for dropdown items */
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+.currency-selector .currency-menu li:hover {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+/* Show menu when clicked */
+.currency-selector.open .currency-menu {
+    display: block;
+}
+
+/* Remove list-style from the dropdown */
+.currency-selector .currency-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Footer - Matching main page design */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #179c9c; /* Same background color as header */
+    color: #fef5e7; /* Lighter text color for footer */
+    font-size: 14px;
+}
+
+footer .social-media a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+/* Optional Footer styling for better integration with main page */
+footer a:hover {
+    color: #ffa07a;
+}
