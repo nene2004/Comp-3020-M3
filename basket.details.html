@@ -3,46 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basket Details</title>
+    <title>Pre-Made Gift Bakset - GEMSS</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="basket.details.css">
     <link
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Basket Details</h1>
-        <a href="index.html" class="back-link">Back to Home</a>
+    <header class="navbar">
+        <div class="logo">
+            <h1>GEMSS</h1>
+            <h2>Gift Baskets</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+         <!-- Currency Selector -->
+         <div class="currency-selector" onclick="toggleCurrencyMenu()">
+            <span class="currency-icon">🇺🇸</span>
+            <span class="currency-label">USD</span>
+            <ul class="currency-menu">
+                <li data-value="USD" onclick="changeCurrency('USD', '🇺🇸')">🇺🇸 USD</li>
+                <li data-value="CAD" onclick="changeCurrency('CAD', '🇨🇦')">🇨🇦 CAD</li>
+            </ul>
+        </div>
     </header>
-    <div class="breadcrumb">
-        <a href="index.html">Home</a> > <span>Luxury Gift Basket</span>
-    </div>
-    
+ <!-- Breadcrumb Navigation -->
+ <div class="breadcrumb">
+    <a href="index.html" class="breadcrumb-link">Home</a> >
+    <span class="breadcrumb-current">Luxury Gift Basket</span>
+</div>
     <!-- Main Content -->
     <main class="basket-details">
-        <div class="basket-image">
-            <img src="basket1.png" alt="Luxury Gift Basket">
-        </div>
-        <div class="basket-info">
-            <h2>Luxury Gift Basket</h2>
-            <p class="basket-description">
-                This luxury gift basket is perfect for any occasion. Packed with gourmet treats, elegant keepsakes, and a touch of class, it’s an unforgettable gift.
-            </p>
-            <button class="add-to-cart-button">Add to Cart</button>
-        </div>
+        <!-- Example Product -->
+<div class="basket-image" data-id="123" data-name="Luxury Gift Basket" data-price="69.99">
+    <img src="f1.png" alt="Luxury Gift Basket">
+    <h3>Luxury Gift Basket</h3>
+    <p class="basket-description"> This luxury gift basket is perfect for any occasion. Packed with gourmet treats, elegant keepsakes, and a touch of class, it’s an unforgettable gift.
+        $69.99</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 GEMSS Gift Baskets. All rights reserved.</p>
-        <div class="social-media">
-            <a href="#" class="social-icon">FB</a>
-            <a href="#" class="social-icon">IG</a>
-            <a href="#" class="social-icon">TW</a>
-        </div>
-    </footer>
+   <!-- Footer -->
+   <footer>
+    <p>&copy; 2024 GEMSS. All rights reserved.</p>
+    <div class="social-media">
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+<script src="cart.js"></script>
 </body>
 </html>

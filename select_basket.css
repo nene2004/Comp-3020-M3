@@ -300,6 +300,9 @@ header nav ul li a.active {
     font-size: 14px; /* Slightly smaller font for narrow space */
     color: #333;
 }
+.collapsible-sidebar.open {
+    left: 0; /* Visible when open */
+}
 /* Sidebar Toggle Button */
 .sidebar-toggle {
     position: fixed;
@@ -322,13 +325,19 @@ header nav ul li a.active {
 /* Filter and Sort Container */
 .filter-container {
     display: flex;
-    justify-content: space-between;
-    padding: 20px 0;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
 }
 
-.filter-container label {
-    margin-right: 10px;
+.price-range {
+    margin: 15px 0;
+    text-align: left;
 }
+
+#price-slider {
+    width: 30%;
+}
+
 
 /* View Toggle Button with icon */
 .view-toggle {
@@ -383,17 +392,16 @@ header nav ul li a.active {
     width: 100%;
 }
 
-/* Wishlist heart icon styles */
 .wishlist-heart {
     position: absolute;
-    top: 15px; /* Adjusted for smaller position */
-    right: 15px; /* Adjusted for smaller position */
+    top: 15px;
+    right: 15px;
     cursor: pointer;
-    width: 30px; /* Small circle size */
-    height: 30px; /* Small circle size */
-    border-radius: 50%; /* Make it a circle */
-    background-color: white; /* White background */
-    border: 2px solid white; /* Black border for the circle */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -405,41 +413,61 @@ header nav ul li a.active {
     fill: none;
     stroke: black; /* Black outline for the heart */
     stroke-width: 2;
-    width: 17px; /* Smaller heart size */
-    height: 17px; /* Smaller heart size */
+    width: 17px;
+    height: 17px;
 }
 
 /* Active state for the heart (when clicked) */
-.wishlist-heart.active {
-    background-color: white; /* Keep the circle white */
-    border-color: white; /* Keep the border color black */
-}
-
 .wishlist-heart.active svg path {
     fill: red;
     stroke: red; /* Heart outline turns red when clicked */
 }
-/* Add to Cart Button */
-.add-to-cart {
+
+/* Confirmation message styling */
+.wishlist-confirmation {
+    display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 0%; /* Centered on the screen */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Add to Basket Button */
+.add-to-basket button {
     display: block; /* Always visible */
     position: absolute;
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #000; /* Black background for the oval */
+    background-color: #000; /* Black background */
     color: #fff; /* White text */
-    border: none; /* No border around the oval */
-    border-radius: 50px; /* Rounded edges for the oval */
+    border: none; /* No border */
+    border-radius: 30px; /* Rounded edges for the oval */
     padding: 10px 30px; /* Padding to create the oval shape */
-    font-size: 20px;
+    font-size: 15px; /* Font size */
     font-weight: bold; /* Bold text */
     text-align: center; /* Center the text */
     cursor: pointer;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Subtle text shadow for visibility */
-    box-shadow: none; /* No inner shadow or border */
-    background: none; /* Ensure no inner background box */
+    box-shadow: none; /* No inner shadow */
     z-index: 10; /* Ensure it sits above everything */
 }
+
+/* Hover and Active States */
+.add-to-basket button:hover {
+    background-color: #333; /* Slightly lighter black for hover */
+    transform: translateX(-50%) scale(1.05); /* Slight scaling effect */
+}
+
+.add-to-basket button:active {
+    transform: translateX(-50%) scale(0.95); /* Pressed state effect */
+    background-color: #444; /* Darker shade for active */
+}
+
 
 /* Optional: Styling for the image box */
 .image-box {
@@ -447,15 +475,6 @@ header nav ul li a.active {
     overflow: visible; /* Make sure the button appears outside the image box if necessary */
 }
 
-
-
-/* Confirmation message */
-.wishlist-confirmation {
-    font-size: 14px;
-    color: green;
-    margin-top: 10px;
-    display: none; /* Initially hidden */
-}
 
 /* Basket Grid */
 #basketGrid {
@@ -473,6 +492,117 @@ header nav ul li a.active {
     grid-template-columns: repeat(1, 1fr); /* 1 item per row */
     gap: 15px;
 }
+.basket-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.basket-item-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.basket-item-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.basket-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.basket-item-price {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.basket-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-decrease,
+.quantity-increase {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.quantity-decrease:hover,
+.quantity-increase:hover {
+    background-color: #0056b3;
+}
+
+.basket-item-remove {
+    background: none;
+    border: none;
+    color: #ff0000;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.basket-item-remove:hover {
+    color: #cc0000;
+    transform: scale(1.1);
+}
+.hidden {
+    display: none;
+}
+
+/* Confirmation message styling */
+#confirmationMessage {
+    display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 0%; /* Centered on the screen */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.add-to-cart button {
+    all: unset; /* Reset default button styles */
+    display: flex; /* Use flexbox for centering */
+    justify-content: left; /* Horizontally center text */
+    align-items: left; /* Vertically center text */
+    width: 100%; /* Makes button fill its container */
+    padding: 12px 25px; /* Add custom padding */
+    background-color: #ffa07a; /* Desired background color */
+    color: white; /* Text color */
+    font-size: 16px; /* Text size */
+    font-weight: bold; /* Bold text */
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Center text alignment */
+    cursor: pointer; /* Pointer on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart button:hover {
+    background-color: #d0714b; /* Hover state color */
+    transform: scale(1.05); /* Hover scale effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.add-to-cart button:active {
+    transform: scale(0.95); /* Pressed state effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow depth */
+}
+
+
 
 /* Navigation Buttons Container */
 .navigation-buttons {

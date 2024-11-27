@@ -71,6 +71,7 @@ header nav ul li a:hover {
 header nav ul li a.active {
     border-bottom: 2px solid #ffa07a;
  }
+
 /* Currency Selector */
 .currency-selector {
     position: relative;

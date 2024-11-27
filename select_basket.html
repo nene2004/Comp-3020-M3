@@ -55,29 +55,37 @@
         <a href="review-basket.html" class="step">Step 5: Review Basket</a>
     </div>
 
-    <!-- Main Content -->
-    <main class="main-content select-basket-page">
-        <h2>Select a Basket</h2>
+  <!-- Filter and Sort Options -->
+  <div class="filter-container">
+    <label for="basket-filter">Categories:</label>
+    <select id="basket-filter" onchange="filterBaskets()">
+        <option value="all">All</option>
+        <option value="material">Basket Material</option>
+        <option value="shape">Basket Shape</option>
+        <option value="size">Basket Size</option>
+        <option value="occasion">Occasion-Specific</option>
+        <option value="color">Color/Theme</option>
+    </select>
 
-     <!-- Filter and Sort Options -->
-     <div class="filter-container">
-        <label for="basket-filter">Categories:</label>
-        <select id="basket-filter" onchange="filterBaskets()">
-            <option value="all">All</option>
-            <option value="gift">Gifts</option>
-            <option value="holiday">Holiday</option>
-            <option value="custom">Custom</option>
-        </select>
+    <label for="sort-options">Sort By:</label>
+    <select id="sort-options" onchange="sortBaskets()">
+        <option value="popularity">Popularity</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="newest">Newest Designs</option>
+        <option value="reviews">User Reviews</option>
+    </select>
 
-        <label for="sort-options">Sort By:</label>
-        <select id="sort-options" onchange="sortBaskets()">
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="name">Name</option>
-        </select>
+    <button onclick="clearFilters()" class="clear-filters">Clear All</button>
+</div>
 
-        <button onclick="clearFilters()" class="clear-filters">Clear All</button>
-    </div>
+<!-- Price Range Slider -->
+<div class="price-range">
+    <label for="price-slider">Price Range:</label>
+    <input type="range" id="price-slider" min="0" max="200" step="5" oninput="updatePriceDisplay(this.value)" />
+    <span id="price-display">$0 - $200</span>
+</div>
+
      <!-- Toggle Layout Icon -->
 <div class="view-toggle">
     <button class="toggle-layout" onclick="toggleLayout()">
@@ -89,29 +97,26 @@
     <div class="image-grid" id="basketGrid">
        
         <!-- Repeat similar blocks for other images -->
-        <div class="image-box ">
-            <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+        <div class="image-box" data-id="124" data-name="Modern Basket" data-price="$19.99">
+            <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
             </div>
-            <!-- Image of the basket -->
             <img src="b2.png" alt="Small Basket">
-            <!-- Basket details -->
             <p class="basket-name">Modern Basket</p>
             <p class="basket-size">Size: S</p>
-            <p class="basket-price">$20 CAD</p>
-             <!-- Add to Cart button visible on hover -->
-        <div class="add-to-cart" onclick="toggleSidebar(this)">
-            <button>Add to Basket</button>
+            <p class="basket-price">$19.99</p>
+            <div class="add-to-basket">
+                <button>Add to Basket</button>
+            </div>
+            <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
         </div>
-            <!-- Confirmation message -->
-            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
-        </div>
-        <div class="image-box ">
+        
+
+        <div class="image-box "data-id="125" data-name="Wooden Basket" data-price="$29.99">
             <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+            <div class="wishlist-heart"id="wishlistIcon"  onclick="addToWishlist(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
@@ -119,19 +124,19 @@
             <!-- Image of the basket -->
             <img src="b3.png" alt="Small Basket">
             <!-- Basket details -->
-            <p class="basket-name">Small Basket</p>
-            <p class="basket-size">Size: Small</p>
-            <p class="basket-price">Price: $20 CAD</p>
+            <p class="basket-name">Wooden Basket</p>
+            <p class="basket-size">Size: M</p>
+            <p class="basket-price">$29.99</p>
              <!-- Add to Cart button visible on hover -->
-        <div class="add-to-cart" >
-            <button>Add to Cart</button>
+        <div class="add-to-basket" >
+            <button>Add to Basket</button>
         </div>
             <!-- Confirmation message -->
-            <p class="wishlist-confirmation">Added to Wishlist</p>
+            <p class="wishlist-confirmation"id="wishlistConfirmation" ></p>
         </div>
         <div class="image-box ">
             <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+            <div class="wishlist-heart" id="wishlistIcon"  onclick="addToWishlist(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
@@ -143,11 +148,11 @@
             <p class="basket-size">Size: Small</p>
             <p class="basket-price">Price: $20 </p>
             <!-- Confirmation message -->
-            <p class="wishlist-confirmation">Added to Wishlist</p>
+            <p class="wishlist-confirmation"id="wishlistConfirmation" ></p>
         </div>
         <div class="image-box ">
             <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+            <div class="wishlist-heart" id="wishlistIcon"  onclick="addToWishlist(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
@@ -156,10 +161,10 @@
             <img src="b5.png" alt="Small Basket">
             <!-- Basket details -->
             <p class="basket-name">Small Basket</p>
-            <p class="basket-size">Size: Small</p>
-            <p class="basket-price">Price: $20 CAD</p>
+            <p class="basket-size">Size: L</p>
+            <p class="basket-price">Price: $49.99 CAD</p>
             <!-- Confirmation message -->
-            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+            <p class="wishlist-confirmation"id="wishlistConfirmation" ></p>
         </div>
       
     </div>
@@ -170,15 +175,23 @@
             <a href="select_item.html" class="proceed-button">Proceed to Next Step</a>
         </div>
     </main>
+<!-- Sidebar Toggle Button -->
+<button class="sidebar-toggle" id="basketButton">🛒 Basket</button>
 
-    <!-- Collapsible Sidebar -->
-    <button class="sidebar-toggle" id="basketButton" onclick="toggleSidebar()">🛒 Basket</button>
-    <div class="collapsible-sidebar" id="basketSidebar">
-        <h3>Basket Summary</h3>
-        <ul id="basketItems">
-            <!-- Dynamically added items go here -->
-        </ul>
+<!-- Collapsible Sidebar -->
+<div class="collapsible-sidebar" id="basketSummary">
+    <h3>Basket Summary</h3>
+    <ul id="basketItems">
+        <!-- Items will be dynamically added here -->
+    </ul>
+    <div id="basketTotal">
+        <strong>Total:</strong> $<span id="totalBalance">0.00</span>
     </div>
+    <div class="add-to-cart" >
+        <button>Add to cart</button>
+    </div>
+    <div id="confirmationMessage" class="hidden">Your basket has been added to the cart!</div>
+</div>
 
     <!-- Footer -->
     <footer>
@@ -193,7 +206,8 @@
 
     <!-- JavaScript -->
     <script src="select_basket.js"></script>
-    <script src="script.js"></script>
-    <script src="basketName.css"></script>
+    <script src="wishlist.js"></script>
+    <script src="cart.css"></script>
 </body>
 </html>
+
