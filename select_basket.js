@@ -62,9 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function calculateTotal(items) {
         return items
-            .reduce((total, item) => total + item.quantity * parseFloat(item.price.replace('$', '')), 0)
-            .toFixed(2);
+            .reduce((total, item) => {
+                const price = parseFloat(item.price.replace(/[^0-9.]/g, '')); // Remove $ or any non-numeric characters
+                return total + item.quantity * price;
+            }, 0)
+            .toFixed(2); // Ensure the result is formatted as a decimal number
     }
+    
 // Attach event listeners to wishlist hearts
 document.querySelectorAll('.wishlist-heart').forEach((heart) => {
     heart.addEventListener('click', addToWishlist);
@@ -96,7 +100,7 @@ document.querySelectorAll('.wishlist-heart').forEach((heart) => {
                 basketItemsList.appendChild(li);
             });
 
-            totalBalanceElement.textContent = calculateTotal(basketItems);
+            totalBalanceElement.textContent = `$${calculateTotal(basketItems)}`;
         } else {
             const emptyMessage = document.createElement('li');
             emptyMessage.textContent = 'Your basket is empty.';
