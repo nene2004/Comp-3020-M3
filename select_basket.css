@@ -322,20 +322,245 @@ header nav ul li a.active {
 .sidebar-toggle.open {
     left: 160px; /* Aligned to the sidebar width */
 }
-/* Filter and Sort Container */
-.filter-container {
+
+/* Container Styling */
+.categories-container {
     display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f4c16d; /* Light yellow-orange color */
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.price-range {
-    margin: 15px 0;
-    text-align: left;
+/* Categories Button */
+.categories-button {
+    flex: 1;
+    background-color: #e6a756; /* Slightly darker shade for the button */
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-#price-slider {
-    width: 30%;
+.categories-button:hover {
+    background-color: #d9964d; /* Darker hover shade */
+}
+
+/* Filter Icon Button */
+.filter-icon {
+    background-color: #e6a756;
+    color: #000;
+    font-size: 18px;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.filter-icon:hover {
+    background-color: #d9964d; /* Darker hover shade */
+}
+
+/* FontAwesome Icon */
+.filter-icon i {
+    pointer-events: none; /* Ensures only the button is clickable */
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    .categories-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .filter-icon {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.filter-sort-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Filter Toggle Button */
+.filter-toggle {
+    display: flex;
+    align-items: center;
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.filter-toggle .filter-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.filter-toggle:hover {
+    background: #45a049;
+}
+
+/* Collapsible Panel */
+.filter-sort-panel {
+    display: none;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.section-header:hover {
+    color: #4CAF50;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+    font-size: 16px;
+}
+
+.section-header.collapsed .arrow {
+    transform: rotate(180deg);
+}
+
+/* Section Content */
+.section-content {
+    display: none;
+    padding: 15px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.section-content label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.section-content label:hover {
+    color: #4CAF50;
+}
+
+.section-content input {
+    margin-right: 10px;
+}
+
+/* Clear Filters Button */
+.clear-filters {
+    margin-top: 15px;
+    background: #FF4D4D;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clear-filters:hover {
+    background: #E60000;
+}
+
+/* Subcategories */
+.subcategories {
+    margin-left: 15px;
+    padding: 10px 0;
+    border-left: 2px solid #eaeaea;
+}
+
+.subcategories label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.subcategories label:hover {
+    color: #4CAF50;
+}
+
+/* Price Range Inputs */
+.price-range-section input[type="number"] {
+    width: calc(50% - 10px);
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.price-range-section input[type="number"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .filter-sort-container {
+        max-width: 100%;
+    }
+
+    .filter-toggle {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .filter-sort-panel {
+        padding: 10px;
+    }
+
+    .section-header {
+        font-size: 14px;
+    }
+
+    .section-content {
+        font-size: 13px;
+    }
 }
 
 
@@ -434,6 +659,7 @@ header nav ul li a.active {
     border: 1px solid black;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 /* Add to Basket Button */
@@ -562,7 +788,7 @@ header nav ul li a.active {
 }
 
 /* Confirmation message styling */
-#confirmationMessage {
+.basket-confirmation {
     display: none; /* Initially hidden */
     position: fixed;
     bottom: 0%; /* Centered on the screen */
@@ -572,36 +798,35 @@ header nav ul li a.active {
     border: 1px solid black;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
-.add-to-cart button {
-    all: unset; /* Reset default button styles */
-    display: flex; /* Use flexbox for centering */
-    justify-content: left; /* Horizontally center text */
-    align-items: left; /* Vertically center text */
-    width: 100%; /* Makes button fill its container */
-    padding: 12px 25px; /* Add custom padding */
-    background-color: #ffa07a; /* Desired background color */
-    color: white; /* Text color */
-    font-size: 16px; /* Text size */
-    font-weight: bold; /* Bold text */
-    border-radius: 8px; /* Rounded corners */
-    text-align: center; /* Center text alignment */
-    cursor: pointer; /* Pointer on hover */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.add-to-cart button:hover {
-    background-color: #d0714b; /* Hover state color */
-    transform: scale(1.05); /* Hover scale effect */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+#undoButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    top:0%;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; /* Space between text and icon */
+    margin-left: 240px; /* Space from the confirmation text */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-.add-to-cart button:active {
-    transform: scale(0.95); /* Pressed state effect */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow depth */
+#undoButton.show {
+    opacity: 1; /* Make button visible */
 }
 
+#undoButton:hover {
+    background-color: #0056b3;
+}
+
+#undoButton i {
+    font-size: 14px;
+}
 
 
 /* Navigation Buttons Container */

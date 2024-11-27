@@ -41,11 +41,7 @@
         <span class="breadcrumb-current">Custom Gift Basket</span>
     </div>
 
-    <!-- Progress Bar -->
-    <div class="progress-bar-container">
-        <div class="progress-bar" style="width: 40%;"></div>
-    </div>
-
+  
     <!-- Progress Indicator -->
     <div class="progress-indicator">
         <a href="custom_basket.html" class="step completed">Step 1: Name Your Basket</a>
@@ -54,38 +50,106 @@
         <a href="add-card.html" class="step">Step 4: Add a Card</a>
         <a href="review-basket.html" class="step">Step 5: Review Basket</a>
     </div>
+    <main class="main-content select-basket-page">
+        <h2>Select A Basket</h2>
 
-  <!-- Filter and Sort Options -->
-  <div class="filter-container">
-    <label for="basket-filter">Categories:</label>
-    <select id="basket-filter" onchange="filterBaskets()">
-        <option value="all">All</option>
-        <option value="material">Basket Material</option>
-        <option value="shape">Basket Shape</option>
-        <option value="size">Basket Size</option>
-        <option value="occasion">Occasion-Specific</option>
-        <option value="color">Color/Theme</option>
-    </select>
-
-    <label for="sort-options">Sort By:</label>
-    <select id="sort-options" onchange="sortBaskets()">
-        <option value="popularity">Popularity</option>
-        <option value="price-asc">Price: Low to High</option>
-        <option value="price-desc">Price: High to Low</option>
-        <option value="newest">Newest Designs</option>
-        <option value="reviews">User Reviews</option>
-    </select>
-
-    <button onclick="clearFilters()" class="clear-filters">Clear All</button>
-</div>
-
-<!-- Price Range Slider -->
-<div class="price-range">
-    <label for="price-slider">Price Range:</label>
-    <input type="range" id="price-slider" min="0" max="200" step="5" oninput="updatePriceDisplay(this.value)" />
-    <span id="price-display">$0 - $200</span>
-</div>
-
+    <div class="categories-container">
+        <button class="categories-button">Categories</button>
+        <button class="filter-icon">
+            <i class="fas fa-sliders-h"></i> <!-- FontAwesome icon for filter -->
+        </button>
+    </div>
+    <div class="filter-sort-container">
+        <!-- Filter and Sort Button -->
+        <button class="filter-toggle" onclick="toggleFilterSort()">
+            <button class="filter-icon">
+                <i class="fas fa-sliders-h"></i> <!-- FontAwesome icon for filter -->
+            </button>
+        </button>
+    
+        <!-- Collapsible Filter and Sort Panel -->
+        <div class="filter-sort-panel" id="filterSortPanel">
+            <!-- Sort By Section -->
+            <div class="sort-section">
+                <div class="section-header" onclick="toggleCollapse(this)">
+                    <span class="section-title">Sort By</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="section-content">
+                    <!-- Sort Options -->
+                    <label><input type="radio" name="sort" value="popularity" onchange="sortBaskets()"> Popularity</label>
+                    <label><input type="radio" name="sort" value="newest" onchange="sortBaskets()"> Newest Designs</label>
+                    <label><input type="radio" name="sort" value="price-asc" onchange="sortBaskets()"> Price (Low to High)</label>
+                    <label><input type="radio" name="sort" value="price-desc" onchange="sortBaskets()"> Price (High to Low)</label>
+                    <label><input type="radio" name="sort" value="az" onchange="sortBaskets()"> Alphabetically (A-Z)</label>
+                    <label><input type="radio" name="sort" value="za" onchange="sortBaskets()"> Alphabetically (Z-A)</label>
+                </div>
+            </div>
+    
+            <!-- Categories Section -->
+            <div class="categories-section">
+                <div class="section-header" onclick="toggleCollapse(this)">
+                    <span class="section-title">Categories</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="section-content">
+                    <!-- Categories -->
+                    <label onclick="toggleSubCategories('occasion')">By Occasion</label>
+                    <div class="subcategories" id="occasion" style="display: none;">
+                        <label><input type="checkbox" value="birthday" onchange="filterBaskets()"> Birthday</label>
+                        <label><input type="checkbox" value="anniversary" onchange="filterBaskets()"> Anniversary</label>
+                        <label><input type="checkbox" value="holiday" onchange="filterBaskets()"> Holiday</label>
+                    </div>
+    
+                    <label onclick="toggleSubCategories('recipient')">By Recipient</label>
+                    <div class="subcategories" id="recipient" style="display: none;">
+                        <label><input type="checkbox" value="men" onchange="filterBaskets()"> Men</label>
+                        <label><input type="checkbox" value="women" onchange="filterBaskets()"> Women</label>
+                        <label><input type="checkbox" value="children" onchange="filterBaskets()"> Children</label>
+                    </div>
+    
+                    <label onclick="toggleSubCategories('theme')">By Theme</label>
+                    <div class="subcategories" id="theme" style="display: none;">
+                        <label><input type="checkbox" value="luxury" onchange="filterBaskets()"> Luxury</label>
+                        <label><input type="checkbox" value="eco-friendly" onchange="filterBaskets()"> Eco-Friendly</label>
+                        <label><input type="checkbox" value="seasonal" onchange="filterBaskets()"> Seasonal</label>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Existing Filters -->
+            <div class="filter-section">
+                <div class="section-header" onclick="toggleCollapse(this)">
+                    <span class="section-title">Filter By</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="section-content">
+                    <label><input type="checkbox" value="material" onchange="filterBaskets()"> Basket Material</label>
+                    <label><input type="checkbox" value="shape" onchange="filterBaskets()"> Basket Shape</label>
+                    <label><input type="checkbox" value="size" onchange="filterBaskets()"> Basket Size</label>
+                    <label><input type="checkbox" value="occasion" onchange="filterBaskets()"> Occasion-Specific</label>
+                    <label><input type="checkbox" value="color" onchange="filterBaskets()"> Color/Theme</label>
+                    <button onclick="clearFilters()" class="clear-filters">Clear All</button>
+                </div>
+            </div>
+    
+            <!-- Price Range Section -->
+            <div class="price-range-section">
+                <div class="section-header" onclick="toggleCollapse(this)">
+                    <span class="section-title">Price Range</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="section-content">
+                    <label for="min-price">Min Price:</label>
+                    <input type="number" id="min-price" min="0" placeholder="$0" onchange="filterBaskets()">
+                    <label for="max-price">Max Price:</label>
+                    <input type="number" id="max-price" max="500" placeholder="$500" onchange="filterBaskets()">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
      <!-- Toggle Layout Icon -->
 <div class="view-toggle">
     <button class="toggle-layout" onclick="toggleLayout()">
@@ -109,6 +173,7 @@
             <p class="basket-price">$19.99</p>
             <div class="add-to-basket">
                 <button>Add to Basket</button>
+                <p class="basket-confirmation" id="basketConfirmation"></p>
             </div>
             <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
         </div>
@@ -180,7 +245,7 @@
                 </svg>
             </div>
             <!-- Image of the basket -->
-            <img src="Picture1.png" alt="Small Basket">
+            <img src="b8.png" alt="Small Basket">
             <!-- Basket details -->
             <p class="basket-name">Vintage Basket</p>
             <p class="basket-size">Size: S</p>
@@ -237,7 +302,7 @@
                 </svg>
             </div>
             <!-- Image of the basket -->
-            <img src="Picture2.png" alt="Small Basket">
+            <img src="b9.png" alt="Small Basket">
             <!-- Basket details -->
             <p class="basket-name">Chic Basket</p>
             <p class="basket-size">Size: M</p>
@@ -269,10 +334,6 @@
     <div id="basketTotal">
         <strong>Total:</strong> $<span id="totalBalance">0.00</span>
     </div>
-    <div class="add-to-cart" >
-        <button>Add to cart</button>
-    </div>
-    <div id="confirmationMessage" class="hidden">Your basket has been added to the cart!</div>
 </div>
 
     <!-- Footer -->
