@@ -41,11 +41,7 @@
         <span class="breadcrumb-current">Custom Gift Basket</span>
     </div>
 
-    <!-- Progress Bar -->
-    <div class="progress-bar-container">
-        <div class="progress-bar" style="width: 40%;"></div>
-    </div>
-
+  
     <!-- Progress Indicator -->
     <div class="progress-indicator">
         <a href="custom_basket.html" class="step completed">Step 1: Name Your Basket</a>
@@ -54,44 +50,120 @@
         <a href="add-card.html" class="step">Step 4: Add a Card</a>
         <a href="review-basket.html" class="step">Step 5: Review Basket</a>
     </div>
-
-    <!-- Main Content -->
     <main class="main-content select-basket-page">
         <h2>Select Items</h2>
 
-     <!-- Filter and Sort Options -->
-     <div class="filter-container">
-        <label for="basket-filter">Categories:</label>
-        <select id="basket-filter" onchange="filterBaskets()">
-            <option value="all">All</option>
-            <option value="gift">Gifts</option>
-            <option value="holiday">Holiday</option>
-            <option value="custom">Custom</option>
-        </select>
-
-        <label for="sort-options">Sort By:</label>
-        <select id="sort-options" onchange="sortBaskets()">
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="name">Name</option>
-        </select>
-
-        <button onclick="clearFilters()" class="clear-filters">Clear All</button>
+ <!-- Categories Section -->
+<div class="categories-container">
+    <!-- Main Category Title (Categories) -->
+    <div class="section-header">
+      <span class="section-title">Categories</span>
+      <span class="arrow">▼</span>
     </div>
-     <!-- Toggle Layout Icon -->
-<div class="view-toggle">
-    <button class="toggle-layout" onclick="toggleLayout()">
-        <i class="fas fa-th-large"></i>  <!-- Font Awesome icon for layout toggle -->
-    </button>
+    
+    <!-- Categories Content -->
+    <div class="categories-content" id="categoriesContent" style="display: none;">
+      <!-- Subcategories: By Occasion -->
+      <div class="subcategory-header">
+        <span>By Occasion</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="subcategories" id="occasion" style="display: none; margin-left: 15px;">
+        <label><input type="checkbox" value="birthday" onchange="filterBaskets()"> Birthday</label>
+        <label><input type="checkbox" value="anniversary" onchange="filterBaskets()"> Anniversary</label>
+        <label><input type="checkbox" value="holiday" onchange="filterBaskets()"> Holiday</label>
+      </div>
+  
+      <!-- Subcategories: By Recipient -->
+      <div class="subcategory-header">
+        <span>By Recipient</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="subcategories" id="recipient" style="display: none; margin-left: 15px;">
+        <label><input type="checkbox" value="men" onchange="filterBaskets()"> Men</label>
+        <label><input type="checkbox" value="women" onchange="filterBaskets()"> Women</label>
+        <label><input type="checkbox" value="children" onchange="filterBaskets()"> Children</label>
+      </div>
+  
+      <!-- Subcategories: By Theme -->
+      <div class="subcategory-header">
+        <span>By Theme</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="subcategories" id="theme" style="display: none; margin-left: 15px;">
+        <label><input type="checkbox" value="luxury" onchange="filterBaskets()"> Luxury</label>
+        <label><input type="checkbox" value="eco-friendly" onchange="filterBaskets()"> Eco-Friendly</label>
+        <label><input type="checkbox" value="seasonal" onchange="filterBaskets()"> Seasonal</label>
+      </div>
+    </div>
 </div>
-     
+
+  
+
+  
+        <!-- Filter and Sort Panel -->
+        <div class="filter-sort-container">
+          <!-- Filter Toggle Button -->
+          <button class="filter-toggle" onclick="toggleFilterSort()">
+            <i class="fas fa-sliders-h"></i>
+          </button>
+      
+          <!-- Collapsible Filter and Sort Panel -->
+          <div class="filter-sort-panel" id="filterSortPanel" style="display: none;">
+            <!-- Sort By Section -->
+            <div class="sort-section">
+              <div class="section-header" onclick="toggleCollapse(this)">
+                <span class="section-title">Sort By</span>
+                <span class="arrow">▼</span>
+              </div>
+              <div class="section-content">
+                <label><input type="radio" name="sort" value="popularity" onchange="sortBaskets()"> Popularity</label>
+                <label><input type="radio" name="sort" value="newest" onchange="sortBaskets()"> Newest Designs</label>
+                <label><input type="radio" name="sort" value="price-asc" onchange="sortBaskets()"> Price (Low to High)</label>
+                <label><input type="radio" name="sort" value="price-desc" onchange="sortBaskets()"> Price (High to Low)</label>
+                <label><input type="radio" name="sort" value="az" onchange="sortBaskets()"> Alphabetically (A-Z)</label>
+                <label><input type="radio" name="sort" value="za" onchange="sortBaskets()"> Alphabetically (Z-A)</label>
+              </div>
+            </div>
+      
+            <!-- Filter Section -->
+            <div class="filter-section">
+              <div class="section-header" onclick="toggleCollapse(this)">
+                <span class="section-title">Filter By</span>
+                <span class="arrow">▼</span>
+              </div>
+              <div class="section-content">
+                <label><input type="checkbox" value="material" onchange="filterBaskets()"> Basket Material</label>
+                <label><input type="checkbox" value="shape" onchange="filterBaskets()"> Basket Shape</label>
+                <label><input type="checkbox" value="size" onchange="filterBaskets()"> Basket Size</label>
+                <label><input type="checkbox" value="color" onchange="filterBaskets()"> Color/Theme</label>
+                <button onclick="clearFilters()" class="clear-filters">Clear All</button>
+              </div>
+            </div>
+      
+            <!-- Price Range Section -->
+            <div class="price-range-section">
+              <div class="section-header" onclick="toggleCollapse(this)">
+                <span class="section-title">Price Range</span>
+                <span class="arrow">▼</span>
+              </div>
+              <div class="section-content">
+                <label for="min-price">Min Price:</label>
+                <input type="number" id="min-price" min="0" placeholder="$0" onchange="filterBaskets()">
+                <label for="max-price">Max Price:</label>
+                <input type="number" id="max-price" max="500" placeholder="$500" onchange="filterBaskets()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
     <!-- Grid of Images -->
     <div class="image-grid" id="basketGrid">
        
-        <!--  similar blocks for other images -->
-        <div class="image-box ">
-            <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+        <!-- Repeat similar blocks for other images -->
+        <div class="image-box" data-id="130" data-name="Modern Basket" data-price="$19.99">
+            <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
@@ -112,7 +184,7 @@
 
         <div class="image-box ">
             <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+            <div class="wishlist-heart"id="wishlistIcon"  onclick="addToWishlist(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
@@ -128,11 +200,11 @@
                 <button>Add to Basket</button>
             </div>
             <!-- Confirmation message -->
-            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+            <p class="wishlist-confirmation"id="wishlistConfirmation" ></p>
         </div>
-        <div class="image-box ">
+        <div class="image-box "data-id="126" data-name="Brisk Basket" data-price="$19.99">
             <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+            <div class="wishlist-heart" id="wishlistIcon"  onclick="addToWishlist(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
@@ -568,12 +640,12 @@
                 <button>Add to Basket</button>
             </div>
             <!-- Confirmation message -->
-            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+            <p class="wishlist-confirmation"id="wishlistConfirmation" ></p>
         </div>
 
         <div class="image-box ">
             <!-- Wishlist heart icon inside a white circle -->
-            <div class="wishlist-heart" onclick="toggleWishlist(this)">
+            <div class="wishlist-heart" id="wishlistIcon"  onclick="addToWishlist(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
                 </svg>
@@ -588,7 +660,7 @@
                 <button>Add to Basket</button>
             </div>
             <!-- Confirmation message -->
-            <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
+            <p class="wishlist-confirmation"id="wishlistConfirmation" ></p>
         </div>
 
 
@@ -606,18 +678,22 @@
         <!-- Navigation Buttons -->
         <div class="navigation-buttons">
             <a href="select_basket.html" class="back-button">Previous</a>
-            <a href="select_card.html" class="proceed-button">Proceed to Next Step</a>
+            <a href="add-card.html" class="proceed-button">Proceed to Next Step</a>
         </div>
     </main>
+<!-- Sidebar Toggle Button -->
+<button class="sidebar-toggle" id="basketButton">🛒 Basket</button>
 
-    <!-- Collapsible Sidebar -->
-    <button class="sidebar-toggle" id="basketButton" onclick="toggleSidebar()">🛒 Basket</button>
-    <div class="collapsible-sidebar" id="basketSidebar">
-        <h3>Basket Summary</h3>
-        <ul id="basketItems">
-            <!-- Dynamically added items go here -->
-        </ul>
+<!-- Collapsible Sidebar -->
+<div class="collapsible-sidebar" id="basketSummary">
+    <h3>Basket Summary</h3>
+    <ul id="basketItems">
+        <!-- Items will be dynamically added here -->
+    </ul>
+    <div id="basketTotal">
+        <strong>Total:</strong> $<span id="totalBalance">0.00</span>
     </div>
+</div>
 
     <!-- Footer -->
     <footer>
@@ -632,7 +708,7 @@
 
     <!-- JavaScript -->
     <script src="select_basket.js"></script>
-    <script src="script.js"></script>
-    <script src="basketName.js"></script>
-</body>
+    <script src="wishlist.js"></script>
+    <script src="script.js"></script></body>
 </html>
+

@@ -300,6 +300,9 @@ header nav ul li a.active {
     font-size: 14px; /* Slightly smaller font for narrow space */
     color: #333;
 }
+.collapsible-sidebar.open {
+    left: 0; /* Visible when open */
+}
 /* Sidebar Toggle Button */
 .sidebar-toggle {
     position: fixed;
@@ -319,28 +322,103 @@ header nav ul li a.active {
 .sidebar-toggle.open {
     left: 160px; /* Aligned to the sidebar width */
 }
-/* Filter and Sort Container */
-.filter-container {
+
+/* Categories Container */
+.categories-container {
+    max-width: 300px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Main Category Header */
+.section-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
-}
-
-.filter-container label {
-    margin-right: 10px;
-}
-
-/* View Toggle Button with icon */
-.view-toggle {
-    display: flex;
-    justify-content: flex-end;
-    margin: 10px 0;
-}
-
-.toggle-layout {
-    font-size: 24px;
+    align-items: center;
     cursor: pointer;
+    padding: 10px 0;
+    font-size: 16px;
+    color:  #ffa07a;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid #ddd;
 }
+
+/* Filter Button */
+.filter-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    padding: px 0;
+    height: 60px;
+    color:  #ff8150;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.filter-toggle:hover {
+    color: #e34b2b;
+}
+
+.filter-icon {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+/* Arrows */
+.arrow {
+    font-size: 14px;
+    color: #999;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Subcategory Header */
+.subcategory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.subcategory-header:hover {
+    color: #ff6347;
+}
+
+/* Subcategories */
+.subcategories {
+    padding-left: 15px;
+    margin: 10px 0;
+    display: none;
+}
+
+.subcategories label {
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.subcategories label:hover {
+    color: #ff6347;
+}
+
+input[type="checkbox"] {
+    accent-color: #ff6347;
+    margin-right: 8px;
+}
+
 /* Image Grid */
 .image-grid {
     display: grid;
@@ -383,17 +461,16 @@ header nav ul li a.active {
     width: 100%;
 }
 
-/* Wishlist heart icon styles */
 .wishlist-heart {
     position: absolute;
-    top: 15px; /* Adjusted for smaller position */
-    right: 15px; /* Adjusted for smaller position */
+    top: 15px;
+    right: 15px;
     cursor: pointer;
-    width: 30px; /* Small circle size */
-    height: 30px; /* Small circle size */
-    border-radius: 50%; /* Make it a circle */
-    background-color: white; /* White background */
-    border: 2px solid white; /* Black border for the circle */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -405,41 +482,62 @@ header nav ul li a.active {
     fill: none;
     stroke: black; /* Black outline for the heart */
     stroke-width: 2;
-    width: 17px; /* Smaller heart size */
-    height: 17px; /* Smaller heart size */
+    width: 17px;
+    height: 17px;
 }
 
 /* Active state for the heart (when clicked) */
-.wishlist-heart.active {
-    background-color: white; /* Keep the circle white */
-    border-color: white; /* Keep the border color black */
-}
-
 .wishlist-heart.active svg path {
     fill: red;
     stroke: red; /* Heart outline turns red when clicked */
 }
-/* Add to Cart Button */
-.add-to-cart {
+
+/* Confirmation message styling */
+.wishlist-confirmation {
+    display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 0%; /* Centered on the screen */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Add to Basket Button */
+.add-to-basket button {
     display: block; /* Always visible */
     position: absolute;
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #000; /* Black background for the oval */
+    background-color: #000; /* Black background */
     color: #fff; /* White text */
-    border: none; /* No border around the oval */
-    border-radius: 50px; /* Rounded edges for the oval */
+    border: none; /* No border */
+    border-radius: 30px; /* Rounded edges for the oval */
     padding: 10px 30px; /* Padding to create the oval shape */
-    font-size: 20px;
+    font-size: 15px; /* Font size */
     font-weight: bold; /* Bold text */
     text-align: center; /* Center the text */
     cursor: pointer;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Subtle text shadow for visibility */
-    box-shadow: none; /* No inner shadow or border */
-    background: none; /* Ensure no inner background box */
+    box-shadow: none; /* No inner shadow */
     z-index: 10; /* Ensure it sits above everything */
 }
+
+/* Hover and Active States */
+.add-to-basket button:hover {
+    background-color: #333; /* Slightly lighter black for hover */
+    transform: translateX(-50%) scale(1.05); /* Slight scaling effect */
+}
+
+.add-to-basket button:active {
+    transform: translateX(-50%) scale(0.95); /* Pressed state effect */
+    background-color: #444; /* Darker shade for active */
+}
+
 
 /* Optional: Styling for the image box */
 .image-box {
@@ -449,32 +547,116 @@ header nav ul li a.active {
 
 
 
-/* Confirmation message */
-.wishlist-confirmation {
-    font-size: 14px;
-    color: green;
-    margin-top: 10px;
+.basket-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.basket-item-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.basket-item-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.basket-item-name {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.basket-item-price {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.basket-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-decrease,
+.quantity-increase {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.quantity-decrease:hover,
+.quantity-increase:hover {
+    background-color: #0056b3;
+}
+
+.basket-item-remove {
+    background: none;
+    border: none;
+    color: #ff0000;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.basket-item-remove:hover {
+    color: #cc0000;
+    transform: scale(1.1);
+}
+.hidden {
+    display: none;
+}
+
+/* Confirmation message styling */
+.basket-confirmation {
     display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 0%; /* Centered on the screen */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+#undoButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    top:0%;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; /* Space between text and icon */
+    margin-left: 240px; /* Space from the confirmation text */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* Basket Grid */
-#basketGrid {
-    display: grid; /* Ensure basket grid is displayed as grid */
-    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
-    gap: 20px; /* Space between items */
+#undoButton.show {
+    opacity: 1; /* Make button visible */
 }
 
-/* Default to vertical layout */
-#basketGrid.vertical-layout {
-    grid-template-columns: repeat(6, 1fr); /* 4 items per row */
-    gap: 17px;
+#undoButton:hover {
+    background-color: #0056b3;
 }
 
-#basketGrid.horizontal-layout {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr); /* 1 item per row */
-    gap: 15px;
+#undoButton i {
+    font-size: 14px;
 }
+
 
 /* Navigation Buttons Container */
 .navigation-buttons {

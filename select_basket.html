@@ -53,110 +53,112 @@
     <main class="main-content select-basket-page">
         <h2>Select A Basket</h2>
 
-    <div class="categories-container">
-        <button class="categories-button">Categories</button>
-        <button class="filter-icon">
-            <i class="fas fa-sliders-h"></i> <!-- FontAwesome icon for filter -->
-        </button>
+ <!-- Categories Section -->
+<div class="categories-container">
+    <!-- Main Category Title (Categories) -->
+    <div class="section-header">
+      <span class="section-title">Categories</span>
+      <span class="arrow">▼</span>
     </div>
-    <div class="filter-sort-container">
-        <!-- Filter and Sort Button -->
-        <button class="filter-toggle" onclick="toggleFilterSort()">
-            <button class="filter-icon">
-                <i class="fas fa-sliders-h"></i> <!-- FontAwesome icon for filter -->
-            </button>
-        </button>
     
-        <!-- Collapsible Filter and Sort Panel -->
-        <div class="filter-sort-panel" id="filterSortPanel">
+    <!-- Categories Content -->
+    <div class="categories-content" id="categoriesContent" style="display: none;">
+      <!-- Subcategories: By Occasion -->
+      <div class="subcategory-header">
+        <span>By Occasion</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="subcategories" id="occasion" style="display: none; margin-left: 15px;">
+        <label><input type="checkbox" value="birthday" onchange="filterBaskets()"> Birthday</label>
+        <label><input type="checkbox" value="anniversary" onchange="filterBaskets()"> Anniversary</label>
+        <label><input type="checkbox" value="holiday" onchange="filterBaskets()"> Holiday</label>
+      </div>
+  
+      <!-- Subcategories: By Recipient -->
+      <div class="subcategory-header">
+        <span>By Recipient</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="subcategories" id="recipient" style="display: none; margin-left: 15px;">
+        <label><input type="checkbox" value="men" onchange="filterBaskets()"> Men</label>
+        <label><input type="checkbox" value="women" onchange="filterBaskets()"> Women</label>
+        <label><input type="checkbox" value="children" onchange="filterBaskets()"> Children</label>
+      </div>
+  
+      <!-- Subcategories: By Theme -->
+      <div class="subcategory-header">
+        <span>By Theme</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="subcategories" id="theme" style="display: none; margin-left: 15px;">
+        <label><input type="checkbox" value="luxury" onchange="filterBaskets()"> Luxury</label>
+        <label><input type="checkbox" value="eco-friendly" onchange="filterBaskets()"> Eco-Friendly</label>
+        <label><input type="checkbox" value="seasonal" onchange="filterBaskets()"> Seasonal</label>
+      </div>
+    </div>
+</div>
+
+  
+
+  
+        <!-- Filter and Sort Panel -->
+        <div class="filter-sort-container">
+          <!-- Filter Toggle Button -->
+          <button class="filter-toggle" onclick="toggleFilterSort()">
+            <i class="fas fa-sliders-h"></i>
+          </button>
+      
+          <!-- Collapsible Filter and Sort Panel -->
+          <div class="filter-sort-panel" id="filterSortPanel" style="display: none;">
             <!-- Sort By Section -->
             <div class="sort-section">
-                <div class="section-header" onclick="toggleCollapse(this)">
-                    <span class="section-title">Sort By</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="section-content">
-                    <!-- Sort Options -->
-                    <label><input type="radio" name="sort" value="popularity" onchange="sortBaskets()"> Popularity</label>
-                    <label><input type="radio" name="sort" value="newest" onchange="sortBaskets()"> Newest Designs</label>
-                    <label><input type="radio" name="sort" value="price-asc" onchange="sortBaskets()"> Price (Low to High)</label>
-                    <label><input type="radio" name="sort" value="price-desc" onchange="sortBaskets()"> Price (High to Low)</label>
-                    <label><input type="radio" name="sort" value="az" onchange="sortBaskets()"> Alphabetically (A-Z)</label>
-                    <label><input type="radio" name="sort" value="za" onchange="sortBaskets()"> Alphabetically (Z-A)</label>
-                </div>
+              <div class="section-header" onclick="toggleCollapse(this)">
+                <span class="section-title">Sort By</span>
+                <span class="arrow">▼</span>
+              </div>
+              <div class="section-content">
+                <label><input type="radio" name="sort" value="popularity" onchange="sortBaskets()"> Popularity</label>
+                <label><input type="radio" name="sort" value="newest" onchange="sortBaskets()"> Newest Designs</label>
+                <label><input type="radio" name="sort" value="price-asc" onchange="sortBaskets()"> Price (Low to High)</label>
+                <label><input type="radio" name="sort" value="price-desc" onchange="sortBaskets()"> Price (High to Low)</label>
+                <label><input type="radio" name="sort" value="az" onchange="sortBaskets()"> Alphabetically (A-Z)</label>
+                <label><input type="radio" name="sort" value="za" onchange="sortBaskets()"> Alphabetically (Z-A)</label>
+              </div>
             </div>
-    
-            <!-- Categories Section -->
-            <div class="categories-section">
-                <div class="section-header" onclick="toggleCollapse(this)">
-                    <span class="section-title">Categories</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="section-content">
-                    <!-- Categories -->
-                    <label onclick="toggleSubCategories('occasion')">By Occasion</label>
-                    <div class="subcategories" id="occasion" style="display: none;">
-                        <label><input type="checkbox" value="birthday" onchange="filterBaskets()"> Birthday</label>
-                        <label><input type="checkbox" value="anniversary" onchange="filterBaskets()"> Anniversary</label>
-                        <label><input type="checkbox" value="holiday" onchange="filterBaskets()"> Holiday</label>
-                    </div>
-    
-                    <label onclick="toggleSubCategories('recipient')">By Recipient</label>
-                    <div class="subcategories" id="recipient" style="display: none;">
-                        <label><input type="checkbox" value="men" onchange="filterBaskets()"> Men</label>
-                        <label><input type="checkbox" value="women" onchange="filterBaskets()"> Women</label>
-                        <label><input type="checkbox" value="children" onchange="filterBaskets()"> Children</label>
-                    </div>
-    
-                    <label onclick="toggleSubCategories('theme')">By Theme</label>
-                    <div class="subcategories" id="theme" style="display: none;">
-                        <label><input type="checkbox" value="luxury" onchange="filterBaskets()"> Luxury</label>
-                        <label><input type="checkbox" value="eco-friendly" onchange="filterBaskets()"> Eco-Friendly</label>
-                        <label><input type="checkbox" value="seasonal" onchange="filterBaskets()"> Seasonal</label>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Existing Filters -->
+      
+            <!-- Filter Section -->
             <div class="filter-section">
-                <div class="section-header" onclick="toggleCollapse(this)">
-                    <span class="section-title">Filter By</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="section-content">
-                    <label><input type="checkbox" value="material" onchange="filterBaskets()"> Basket Material</label>
-                    <label><input type="checkbox" value="shape" onchange="filterBaskets()"> Basket Shape</label>
-                    <label><input type="checkbox" value="size" onchange="filterBaskets()"> Basket Size</label>
-                    <label><input type="checkbox" value="occasion" onchange="filterBaskets()"> Occasion-Specific</label>
-                    <label><input type="checkbox" value="color" onchange="filterBaskets()"> Color/Theme</label>
-                    <button onclick="clearFilters()" class="clear-filters">Clear All</button>
-                </div>
+              <div class="section-header" onclick="toggleCollapse(this)">
+                <span class="section-title">Filter By</span>
+                <span class="arrow">▼</span>
+              </div>
+              <div class="section-content">
+                <label><input type="checkbox" value="material" onchange="filterBaskets()"> Basket Material</label>
+                <label><input type="checkbox" value="shape" onchange="filterBaskets()"> Basket Shape</label>
+                <label><input type="checkbox" value="size" onchange="filterBaskets()"> Basket Size</label>
+                <label><input type="checkbox" value="color" onchange="filterBaskets()"> Color/Theme</label>
+                <button onclick="clearFilters()" class="clear-filters">Clear All</button>
+              </div>
             </div>
-    
+      
             <!-- Price Range Section -->
             <div class="price-range-section">
-                <div class="section-header" onclick="toggleCollapse(this)">
-                    <span class="section-title">Price Range</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="section-content">
-                    <label for="min-price">Min Price:</label>
-                    <input type="number" id="min-price" min="0" placeholder="$0" onchange="filterBaskets()">
-                    <label for="max-price">Max Price:</label>
-                    <input type="number" id="max-price" max="500" placeholder="$500" onchange="filterBaskets()">
-                </div>
+              <div class="section-header" onclick="toggleCollapse(this)">
+                <span class="section-title">Price Range</span>
+                <span class="arrow">▼</span>
+              </div>
+              <div class="section-content">
+                <label for="min-price">Min Price:</label>
+                <input type="number" id="min-price" min="0" placeholder="$0" onchange="filterBaskets()">
+                <label for="max-price">Max Price:</label>
+                <input type="number" id="max-price" max="500" placeholder="$500" onchange="filterBaskets()">
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </main>
+      
     
-    
-     <!-- Toggle Layout Icon -->
-<div class="view-toggle">
-    <button class="toggle-layout" onclick="toggleLayout()">
-        <i class="fas fa-th-large"></i>  <!-- Font Awesome icon for layout toggle -->
-    </button>
-</div>
-     
     <!-- Grid of Images -->
     <div class="image-grid" id="basketGrid">
        
@@ -352,7 +354,6 @@
     <!-- JavaScript -->
     <script src="select_basket.js"></script>
     <script src="wishlist.js"></script>
-    <script src="cart.css"></script>
-</body>
+    <script src="script.js"></script></body>
 </html>
 
