@@ -448,11 +448,12 @@ input[type="checkbox"] {
 
 /* Basket name, size, and price styling */
 .image-box .basket-name{
-    margin: 10px 0;
+    margin: 30px 0;
     font-size: 16px;
     font-weight: 100%;
     text-align: center;
 }
+
 .image-box .basket-size,
 .image-box .basket-price {
     margin: 5px 0;
@@ -460,6 +461,7 @@ input[type="checkbox"] {
     font-size: 14px;
     width: 100%;
 }
+
 
 .wishlist-heart {
     position: absolute;
