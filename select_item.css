@@ -15,7 +15,8 @@ header.navbar {
     justify-content: center;
     align-items: center;
     padding: 15px 25px;
-    background-color: #179c9c; /* Use the same background color as the main page */
+    background-color: #179c9c;
+    /* Use the same background color as the main page */
     color: white;
     position: relative;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -24,7 +25,8 @@ header.navbar {
 header .logo {
     text-align: center;
     margin-right: auto;
-    padding-left: 25px; /* Space for alignment */
+    padding-left: 25px;
+    /* Space for alignment */
 }
 
 header .logo h1 {
@@ -37,7 +39,8 @@ header .logo h1 {
 header .logo h2 {
     font-size: 15px;
     font-weight: normal;
-    color: #d3f4dd; /* Lighter text color for the subtitle */
+    color: #d3f4dd;
+    /* Lighter text color for the subtitle */
     margin: 0;
 }
 
@@ -62,27 +65,34 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background-color: #abd1c6; /* Soft green to match theme */
+    background-color: #abd1c6;
+    /* Soft green to match theme */
     color: #004643;
 }
 
 header nav ul li a.active {
     border-bottom: 2px solid #ffa07a;
 }
+
 /* Currency Selector */
 .currency-selector {
     position: relative;
-    display: inline-flex;  /* Use inline-flex for compactness */
-    align-items: center;   /* Align the flag and label */
+    display: inline-flex;
+    /* Use inline-flex for compactness */
+    align-items: center;
+    /* Align the flag and label */
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px; /* Default size */
+    font-size: 14px;
+    /* Default size */
     cursor: pointer;
     user-select: none;
 }
 
 .currency-selector .currency-icon {
-    margin-right: 4px; /* Reduced space between icon and label */
-    font-size: 16px;    /* Icon size */
+    margin-right: 4px;
+    /* Reduced space between icon and label */
+    font-size: 16px;
+    /* Icon size */
 }
 
 .currency-selector .currency-label {
@@ -98,22 +108,28 @@ header nav ul li a.active {
 
 /* Dropdown Menu */
 .currency-selector .currency-menu {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: absolute;
     top: 120%;
     left: 0;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow */
     border-radius: 5px;
-    padding: 5px 0; /* Reduced padding */
+    padding: 5px 0;
+    /* Reduced padding */
     z-index: 10;
-    width: 100px; /* Set a specific width for the dropdown */
+    width: 100px;
+    /* Set a specific width for the dropdown */
     margin-top: 4px;
 }
 
 .currency-selector .currency-menu li {
-    padding: 8px 12px; /* Reduced padding for smaller options */
-    font-size: 12px;   /* Smaller text for dropdown items */
+    padding: 8px 12px;
+    /* Reduced padding for smaller options */
+    font-size: 12px;
+    /* Smaller text for dropdown items */
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -137,29 +153,35 @@ header nav ul li a.active {
     margin: 0;
     padding: 0;
 }
+
 /* Breadcrumb Styles */
 .breadcrumb {
     margin: 15px 20px;
     padding: 10px;
-    background-color: #ffffff; /* Soft yellow for contrast */
+    background-color: #ffffff;
+    /* Soft yellow for contrast */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight elevation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Slight elevation */
 }
 
 .breadcrumb a.breadcrumb-link {
     text-decoration: none;
-    color: #179c9c; /* Vibrant link color */
+    color: #179c9c;
+    /* Vibrant link color */
     font-weight: bold;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .breadcrumb a.breadcrumb-link:hover {
-    color: #ff6f61; /* Peach for hover effect */
+    color: #ff6f61;
+    /* Peach for hover effect */
     text-decoration: underline;
 }
 
 .breadcrumb-current {
-    color: #555; /* Muted color for current location */
+    color: #555;
+    /* Muted color for current location */
     font-weight: normal;
 }
 
@@ -167,85 +189,115 @@ header nav ul li a.active {
 .breadcrumb a::after {
     content: '>';
     margin: 0 8px;
-    color: #bbb; /* Arrow color */
+    color: #bbb;
+    /* Arrow color */
 }
 
 .breadcrumb a:last-child::after {
-    content: ''; /* Remove arrow after last item */
+    content: '';
+    /* Remove arrow after last item */
 }
 
 /* Progress Indicator (Steps) */
 .progress-indicator {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Reduced gap for a compact layout */
-    padding: 15px 20px; /* Smaller padding */
-    background-color: #e8f7f7; /* Soft teal background */
+    gap: 10px;
+    /* Reduced gap for a compact layout */
+    padding: 15px 20px;
+    /* Smaller padding */
+    background-color: #e8f7f7;
+    /* Soft teal background */
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 30px; /* Reduced margin below the progress indicator */
-    border-radius: 10px; /* Rounded corners for a softer look */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Elevated look */
+    margin-bottom: 30px;
+    /* Reduced margin below the progress indicator */
+    border-radius: 10px;
+    /* Rounded corners for a softer look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Elevated look */
 }
 
 /* Individual Steps */
 .step {
-    padding: 10px 20px; /* Reduced padding for smaller steps */
-    border: 2px solid #a1e1dd; /* Light teal border for neutral steps */
-    border-radius: 50px; /* Make steps more pill-shaped */
+    padding: 10px 20px;
+    /* Reduced padding for smaller steps */
+    border: 2px solid #a1e1dd;
+    /* Light teal border for neutral steps */
+    border-radius: 50px;
+    /* Make steps more pill-shaped */
     color: #333;
     text-decoration: none;
-    background-color: #ffffff; /* Neutral background for pending steps */
+    background-color: #ffffff;
+    /* Neutral background for pending steps */
     transition: all 0.3s ease;
-    font-size: 14px; /* Reduced font size */
+    font-size: 14px;
+    /* Reduced font size */
     text-align: center;
-    flex: 1; /* Equal space for each step */
+    flex: 1;
+    /* Equal space for each step */
     position: relative;
 }
 
 /* Completed Step */
 .step.completed {
-    background-color: #56bdb1; /* Teal for completed steps */
+    background-color: #56bdb1;
+    /* Teal for completed steps */
     color: white;
-    border-color: #3b998f; /* Slightly darker teal for border */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+    border-color: #3b998f;
+    /* Slightly darker teal for border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow for elevation */
 }
 
 /* Active Step */
 .step.active {
-    background-color: #ffa07a; /* Peach for the current step */
+    background-color: #ffa07a;
+    /* Peach for the current step */
     color: white;
-    border-color: #ff6f61; /* Darker peach border */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* More pronounced shadow for focus */
+    border-color: #ff6f61;
+    /* Darker peach border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* More pronounced shadow for focus */
 }
 
 /* Pending Step (Default) */
 .step {
-    background-color: #ffffff; /* White for pending steps */
-    color: #999; /* Gray text for pending steps */
-    border-color: #e8f7f7; /* Light teal border */
+    background-color: #ffffff;
+    /* White for pending steps */
+    color: #999;
+    /* Gray text for pending steps */
+    border-color: #e8f7f7;
+    /* Light teal border */
 }
 
 /* Hover Effect for Pending Steps */
 .step:hover {
-    background-color: #f5fafa; /* Subtle highlight on hover */
-    border-color: #a1e1dd; /* Teal border on hover */
+    background-color: #f5fafa;
+    /* Subtle highlight on hover */
+    border-color: #a1e1dd;
+    /* Teal border on hover */
 }
 
 .step::before {
     content: "";
     position: absolute;
     top: 50%;
-    left: -50%; /* Start the line from the previous step */
+    left: -50%;
+    /* Start the line from the previous step */
     height: 3px;
-    width: 100%; /* Length of the line */
-    background-color: #e0e0e0; /* Default line color */
-    z-index: -1; /* Place behind the steps */
+    width: 100%;
+    /* Length of the line */
+    background-color: #e0e0e0;
+    /* Default line color */
+    z-index: -1;
+    /* Place behind the steps */
 }
 
 /* Update line for completed steps */
-.step.completed + .step::before {
-    background-color: #56bdb1; /* Teal line for completed steps */
+.step.completed+.step::before {
+    background-color: #56bdb1;
+    /* Teal line for completed steps */
 }
 
 
@@ -263,21 +315,26 @@ header nav ul li a.active {
 /* Collapsible Sidebar */
 .collapsible-sidebar {
     position: fixed;
-    top: 150px; /* Below the progress bar */
+    top: 150px;
+    /* Below the progress bar */
     left: 0;
-    height: calc(100% - 150px); /* Adjusted for progress bar height */
-    width: 200px; /* Halved to make it thinner */
+    height: calc(100% - 150px);
+    /* Adjusted for progress bar height */
+    width: 200px;
+    /* Halved to make it thinner */
     background-color: #fef5e7;
     border-right: 2px solid #ffa07a;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(-100%); /* Hidden by default */
+    transform: translateX(-100%);
+    /* Hidden by default */
     z-index: 1000;
 }
 
 .collapsible-sidebar.open {
-    transform: translateX(0); /* Slide in when open */
+    transform: translateX(0);
+    /* Slide in when open */
 }
 
 .collapsible-sidebar h3 {
@@ -285,42 +342,55 @@ header nav ul li a.active {
     background-color: #ffa07a;
     color: white;
     text-align: center;
-    font-size: 16px; /* Slightly smaller font for thin sidebar */
+    font-size: 16px;
+    /* Slightly smaller font for thin sidebar */
 }
 
 .collapsible-sidebar ul {
     list-style: none;
     padding: 10px;
-    margin: 0; /* Remove default margin */
+    margin: 0;
+    /* Remove default margin */
 }
 
 .collapsible-sidebar ul li {
     padding: 8px;
     border-bottom: 1px solid #ddd;
-    font-size: 14px; /* Slightly smaller font for narrow space */
+    font-size: 14px;
+    /* Slightly smaller font for narrow space */
     color: #333;
 }
+
 .collapsible-sidebar.open {
-    left: 0; /* Visible when open */
+    left: 0;
+    /* Visible when open */
 }
+
 /* Sidebar Toggle Button */
 .sidebar-toggle {
     position: fixed;
-    top: 121px; /* Adjusted to be above the sidebar (right above basket name area) */
-    left: 10px; /* Slightly offset from the sidebar edge */
+    top: 121px;
+    /* Adjusted to be above the sidebar (right above basket name area) */
+    left: 10px;
+    /* Slightly offset from the sidebar edge */
     background-color: #ffa07a;
     color: white;
     border: none;
-    padding: 8px 12px; /* Slightly smaller for a cleaner look */
-    border-radius: 5px; /* Rounded edges for aesthetics */
+    padding: 8px 12px;
+    /* Slightly smaller for a cleaner look */
+    border-radius: 5px;
+    /* Rounded edges for aesthetics */
     cursor: pointer;
-    z-index: 1100; /* Stays above all elements, including the sidebar */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+    z-index: 1100;
+    /* Stays above all elements, including the sidebar */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Add a shadow for depth */
 }
 
 /* Adjust toggle position when sidebar is open */
 .sidebar-toggle.open {
-    left: 160px; /* Aligned to the sidebar width */
+    left: 160px;
+    /* Aligned to the sidebar width */
 }
 
 /* Categories Container */
@@ -339,7 +409,7 @@ header nav ul li a.active {
     cursor: pointer;
     padding: 10px 0;
     font-size: 16px;
-    color:  #ffa07a;
+    color: #ffa07a;
     font-weight: bold;
     transition: color 0.3s ease;
     border-bottom: 1px solid #ddd;
@@ -352,7 +422,7 @@ header nav ul li a.active {
     font-size: 20px;
     padding: px 0;
     height: 60px;
-    color:  #ff8150;
+    color: #ff8150;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -421,10 +491,16 @@ input[type="checkbox"] {
 
 /* Image Grid */
 .image-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
-    gap: 20px;
+    display: flex;
+    justify-content: start;
     margin-top: 20px;
+}
+
+.image-grid ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
 }
 
 /* Image Box */
@@ -432,11 +508,16 @@ input[type="checkbox"] {
     position: relative;
     background-color: #fff;
     border-radius: 10px;
-    width: 100%; /* Ensure image-box takes full width of grid */
-    text-align: center; /* Center text */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    width: 300px; 
+    text-align: center; 
+    box-shadow: 0 0 30px rgba(71, 71, 71, 0.1);
+    transition: 0.2s ease-in-out;
     overflow: hidden;
+    margin: 10px;
+}
+
+.image-box:hover {
+    transform: scale(1.05);
 }
 
 /* Make sure the images inside the image-box fit */
@@ -447,12 +528,13 @@ input[type="checkbox"] {
 }
 
 /* Basket name, size, and price styling */
-.image-box .basket-name{
+.image-box .basket-name {
     margin: 10px 0;
     font-size: 16px;
     font-weight: 100%;
     text-align: center;
 }
+
 .image-box .basket-size,
 .image-box .basket-price {
     margin: 5px 0;
@@ -480,7 +562,8 @@ input[type="checkbox"] {
 /* Heart icon styling */
 .wishlist-heart svg {
     fill: none;
-    stroke: black; /* Black outline for the heart */
+    stroke: black;
+    /* Black outline for the heart */
     stroke-width: 2;
     width: 17px;
     height: 17px;
@@ -489,14 +572,17 @@ input[type="checkbox"] {
 /* Active state for the heart (when clicked) */
 .wishlist-heart.active svg path {
     fill: red;
-    stroke: red; /* Heart outline turns red when clicked */
+    stroke: red;
+    /* Heart outline turns red when clicked */
 }
 
 /* Confirmation message styling */
 .wishlist-confirmation {
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     position: fixed;
-    bottom: 0%; /* Centered on the screen */
+    bottom: 0%;
+    /* Centered on the screen */
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -506,43 +592,62 @@ input[type="checkbox"] {
     z-index: 1000;
 }
 
+.add-to-basket {
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 /* Add to Basket Button */
 .add-to-basket button {
-    display: block; /* Always visible */
+    display: flex;
+    /* Always visible */
+    bottom: 5px;
+    justify-content: center;
     position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    border: none; /* No border */
-    border-radius: 30px; /* Rounded edges for the oval */
-    padding: 10px 30px; /* Padding to create the oval shape */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center; /* Center the text */
+    background-color: #000;
+    /* Black background */
+    color: #fff;
+    /* White text */
+    border: none;
+    /* No border */
+    border-radius: 30px;
+    /* Rounded edges for the oval */
+    padding: 10px 30px;
+    /* Padding to create the oval shape */
+    font-size: 15px;
+    /* Font size */
+    font-weight: bold;
+    /* Bold text */
+    text-align: center;
+    /* Center the text */
     cursor: pointer;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Subtle text shadow for visibility */
-    box-shadow: none; /* No inner shadow */
-    z-index: 10; /* Ensure it sits above everything */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    /* Subtle text shadow for visibility */
+    box-shadow: none;
+    /* No inner shadow */
 }
 
 /* Hover and Active States */
 .add-to-basket button:hover {
-    background-color: #333; /* Slightly lighter black for hover */
-    transform: translateX(-50%) scale(1.05); /* Slight scaling effect */
+    background-color: #333;
+    /* Slightly lighter black for hover */
 }
 
 .add-to-basket button:active {
-    transform: translateX(-50%) scale(0.95); /* Pressed state effect */
-    background-color: #444; /* Darker shade for active */
+    background-color: #444;
+    /* Darker shade for active */
 }
 
 
 /* Optional: Styling for the image box */
 .image-box {
-    position: relative; /* Ensure the button is positioned correctly */
-    overflow: visible; /* Make sure the button appears outside the image box if necessary */
+    position: relative;
+    /* Ensure the button is positioned correctly */
+    overflow: visible;
+    /* Make sure the button appears outside the image box if necessary */
 }
 
 
@@ -612,41 +717,48 @@ input[type="checkbox"] {
     color: #cc0000;
     transform: scale(1.1);
 }
+
 .hidden {
     display: none;
 }
 
 /* Confirmation message styling */
 .basket-confirmation {
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     position: fixed;
-    bottom: 0%; /* Centered on the screen */
+    bottom: 0%;
+    /* Centered on the screen */
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    
+
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
+
 #undoButton {
     background-color: #007bff;
     color: white;
     border: none;
-    top:0%;
+    top: 0%;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 3px;
     display: inline-flex;
     align-items: center;
-    gap: 5px; /* Space between text and icon */
-    margin-left: 240px; /* Space from the confirmation text */
+    gap: 5px;
+    /* Space between text and icon */
+    margin-left: 240px;
+    /* Space from the confirmation text */
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
 
 #undoButton.show {
-    opacity: 1; /* Make button visible */
+    opacity: 1;
+    /* Make button visible */
 }
 
 #undoButton:hover {
@@ -661,9 +773,12 @@ input[type="checkbox"] {
 /* Navigation Buttons Container */
 .navigation-buttons {
     display: flex;
-    justify-content: space-between; /* Align the buttons to opposite sides */
-    padding: 15px; /* Optional padding for spacing */
-    width: 98%; /* Full width of the parent container */
+    justify-content: space-between;
+    /* Align the buttons to opposite sides */
+    padding: 15px;
+    /* Optional padding for spacing */
+    width: 98%;
+    /* Full width of the parent container */
 }
 
 /* Previous Button */
@@ -676,7 +791,8 @@ input[type="checkbox"] {
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
 }
 
 /* Proceed Button */
@@ -689,21 +805,26 @@ input[type="checkbox"] {
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
 }
 
 /* Hover Effects for Both Buttons */
-.back-button:hover, .proceed-button:hover {
+.back-button:hover,
+.proceed-button:hover {
     background-color: #ff6f61;
-    transform: scale(1.05); /* Slight scale on hover for interactive effect */
+    transform: scale(1.05);
+    /* Slight scale on hover for interactive effect */
 }
 
 /* Footer - Matching main page design */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #179c9c; /* Same background color as header */
-    color: #fef5e7; /* Lighter text color for footer */
+    background-color: #179c9c;
+    /* Same background color as header */
+    color: #fef5e7;
+    /* Lighter text color for footer */
     font-size: 14px;
 }
 
