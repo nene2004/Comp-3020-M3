@@ -377,6 +377,26 @@ header nav ul li a.active {
     background-color: #ff6f61;
     transform: scale(1.05); /* Slight scale on hover for interactive effect */
 }
+.confirmation-message {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    background-color: #ffa07a;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1000; /* Ensure it stays on top */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.confirmation-message.fade-out {
+    opacity: 0;
+}
+
 /* Footer - Matching main page design */
 footer {
     text-align: center;

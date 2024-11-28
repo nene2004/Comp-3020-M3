@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre-Made Gift Bakset - GEMSS</title>
+    <title>Pre-Made Gift Basket - GEMSS</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="basket.details.css">
     <link
@@ -24,8 +24,8 @@
                 <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
-         <!-- Currency Selector -->
-         <div class="currency-selector" onclick="toggleCurrencyMenu()">
+        <!-- Currency Selector -->
+        <div class="currency-selector" onclick="toggleCurrencyMenu()">
             <span class="currency-icon">🇺🇸</span>
             <span class="currency-label">USD</span>
             <ul class="currency-menu">
@@ -34,34 +34,76 @@
             </ul>
         </div>
     </header>
- <!-- Breadcrumb Navigation -->
- <div class="breadcrumb">
-    <a href="index.html" class="breadcrumb-link">Home</a> >
-    <span class="breadcrumb-current">Luxury Gift Basket</span>
-</div>
-    <!-- Main Content -->
-    <main class="basket-details">
-        <!-- Example Product -->
-<div class="basket-image" data-id="123" data-name="Luxury Gift Basket" data-price="69.99">
-    <img src="f1.png" alt="Luxury Gift Basket">
-    <h3>Luxury Gift Basket</h3>
-    <p class="basket-description"> This luxury gift basket is perfect for any occasion. Packed with gourmet treats, elegant keepsakes, and a touch of class, it’s an unforgettable gift.
-        $69.99</p>
-    <button class="add-to-cart">Add to Cart</button>
-</div>
-    </main>
 
-   <!-- Footer -->
-   <footer>
-    <p>&copy; 2024 GEMSS. All rights reserved.</p>
-    <div class="social-media">
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html" class="breadcrumb-link">Home</a> >
+        <span class="breadcrumb-current">Luxury Gift Basket</span>
     </div>
-</footer>
-<script src="cart.js"></script>
-<script src="script.js"></script>
+
+   <!-- Main Content -->
+<main class="basket-details">
+    <!-- Example Product -->
+    <div class="basket-image" data-id="123" data-name="Luxury Gift Basket" data-price="69.99">
+        <img src="f1.png" alt="Luxury Gift Basket">
+        <div class="button-group">
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+        </div>
+    </div>
+    <div class="basket-info">
+    
+        <h2>Luxury Gift Basket</h2>
+        <p class="basket-description">
+            This premium gift basket is designed for those who appreciate quality. It includes an exquisite selection of chocolates, a hand-poured scented candle, personalized items, and more. Perfect for celebrating birthdays, anniversaries, or showing appreciation to loved ones, it offers a thoughtful and elegant way to make any occasion special.
+        </p>
+
+        <!-- Suitable For -->
+        <p class="who-is-suitable">Perfect for: Friends, Family, Colleagues, and Loved Ones.</p>
+
+        <!-- Basket Items List -->
+        <ul class="basket-items">
+            <li>Chocolate Box</li>
+            <li>Scented Candles</li>
+            <li>Personalized Mug</li>
+            <li>Handmade Soap</li>
+            <li>Greeting Card</li>
+        </ul>
+
+        <!-- Review and Rating -->
+        <div class="review-section">
+            <h3 class="review-title">Customer Reviews</h3>
+            <div class="review-rating">
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">☆</span>
+            </div>
+            <p class="review-comment">"This gift basket was a hit! The chocolates were exquisite, and the candles created the perfect atmosphere. Highly recommend!" - Jane Doe</p>
+            <p>"Great product! Highly recommend."- Stan Mike</p>
+        </div>
+
+        <!-- Price and Buttons -->
+        <div class="price-and-buttons">
+            <p class="price">$69.99</p>
+        </div>
+    </div>
+</main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GEMSS. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
