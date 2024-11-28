@@ -7,6 +7,114 @@ document.addEventListener('DOMContentLoaded', () => {
     function saveItems(key, items) {
         localStorage.setItem(key, JSON.stringify(items));
     }
+    
+    function toggleFilterSort() {
+        const panel = document.getElementById("filterSortPanel");
+        if (panel) {
+            panel.style.display = panel.style.display === "none" || panel.style.display === "" ? "block" : "none";
+        }
+    }
+// Function to toggle the visibility of categories content
+function toggleCategories(header) {
+    const categoriesContent = header.nextElementSibling; // Get the next sibling
+    const arrow = header.querySelector(".arrow");
+
+    if (categoriesContent.style.display === "none" || categoriesContent.style.display === "") {
+        categoriesContent.style.display = "block";
+        arrow.textContent = "▲"; // Arrow up
+    } else {
+        categoriesContent.style.display = "none";
+        arrow.textContent = "▼"; // Arrow down
+    }
+}
+
+// Function to toggle the visibility of subcategories
+function toggleSubCategories(categoryId, header) {
+    console.log(`Toggling cSubcategory for: ${categoryId}`); // Debugging line
+    const subcategories = document.getElementById(categoryId);
+    const arrow = header.querySelector(".arrow");
+
+    if (subcategories.style.display === "none" || subcategories.style.display === "") {
+        subcategories.style.display = "block";
+        arrow.textContent = "▲";
+    } else {
+        subcategories.style.display = "none";
+        arrow.textContent = "▼";
+    }
+}
+  // Toggle main categories
+  const categoriesHeader = document.querySelector('.categories-container .section-header');
+  categoriesHeader.addEventListener('click', toggleCategories);
+
+    // Toggle subcategories
+    const subcategoryHeaders = document.querySelectorAll(".subcategory-header");
+    subcategoryHeaders.forEach(header => {
+        const categoryId = header.nextElementSibling?.id; // Get corresponding subcategory ID
+        if (categoryId) {
+            header.addEventListener("click", () => {
+                toggleSubCategories(categoryId, header);
+            });
+        }
+    });
+// You can also define the filterBaskets function here if needed
+function filterBaskets() {
+    const selectedFilters = [];
+    document.querySelectorAll('.subcategories input:checked').forEach(input => {
+        selectedFilters.push(input.value);
+    });
+    console.log("Selected Filters:", selectedFilters);
+}
+    // Toggle Collapsible Sections
+    function toggleCollapse(header) {
+        const content = header.nextElementSibling;
+        const arrow = header.querySelector(".arrow");
+        if (content) {
+            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+            arrow.textContent = content.style.display === "block" ? "▲" : "▼";
+        }
+    }
+
+    // Apply Filters
+    function filterBaskets() {
+        const filters = {};
+        document.querySelectorAll(".filter-section input:checked").forEach(input => {
+            filters[input.value] = true;
+        });
+
+        const minPrice = parseFloat(document.getElementById("min-price")?.value) || 0;
+        const maxPrice = parseFloat(document.getElementById("max-price")?.value) || Infinity;
+
+        console.log("Applied Filters:", filters);
+        console.log("Price Range:", { minPrice, maxPrice });
+
+        // Add your custom filtering logic here based on the selected filters and price range
+    }
+
+    // Apply Sort
+    function sortBaskets() {
+        const sortOption = document.querySelector(".sort-section input:checked")?.value;
+        if (sortOption) {
+            console.log("Applied Sort:", sortOption);
+
+            // Add your custom sorting logic here based on the selected option
+        }
+    }
+
+    // Clear Filters
+    function clearFilters() {
+        document.querySelectorAll(".filter-section input:checked").forEach(input => {
+            input.checked = false;
+        });
+
+        const minPrice = document.getElementById("min-price");
+        const maxPrice = document.getElementById("max-price");
+        if (minPrice) minPrice.value = "";
+        if (maxPrice) maxPrice.value = "";
+
+        console.log("Filters Cleared");
+
+        // Add logic to reset filtered items
+    }
 
     function addToWishlist(event) {
         const productBox = event.target.closest('.image-box');
@@ -206,7 +314,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    
+    // Attach Event Listeners
+    document.querySelector(".filter-toggle")?.addEventListener("click", toggleFilterSort);
+
+    document.querySelectorAll(".section-header").forEach(header => {
+        header.addEventListener("click", () => toggleCollapse(header));
+    });
+
+    document.querySelectorAll(".filter-section input, #min-price, #max-price").forEach(input => {
+        input.addEventListener("change", filterBaskets);
+    });
+
+    document.querySelectorAll(".sort-section input").forEach(input => {
+        input.addEventListener("change", sortBaskets);
+    });
+
+    document.querySelector(".clear-filters")?.addEventListener("click", clearFilters);
 
     // Event listeners for basket actions
     const basketButton = document.getElementById('basketButton');

@@ -323,258 +323,102 @@ header nav ul li a.active {
     left: 160px; /* Aligned to the sidebar width */
 }
 
-/* Container Styling */
+/* Categories Container */
 .categories-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
     max-width: 300px;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #f4c16d; /* Light yellow-orange color */
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Categories Button */
-.categories-button {
-    flex: 1;
-    background-color: #e6a756; /* Slightly darker shade for the button */
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 15px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.categories-button:hover {
-    background-color: #d9964d; /* Darker hover shade */
-}
-
-/* Filter Icon Button */
-.filter-icon {
-    background-color: #e6a756;
-    color: #000;
-    font-size: 18px;
-    border: none;
-    border-radius: 15px;
-    padding: 10px;
-    margin-left: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.filter-icon:hover {
-    background-color: #d9964d; /* Darker hover shade */
-}
-
-/* FontAwesome Icon */
-.filter-icon i {
-    pointer-events: none; /* Ensures only the button is clickable */
-}
-
-/* Responsive Design */
-@media (max-width: 400px) {
-    .categories-container {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
-    }
-
-    .filter-icon {
-        margin-left: 0;
-        width: 100%;
-    }
-}
-
-.filter-sort-container {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin: 20px auto;
+    margin: 0 auto;
     font-family: 'Arial', sans-serif;
+    color: #333;
 }
 
-/* Filter Toggle Button */
-.filter-toggle {
-    display: flex;
-    align-items: center;
-    background: #4CAF50;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease;
-}
-
-.filter-toggle .filter-icon {
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-.filter-toggle:hover {
-    background: #45a049;
-}
-
-/* Collapsible Panel */
-.filter-sort-panel {
-    display: none;
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-top: 15px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-}
-
-/* Section Headers */
+/* Main Category Header */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     padding: 10px 0;
-    border-bottom: 1px solid #eaeaea;
     font-size: 16px;
+    color:  #ffa07a;
     font-weight: bold;
-    color: #333;
     transition: color 0.3s ease;
+    border-bottom: 1px solid #ddd;
 }
 
-.section-header:hover {
-    color: #4CAF50;
+/* Filter Button */
+.filter-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    padding: px 0;
+    height: 60px;
+    color:  #ff8150;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
-.arrow {
-    transition: transform 0.3s ease;
+.filter-toggle:hover {
+    color: #e34b2b;
+}
+
+.filter-icon {
     font-size: 16px;
+    margin-left: 5px;
 }
 
-.section-header.collapsed .arrow {
+/* Arrows */
+.arrow {
+    font-size: 14px;
+    color: #999;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.arrow.open {
     transform: rotate(180deg);
 }
 
-/* Section Content */
-.section-content {
-    display: none;
-    padding: 15px 0;
+/* Subcategory Header */
+.subcategory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
     font-size: 14px;
     color: #666;
-}
-
-.section-content label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    cursor: pointer;
     transition: color 0.3s ease;
 }
 
-.section-content label:hover {
-    color: #4CAF50;
-}
-
-.section-content input {
-    margin-right: 10px;
-}
-
-/* Clear Filters Button */
-.clear-filters {
-    margin-top: 15px;
-    background: #FF4D4D;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.clear-filters:hover {
-    background: #E60000;
+.subcategory-header:hover {
+    color: #ff6347;
 }
 
 /* Subcategories */
 .subcategories {
-    margin-left: 15px;
-    padding: 10px 0;
-    border-left: 2px solid #eaeaea;
+    padding-left: 15px;
+    margin: 10px 0;
+    display: none;
 }
 
 .subcategories label {
+    display: block;
+    margin: 5px 0;
     font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .subcategories label:hover {
-    color: #4CAF50;
+    color: #ff6347;
 }
 
-/* Price Range Inputs */
-.price-range-section input[type="number"] {
-    width: calc(50% - 10px);
-    margin-right: 10px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
+input[type="checkbox"] {
+    accent-color: #ff6347;
+    margin-right: 8px;
 }
 
-.price-range-section input[type="number"]:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .filter-sort-container {
-        max-width: 100%;
-    }
-
-    .filter-toggle {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .filter-sort-panel {
-        padding: 10px;
-    }
-
-    .section-header {
-        font-size: 14px;
-    }
-
-    .section-content {
-        font-size: 13px;
-    }
-}
-
-
-/* View Toggle Button with icon */
-.view-toggle {
-    display: flex;
-    justify-content: flex-end;
-    margin: 10px 0;
-}
-
-.toggle-layout {
-    font-size: 24px;
-    cursor: pointer;
-}
 /* Image Grid */
 .image-grid {
     display: grid;
@@ -795,7 +639,7 @@ header nav ul li a.active {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    border: 1px solid black;
+    
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
