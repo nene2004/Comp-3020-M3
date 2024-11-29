@@ -248,6 +248,15 @@ footer a:hover {
                 <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
+         <!-- Currency Selector -->
+         <div class="currency-selector" onclick="toggleCurrencyMenu()">
+            <span class="currency-icon">🇺🇸</span>
+            <span class="currency-label">USD</span>
+            <ul class="currency-menu">
+                <li data-value="USD" onclick="changeCurrency('USD', '🇺🇸')">🇺🇸 USD</li>
+                <li data-value="CAD" onclick="changeCurrency('CAD', '🇨🇦')">🇨🇦 CAD</li>
+            </ul>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -279,5 +288,6 @@ footer a:hover {
             <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
