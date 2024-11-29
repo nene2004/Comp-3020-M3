@@ -5,7 +5,7 @@ body {
     position: relative;
 }
 
-header, .main-content, .featured-baskets, .contact-us, .testimonials, .newsletter, footer {
+header, .main-content,.featured-baskets, .contact-us, .testimonials, .newsletter, footer {
     position: relative;
     z-index: 1; /* Ensures content is above slideshow */
 }
@@ -19,6 +19,7 @@ header.navbar {
     background-color: #179c9c;
     color: white;
     position: relative;
+    z-index: 999;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -125,7 +126,7 @@ header nav ul li a.active {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
     border-radius: 5px;
     padding: 5px 0; /* Reduced padding */
-    z-index: 10;
+    z-index: 20;
     width: 100px; /* Set a specific width for the dropdown */
     margin-top: 4px;
 }
@@ -158,44 +159,6 @@ header nav ul li a.active {
 }
 
 
-/* Search Section */
-.search-section {
-    display: flex;
-    justify-content: center;
-    width: 70%;
-    max-width: 600px;
-    margin: 0px auto 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 40px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.search-input {
-    flex: 1;
-    padding: 20px;
-    font-size: 20px;
-    border: none;
-    outline: none;
-    color: #333;
-    background-color: #f9f9f9;
-    border-radius: 40px 0 0 40px;
-}
-
-.search-button {
-    padding: 20px 30px;
-    font-size: 20px;
-    border: none;
-    background-color: #ffa07a;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 0 40px 40px 0;
-    transition: background-color 0.3s ease;
-}
-
-.search-button:hover {
-    background-color: #ff6f61;
-}
 
 /* Main Image Section with Slideshow */
 .main-image-section {

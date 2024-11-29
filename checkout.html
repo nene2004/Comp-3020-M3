@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - GEMSS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-description">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="GEMSS Logo" class="logo-img">
+            </a>
+            <a href="index.html" class="description">
+                <h1>GEMSS</h1>
+                <h2>Gift Baskets</h2>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="cart.html" class="breadcrumb-link">Back to Cart</a> >
+        <span class="checkout-current">Checkout</span>
+    </div>
+
+    <!-- Checkout Form Section -->
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+        
+        <form id="checkout-form" action="#" method="POST">
+            <!-- Shipping Info -->
+            <div class="shipping-info">
+                <h3>Shipping Information</h3>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+
+                <label for="zip">Zip Code:</label>
+                <input type="text" id="zip" name="zip" required>
+
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </div>
+
+            <!-- Order Summary Section -->
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="order-items">
+                    <!-- Dynamically populate order items here -->
+                </div>
+                <p>Total: $<span id="order-total">0.00</span></p>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="payment-method">
+                <h3>Payment Information</h3>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" required>
+
+                <label for="expiration">Expiration Date:</label>
+                <input type="month" id="expiration" name="expiration" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-order" class="checkout-button">Complete Purchase</button>
+        </form>
+    </div>
+ <!-- Thank You Message Section -->
+ <div class="thank-you-container" id="thank-you-container" style="display: none;">
+    <h2>Thank You for Shopping with GEMSS!</h2>
+    <p>Your gift basket is on its way!</p>
+    <a href="index.html" class="back-home-button">Back to Home</a>
+</div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GEMSS. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <script src="checkout.js"></script>
+</body>
+</html>
