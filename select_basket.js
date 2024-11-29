@@ -220,37 +220,6 @@ function filterBaskets() {
         }
     }
 
-    function addToBasket(button) {
-        const productBox = button.closest('.image-box');
-        const item = {
-            name: productBox.querySelector('.basket-name').textContent,
-            price: productBox.querySelector('.basket-price').textContent,
-            image: productBox.querySelector('img').src,
-            quantity: 1,
-        };
-
-        const basket = loadItems('basket');
-        const existingItem = basket.find((b) => b.name === item.name);
-
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            basket.push(item);
-        }
-
-        saveItems('basket', basket);
-        updateBasketSidebar();
-          // Show confirmation message
-    const confirmationMessage = document.getElementById('basketConfirmation');
-    if (confirmationMessage) {
-        confirmationMessage.textContent = `${item.name} has been added to your Basket!`;
-        confirmationMessage.style.display = 'block';
-        setTimeout(() => {
-            confirmationMessage.style.display = 'none';
-        }, 4000);
-    }
-    }
-
     function modifyBasketQuantity(index, action) {
         const basket = loadItems('basket');
 

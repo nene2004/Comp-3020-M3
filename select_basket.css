@@ -366,6 +366,73 @@ header nav ul li a.active {
     /* Visible when open */
 }
 
+/* FOR THE REVIEW PAGE */
+
+#reviewBasket {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    width: 100%;
+}
+
+#reviewBasketItems .basket-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#reviewBasketItems .basket-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#reviewBasketItems .basket-item-details {
+    flex: 1;
+}
+
+#reviewBasketItems .basket-item-remove {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#reviewBasketItems .basket-item-remove:hover {
+    color: #cc0000;
+    transform: scale(1.1);
+}
+
+.add-to-cart-cont{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 5vh; 
+}
+
+.add-to-cart {
+    padding: 15px 30px;
+    background-color: #ffa07a;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.add-to-cart:hover {
+    background-color: #ff6f61;
+    transform: scale(1.05);
+}
+
+
+
 /* Sidebar Toggle Button */
 .sidebar-toggle {
     position: fixed;

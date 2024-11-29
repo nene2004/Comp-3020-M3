@@ -48,21 +48,32 @@
     <!-- Progress Indicator -->
     <div class="progress-indicator">
         <a href="custom_basket.html" class="step completed">Step 1: Name Your Basket</a>
-        <span class="step active">Step 2: Select a Basket</span>
-        <a href="select_item.html" class="step">Step 3: Select Your Items</a>
-        <a href="add-card.html" class="step">Step 4: Add a Card</a>
-        <a href="review-basket.html" class="step">Step 5: Review Basket</a>
+        <a href="select_basket.html" class="step completed">: Select a Basket</span>
+        <a href="select_item.html" class="step completed">Step 3: Select Your Items</a>
+        <a href="add-card.html" class="step completed">Step 4: Add a Card</a>
+        <span class="step active">Step 5: Review Basket</a>
     </div>
+
     <main class="main-content review-basket-page">
-        <h2>Review Basket</h2>
-
-        <!-- Categories Section -->
- 
-
-       
 
     </main>
 
+
+  
+    <div class="add-to-cart-cont">
+         <button class="add-to-cart"> Otherwise, add basket to cart by clicking me</button>
+     </div>
+    
+    <h2>Review Basket</h2>
+    <div class="basket-main-display" id="reviewBasket">
+        <h3>Review Basket Summary</h3>
+        <ul id="basket">
+            <!-- Items will be dynamically added here -->
+        </ul>
+        <div id="reviewBasketTotal">
+            <strong>Total:</strong> $<span id="reviewTotalBalance">0.00</span>
+        </div>
+    </div>
 
    
     <!-- bottom navigation Buttons -->
@@ -70,20 +81,8 @@
         <a href="custom_basket.html" class="back-button">Previous</a>
         <a href="select_item.html" class="proceed-button">Proceed to Next Step</a>
     </div>
-    </main>
-    <!-- Sidebar Toggle Button -->
-    <button class="sidebar-toggle" id="basketButton">🛒 Basket</button>
-
-    <!-- Collapsible Sidebar -->
-    <div class="collapsible-sidebar" id="basketSummary">
-        <h3>Basket Summary</h3>
-        <ul id="basketItems">
-            <!-- Items will be dynamically added here -->
-        </ul>
-        <div id="basketTotal">
-            <strong>Total:</strong> $<span id="totalBalance">0.00</span>
-        </div>
-    </div>
+    
+  
 
     <!-- Footer -->
     <footer>
