@@ -536,12 +536,13 @@ input[type="checkbox"] {
     transform: scale(1.05);
 }
 
-/* Make sure the images inside the image-box fit */
 .image-box img {
     width: 100%;
-    height: auto;
+    height: 300px; 
+    object-fit: scale-down;
     border-radius: 10px;
 }
+
 
 /* Basket name, size, and price styling */
 .image-box .basket-name {
