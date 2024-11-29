@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cardNumberPreview = document.getElementById("card-number-preview");
     const cvvPreview = document.getElementById("cvv-preview");
     const cardNumberError = document.getElementById("card-number-error");
+    
     // Name Validation: Only letters and apostrophes allowed
     nameInput.addEventListener("input", function () {
         const validName = nameInput.value.replace(/[^a-zA-Z\s']/g, ''); // Allow letters, spaces, and apostrophes

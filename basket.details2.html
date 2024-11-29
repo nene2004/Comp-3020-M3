@@ -96,7 +96,20 @@ The Birthday Special Gift Basket is a curated collection of luxurious treats and
             </div>
             <p class="review-comment">"Absolutely loved this gift basket! The presentation was flawless, and the items inside were so thoughtful. The candle's scent was divine, and the personalized mug added a special touch." - Emily R.</p>
         </div>
-
+ <!-- User rating submission -->
+ <div class="user-rating">
+    <label for="user-comment">Leave a review:</label>
+    <textarea id="user-comment" placeholder="Write your review here..."></textarea>
+    <div class="rating-stars">
+        <span class="star" data-value="1">☆</span>
+        <span class="star" data-value="2">☆</span>
+        <span class="star" data-value="3">☆</span>
+        <span class="star" data-value="4">☆</span>
+        <span class="star" data-value="5">☆</span>
+    </div>
+    <button id="submit-rating">Submit Review</button>
+    <p id="rating-message" style="display: none;">Thank you for your feedback!</p>
+</div>
         <!-- Price and Buttons -->
         <div class="price-and-buttons">
             <p class="price">$99.99</p>
@@ -119,5 +132,6 @@ The Birthday Special Gift Basket is a curated collection of luxurious treats and
     <script src="cart.js"></script>  
     <script src="select_basket.js"></script>
     <script src="script.js"></script>
+    <script src="social.js"></script>
 </body>
 </html>
