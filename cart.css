@@ -1,67 +1,113 @@
-/* General Body Styling */
+/* General Body Styles */
 body {
     font-family: 'Josefin Sans', sans-serif;
     margin: 0;
-    background-color: #f4f8fb;
-    color: #333;
-}
-
-/* Header (Navbar) */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
+    padding: 0;
     background-color: #ffffff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.navbar .logo h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #179c9c;
+/* Navigation Bar */
+header.navbar {
+    display: flex;
+    justify-content: space-between;  /* Place logo/description on the left and nav on the right */
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #179c9c;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo-description {
+    display: flex;
+    align-items: center;  /* Align items horizontally */
+}
+
+header .logo {
+    width: 60px;  /* Set size for logo (a bit bigger than before) */
+    height: 60px; /* Set size for logo */
+    margin-right: 10px;  /* Space between logo and description */
+    overflow: hidden;  /* Prevent logo from spilling out of the container */
+    border-radius: 50%;  /* Circular logo container */
+}
+
+header .logo img {
+    width: 100%;  /* Make the logo image fit the container */
+    height: 100%;
+    object-fit: cover;  /* Ensure the logo doesn't get stretched */
+}
+
+header .description {
+    text-decoration: none;
+    color: white;
+}
+
+header .description h1 {
+    font-size: 30px;
     font-weight: bold;
+    margin: 0;
 }
 
-.navbar ul {
+header .description h2 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #d3f4dd;
+    margin: 0;
+}
+
+
+header nav {
+    margin-left: auto;
+    padding-right: 25px;
+}
+
+header nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    margin: 0;
-    padding: 0;
 }
 
-.navbar ul li a {
+header nav ul li a {
+    color: #f7f9fc;
+    font-weight: bold;
     text-decoration: none;
-    font-size: 16px;
-    color: #333;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar ul li a:hover,
-.navbar ul li a.active {
-    background-color: #179c9c;
-    color: #ffffff;
+header nav ul li a:hover {
+    background-color: #abd1c6;
+    /* Soft green to match theme */
+    color: #004643;
 }
+
+header nav ul li a.active {
+    border-bottom: 2px solid #ffa07a;
+}
+
 /* Currency Selector */
 .currency-selector {
     position: relative;
-    display: inline-flex;  /* Use inline-flex for compactness */
-    align-items: center;   /* Align the flag and label */
+    display: inline-flex;
+    /* Use inline-flex for compactness */
+    align-items: center;
+    /* Align the flag and label */
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px; /* Default size */
+    font-size: 14px;
+    /* Default size */
     cursor: pointer;
     user-select: none;
 }
 
 .currency-selector .currency-icon {
-    margin-right: 4px; /* Reduced space between icon and label */
-    font-size: 16px;    /* Icon size */
+    margin-right: 4px;
+    /* Reduced space between icon and label */
+    font-size: 16px;
+    /* Icon size */
 }
 
 .currency-selector .currency-label {
@@ -77,22 +123,28 @@ body {
 
 /* Dropdown Menu */
 .currency-selector .currency-menu {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: absolute;
     top: 120%;
     left: 0;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow */
     border-radius: 5px;
-    padding: 5px 0; /* Reduced padding */
+    padding: 5px 0;
+    /* Reduced padding */
     z-index: 10;
-    width: 100px; /* Set a specific width for the dropdown */
+    width: 100px;
+    /* Set a specific width for the dropdown */
     margin-top: 4px;
 }
 
 .currency-selector .currency-menu li {
-    padding: 8px 12px; /* Reduced padding for smaller options */
-    font-size: 12px;   /* Smaller text for dropdown items */
+    padding: 8px 12px;
+    /* Reduced padding for smaller options */
+    font-size: 12px;
+    /* Smaller text for dropdown items */
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -116,29 +168,35 @@ body {
     margin: 0;
     padding: 0;
 }
+
 /* Breadcrumb Styles */
 .breadcrumb {
     margin: 15px 20px;
     padding: 10px;
-    background-color: #ffffff; /* Soft yellow for contrast */
+    background-color: #ffffff;
+    /* Soft yellow for contrast */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight elevation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Slight elevation */
 }
 
 .breadcrumb a.breadcrumb-link {
     text-decoration: none;
-    color: #179c9c; /* Vibrant link color */
+    color: #179c9c;
+    /* Vibrant link color */
     font-weight: bold;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .breadcrumb a.breadcrumb-link:hover {
-    color: #ff6f61; /* Peach for hover effect */
+    color: #ff6f61;
+    /* Peach for hover effect */
     text-decoration: underline;
 }
 
 .breadcrumb-current {
-    color: #555; /* Muted color for current location */
+    color: #555;
+    /* Muted color for current location */
     font-weight: normal;
 }
 
@@ -146,12 +204,15 @@ body {
 .breadcrumb a::after {
     content: '>';
     margin: 0 8px;
-    color: #bbb; /* Arrow color */
+    color: #bbb;
+    /* Arrow color */
 }
 
 .breadcrumb a:last-child::after {
-    content: ''; /* Remove arrow after last item */
+    content: '';
+    /* Remove arrow after last item */
 }
+
 
 /* Cart Container */
 .cart-container {
@@ -274,6 +335,64 @@ body {
     background-color: #146b6b;
     transform: scale(1.05);
 }
+/* Cart Item Buttons */
+.cart-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.move-to-wishlist, .remove-item {
+    background-color: #ff6f61;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.move-to-wishlist:hover {
+    background-color: #ffa07a;
+}
+
+.remove-item:hover {
+    background-color: #ff3e32;
+}
+
+/* Quantity Management */
+.item-quantity-controls {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.quantity-button {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-button:hover {
+    background-color: #bbb;
+}
+
+.item-quantity {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
 /* Footer - Matching main page design */
 footer {
@@ -282,6 +401,7 @@ footer {
     background-color: #179c9c; /* Same background color as header */
     color: #fef5e7; /* Lighter text color for footer */
     font-size: 14px;
+    margin-top: auto;
 }
 
 footer .social-media a {

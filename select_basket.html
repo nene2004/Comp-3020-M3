@@ -16,9 +16,15 @@
 <body>
     <!-- Header -->
     <header class="navbar">
-        <div class="logo">
-            <h1>GEMSS</h1>
-            <h2>Gift Baskets</h2>
+        <div class="logo-description">
+            <!-- Make the logo clickable and link it to the homepage -->
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="GEMSS Logo" class="logo-img">
+            </a>
+            <a href="index.html" class="description">
+                <h1>GEMSS</h1>
+                <h2>Gift Baskets</h2>
+            </a>
         </div>
         <nav>
             <ul>
@@ -67,38 +73,38 @@
             <!-- Categories Content -->
             <div class="categories-content" id="categoriesContent" style="display: none;">
                 <!-- Subcategories: By Occasion -->
-                <div class="subcategory-header">
-                    <span>By Occasion</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="subcategories" id="occasion" style="display: none; margin-left: 15px;">
-                    <label><input type="checkbox" value="birthday" onchange="filterBaskets()"> Birthday</label>
-                    <label><input type="checkbox" value="anniversary" onchange="filterBaskets()"> Anniversary</label>
-                    <label><input type="checkbox" value="holiday" onchange="filterBaskets()"> Holiday</label>
-                </div>
+<div class="subcategory-header">
+    <span>By Occasion</span>
+    <span class="arrow">▼</span>
+</div>
+<div class="subcategories" id="occasion" style="display: none; margin-left: 15px;">
+    <label><input type="checkbox" value="birthday" > Birthday</label>
+    <label><input type="checkbox" value="anniversary" > Anniversary</label>
+    <label><input type="checkbox" value="holiday" > Holiday</label>
+</div>
 
-                <!-- Subcategories: By Recipient -->
-                <div class="subcategory-header">
-                    <span>By Recipient</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="subcategories" id="recipient" style="display: none; margin-left: 15px;">
-                    <label><input type="checkbox" value="men" onchange="filterBaskets()"> Men</label>
-                    <label><input type="checkbox" value="women" onchange="filterBaskets()"> Women</label>
-                    <label><input type="checkbox" value="children" onchange="filterBaskets()"> Children</label>
-                </div>
+<!-- Subcategories: By Recipient -->
+<div class="subcategory-header">
+    <span>By Recipient</span>
+    <span class="arrow">▼</span>
+</div>
+<div class="subcategories" id="recipient" style="display: none; margin-left: 15px;">
+    <label><input type="checkbox" value="men" > Men</label>
+    <label><input type="checkbox" value="women"> Women</label>
+    <label><input type="checkbox" value="children"> Children</label>
+</div>
 
-                <!-- Subcategories: By Theme -->
-                <div class="subcategory-header">
-                    <span>By Theme</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="subcategories" id="theme" style="display: none; margin-left: 15px;">
-                    <label><input type="checkbox" value="luxury" onchange="filterBaskets()"> Luxury</label>
-                    <label><input type="checkbox" value="eco-friendly" onchange="filterBaskets()"> Eco-Friendly</label>
-                    <label><input type="checkbox" value="seasonal" onchange="filterBaskets()"> Seasonal</label>
-                </div>
-            </div>
+<!-- Subcategories: By Theme -->
+<div class="subcategory-header">
+    <span>By Theme</span>
+    <span class="arrow">▼</span>
+</div>
+<div class="subcategories" id="theme" style="display: none; margin-left: 15px;">
+    <label><input type="checkbox" value="luxury" onchange="filterBaskets()"> Luxury</label>
+    <label><input type="checkbox" value="eco-friendly" onchange="filterBaskets()"> Eco-Friendly</label>
+    <label><input type="checkbox" value="seasonal" onchange="filterBaskets()"> Seasonal</label>
+</div>
+        </div>     
         </div>
 
 
@@ -167,8 +173,6 @@
             </div>
         </div>
     </main>
-<!-- Sidebar Toggle Button -->
-<button class="sidebar-toggle" id="basketButton">🛒  Basket</button>
 
 
     <!-- Grid of Images -->
@@ -177,7 +181,7 @@
         <ul>
 
             <!-- Repeat similar blocks for other images -->
-            <li class="image-box" data-id="124" data-name="Modern Basket" data-price="19.99">
+            <li class="image-box" data-id="124" data-name="Modern Basket" data-price="19.99"data-occasion="birthday" data-recipient="men" data-theme="luxury">
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                         <path
@@ -191,9 +195,8 @@
                 <p class="basket-price">$19.99</p>
                 <div class="add-to-basket">
                     <button>Add to Basket</button>
-                    <p class="basket-confirmation" id="basketConfirmation"></p>
                 </div>
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation"></p>
             </li>
 
 
@@ -217,7 +220,7 @@
                     <button>Add to Basket</button>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation"></p>
             </li>
 
 
@@ -240,7 +243,7 @@
                     <button>Add to Basket</button>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation"></p>
             </li>
 
 
@@ -261,6 +264,7 @@
                 <p class="basket-price">$49.99</p>
                 <div class="add-to-basket">
                     <button>Add to Basket</button>
+                    <p class="basket-confirmation" id="basketConfirmation"></p>
                 </div>
                 <!-- Confirmation message -->
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
@@ -376,6 +380,12 @@
         <div id="basketTotal">
             <strong>Total:</strong> $<span id="totalBalance">0.00</span>
         </div>
+         <!-- Undo button will be dynamically inserted here -->
+    <div id="undoContainer" style="display: none;">
+        <button id="undoButton">
+            <i class="fas fa-undo"></i> Undo
+        </button>
+    </div>
     </div>
 
     <!-- Footer -->
@@ -393,7 +403,6 @@
     <script src="select_basket.js"></script>
     <script src="wishlist.js"></script>
     <script src="script.js"></script>
-</body>
 <script src="conversion.js"></script>
 </body>
 

@@ -10,39 +10,56 @@ body {
  
 }
 
-/* Header - Matching main page design */
+/* Navigation Bar */
 header.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;  /* Place logo/description on the left and nav on the right */
     align-items: center;
     padding: 15px 25px;
-    background-color: #179c9c; /* Use the same background color as the main page */
+    background-color: #179c9c;
     color: white;
     position: relative;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+header .logo-description {
+    display: flex;
+    align-items: center;  /* Align items horizontally */
+}
+
 header .logo {
-    text-align: center;
-    margin-right: auto;
-    padding-left: 25px; /* Space for alignment */
+    width: 60px;  /* Set size for logo (a bit bigger than before) */
+    height: 60px; /* Set size for logo */
+    margin-right: 10px;  /* Space between logo and description */
+    overflow: hidden;  /* Prevent logo from spilling out of the container */
+    border-radius: 50%;  /* Circular logo container */
 }
 
-header .logo h1 {
-   font-weight: 700;
-   font-weight: 700;
+header .logo img {
+    width: 100%;  /* Make the logo image fit the container */
+    height: 100%;
+    object-fit: cover;  /* Ensure the logo doesn't get stretched */
+}
+
+header .description {
+    text-decoration: none;
+    color: white;
+}
+
+header .description h1 {
+    font-size: 30px;
     font-weight: bold;
-    color: #ffffff;
     margin: 0;
 }
 
-header .logo h2 {
+header .description h2 {
     font-size: 15px;
-    font-weight: 400;
     font-weight: normal;
-    color: #d3f4dd; /* Lighter text color for the subtitle */
+    color: #d3f4dd;
     margin: 0;
 }
+
+
 
 header nav {
     margin-left: auto;
