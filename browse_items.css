@@ -214,200 +214,7 @@ header nav ul li a.active {
     /* Remove arrow after last item */
 }
 
-/* Progress Indicator (Steps) */
-.progress-indicator {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    /* Reduced gap for a compact layout */
-    padding: 15px 20px;
-    /* Smaller padding */
-    background-color: #e8f7f7;
-    /* Soft teal background */
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    /* Reduced margin below the progress indicator */
-    border-radius: 10px;
-    /* Rounded corners for a softer look */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Elevated look */
-}
 
-/* Individual Steps */
-.step {
-    padding: 10px 20px;
-    /* Reduced padding for smaller steps */
-    border: 2px solid #a1e1dd;
-    /* Light teal border for neutral steps */
-    border-radius: 50px;
-    /* Make steps more pill-shaped */
-    color: #333;
-    text-decoration: none;
-    background-color: #ffffff;
-    /* Neutral background for pending steps */
-    transition: all 0.3s ease;
-    font-size: 14px;
-    /* Reduced font size */
-    text-align: center;
-    flex: 1;
-    /* Equal space for each step */
-    position: relative;
-}
-
-/* Completed Step */
-.step.completed {
-    background-color: #56bdb1;
-    /* Teal for completed steps */
-    color: white;
-    border-color: #3b998f;
-    /* Slightly darker teal for border */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    /* Subtle shadow for elevation */
-}
-
-/* Active Step */
-.step.active {
-    background-color: #ffa07a;
-    /* Peach for the current step */
-    color: white;
-    border-color: #ff6f61;
-    /* Darker peach border */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    /* More pronounced shadow for focus */
-}
-
-/* Pending Step (Default) */
-.step {
-    background-color: #ffffff;
-    /* White for pending steps */
-    color: #999;
-    /* Gray text for pending steps */
-    border-color: #e8f7f7;
-    /* Light teal border */
-}
-
-/* Hover Effect for Pending Steps */
-.step:hover {
-    background-color: #f5fafa;
-    /* Subtle highlight on hover */
-    border-color: #a1e1dd;
-    /* Teal border on hover */
-}
-
-.step::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -50%;
-    /* Start the line from the previous step */
-    height: 3px;
-    width: 100%;
-    /* Length of the line */
-    background-color: #e0e0e0;
-    /* Default line color */
-    z-index: -1;
-    /* Place behind the steps */
-}
-
-/* Update line for completed steps */
-.step.completed+.step::before {
-    background-color: #56bdb1;
-    /* Teal line for completed steps */
-}
-
-
-/* Remove Border for First and Last Steps */
-.step:first-child {
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-}
-
-.step:last-child {
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-}
-
-/* Collapsible Sidebar */
-.collapsible-sidebar {
-    position: fixed;
-    top: 150px;
-    /* Below the progress bar */
-    left: 0;
-    height: calc(100% - 150px);
-    /* Adjusted for progress bar height */
-    width: 200px;
-    /* Halved to make it thinner */
-    background-color: #fef5e7;
-    border-right: 2px solid #ffa07a;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(-100%);
-    /* Hidden by default */
-    z-index: 1000;
-}
-
-.collapsible-sidebar.open {
-    transform: translateX(0);
-    /* Slide in when open */
-}
-
-.collapsible-sidebar h3 {
-    padding: 10px;
-    background-color: #ffa07a;
-    color: white;
-    text-align: center;
-    font-size: 16px;
-    /* Slightly smaller font for thin sidebar */
-}
-
-.collapsible-sidebar ul {
-    list-style: none;
-    padding: 10px;
-    margin: 0;
-    /* Remove default margin */
-}
-
-.collapsible-sidebar ul li {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    font-size: 14px;
-    /* Slightly smaller font for narrow space */
-    color: #333;
-}
-
-.collapsible-sidebar.open {
-    left: 0;
-    /* Visible when open */
-}
-
-/* Sidebar Toggle Button */
-.sidebar-toggle {
-    position: fixed;
-    top: 121px;
-    /* Adjusted to be above the sidebar (right above basket name area) */
-    left: 10px;
-    /* Slightly offset from the sidebar edge */
-    background-color: #ffa07a;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    /* Slightly smaller for a cleaner look */
-    border-radius: 5px;
-    /* Rounded edges for aesthetics */
-    cursor: pointer;
-    z-index: 1100;
-    /* Stays above all elements, including the sidebar */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    /* Add a shadow for depth */
-}
-
-/* Adjust toggle position when sidebar is open */
-.sidebar-toggle.open {
-    left: 160px;
-    /* Aligned to the sidebar width */
-}
 
 /* Categories Container */
 .categories-container {
@@ -609,7 +416,7 @@ input[type="checkbox"] {
     z-index: 1000;
 }
 
-.add-to-basket {
+.add-to-cart {
     padding: 6px;
     display: flex;
     flex-direction: column;
@@ -618,7 +425,7 @@ input[type="checkbox"] {
 }
 
 /* Add to Basket Button */
-.add-to-basket button {
+.add-to-cart button {
     display: flex;
     /* Always visible */
     bottom: 5px;
@@ -648,12 +455,12 @@ input[type="checkbox"] {
 }
 
 /* Hover and Active States */
-.add-to-basket button:hover {
+.add-to-cart button:hover {
     background-color: #333;
     /* Slightly lighter black for hover */
 }
 
-.add-to-basket button:active {
+.add-to-cart button:active {
     background-color: #444;
     /* Darker shade for active */
 }

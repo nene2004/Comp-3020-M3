@@ -1,18 +1,18 @@
-/* General Content (to appear on top) */
+/* General Body Styles */
 body {
     font-family: 'Josefin Sans', sans-serif;
     margin: 0;
-    position: relative;
-}
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+    padding: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Navigation Bar */
 header.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;  /* Place logo/description on the left and nav on the right */
     align-items: center;
     padding: 15px 25px;
     background-color: #179c9c;
@@ -21,25 +21,44 @@ header.navbar {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-header .logo {
-    text-align: center;
-    margin-right: auto;
-    padding-left: 25px; /* Space for alignment */
+header .logo-description {
+    display: flex;
+    align-items: center;  /* Align items horizontally */
 }
 
-header .logo h1 {
+header .logo {
+    width: 60px;  /* Set size for logo (a bit bigger than before) */
+    height: 60px; /* Set size for logo */
+    margin-right: 10px;  /* Space between logo and description */
+    overflow: hidden;  /* Prevent logo from spilling out of the container */
+    border-radius: 50%;  /* Circular logo container */
+}
+
+header .logo img {
+    width: 100%;  /* Make the logo image fit the container */
+    height: 100%;
+    object-fit: cover;  /* Ensure the logo doesn't get stretched */
+}
+
+header .description {
+    text-decoration: none;
+    color: white;
+}
+
+header .description h1 {
     font-size: 30px;
     font-weight: bold;
-    color: #ffffff;
     margin: 0;
 }
 
-header .logo h2 {
+header .description h2 {
     font-size: 15px;
     font-weight: normal;
     color: #d3f4dd;
     margin: 0;
 }
+
+
 
 header nav {
     margin-left: auto;
@@ -60,27 +79,36 @@ header nav ul li a {
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 header nav ul li a:hover {
-    background-color: #abd1c6; /* Soft green */
+    background-color: #abd1c6;
+    /* Soft green to match theme */
     color: #004643;
 }
+
 header nav ul li a.active {
     border-bottom: 2px solid #ffa07a;
- }
+}
+
 /* Currency Selector */
 .currency-selector {
     position: relative;
-    display: inline-flex;  /* Use inline-flex for compactness */
-    align-items: center;   /* Align the flag and label */
+    display: inline-flex;
+    /* Use inline-flex for compactness */
+    align-items: center;
+    /* Align the flag and label */
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px; /* Default size */
+    font-size: 14px;
+    /* Default size */
     cursor: pointer;
     user-select: none;
 }
 
 .currency-selector .currency-icon {
-    margin-right: 4px; /* Reduced space between icon and label */
-    font-size: 16px;    /* Icon size */
+    margin-right: 4px;
+    /* Reduced space between icon and label */
+    font-size: 16px;
+    /* Icon size */
 }
 
 .currency-selector .currency-label {
@@ -96,22 +124,28 @@ header nav ul li a.active {
 
 /* Dropdown Menu */
 .currency-selector .currency-menu {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: absolute;
     top: 120%;
     left: 0;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow */
     border-radius: 5px;
-    padding: 5px 0; /* Reduced padding */
+    padding: 5px 0;
+    /* Reduced padding */
     z-index: 10;
-    width: 100px; /* Set a specific width for the dropdown */
+    width: 100px;
+    /* Set a specific width for the dropdown */
     margin-top: 4px;
 }
 
 .currency-selector .currency-menu li {
-    padding: 8px 12px; /* Reduced padding for smaller options */
-    font-size: 12px;   /* Smaller text for dropdown items */
+    padding: 8px 12px;
+    /* Reduced padding for smaller options */
+    font-size: 12px;
+    /* Smaller text for dropdown items */
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -136,13 +170,172 @@ header nav ul li a.active {
     padding: 0;
 }
 
-/* Footer - Matching main page design */
+/* Wishlist Section */
+.wishlist-container {
+    padding: 20px;
+}
+
+.wishlist-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+/* Sorting Dropdown Container */
+.sort-dropdown-container {
+    display: flex;
+    align-items: center; /* Aligns the text and dropdown vertically */
+    margin-bottom: 15px; /* Reduced space for a cleaner look */
+    gap: 10px; /* Adds space between label and dropdown */
+}
+
+/* Sort by label */
+.sort-label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500; /* Slightly lighter weight for subtlety */
+}
+
+/* Sorting Dropdown */
+.sort-dropdown {
+    font-size: 14px; /* Smaller font for a cleaner look */
+    padding: 8px 12px; /* More minimal padding */
+    width: 200px; /* Slightly smaller width */
+    border: none; /* No border for a clean design */
+    background-color: transparent; /* Transparent background for minimalism */
+    color: #333; /* Dark text for contrast */
+    cursor: pointer;
+    appearance: none; /* Removes default dropdown styling */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    outline: none; /* Removes the default outline */
+    transition: color 0.2s ease; /* Smooth transition for color change */
+    position: relative; /* To position the arrow inside the dropdown */
+}
+
+/* Arrow for the dropdown */
+.sort-dropdown::after {
+    content: ''; /* Empty content for the arrow */
+    position: absolute;
+    right: 10px; /* Right-aligned */
+    top: 50%; /* Vertically center the arrow */
+    transform: translateY(-50%); /* Adjust position to exactly center */
+    border-left: 5px solid transparent; /* Creates the left part of the triangle */
+    border-right: 5px solid transparent; /* Creates the right part of the triangle */
+    border-top: 5px solid #333; /* Creates the top part of the triangle (the arrow) */
+}
+
+/* Hover effect for the dropdown */
+.sort-dropdown:hover {
+    color: #179c9c; /* Change text color on hover */
+}
+
+/* Focus effect for the dropdown */
+.sort-dropdown:focus {
+    color: #179c9c; /* Change text color on focus */
+}
+
+/* Style for dropdown options */
+.sort-dropdown option {
+    background-color: #fff;
+    color: #333; /* Default text color */
+    font-size: 14px; /* Keep it consistent with the dropdown text */
+    padding: 10px 15px; /* Clean padding for the options */
+}
+
+/* Hover effect for options */
+.sort-dropdown option:hover {
+    background-color: #f0f0f0; /* Light background when hovered */
+    color: #179c9c; /* Change text color on hover */
+}
+
+
+
+#wishlistItems {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Wishlist Item */
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    gap: 10px;
+}
+
+.wishlist-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.wishlist-item-details {
+    flex-grow: 1;
+}
+
+.wishlist-item-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.wishlist-item-price {
+    font-size: 16px;
+    color: #179c9c;
+    margin-left: 10px;
+}
+
+.add-to-basket {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.move-btn {
+    background-color: #000000; /* Black background */
+    color: white; /* White text */
+    padding: 10px 30px; /* Padding for the button */
+    border-radius: 30px; /* Rounded corners */
+    border: none; /* Remove the default border */
+    cursor: pointer; /* Make the cursor a pointer to indicate it's clickable */
+    font-weight: bold;
+    font-size: 15px; /* Adjust the font size */
+    transition: background-color 0.3s ease; 
+    margin-bottom: 10px; /* Space between the Move to Cart and the heart */
+}
+
+.move-btn:hover {
+    background-color: #e08d56;
+}
+
+/* Styling for the remove button ('X') */
+.wishlist-remove {
+    font-size: 15px;
+    color: red;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for the remove button */
+.wishlist-remove:hover {
+    color: darkred;
+}
+
+
+/* Footer Styling */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #179c9c; /* Same background color as header */
-    color: #fef5e7; /* Lighter text color for footer */
-    font-size: 14px;
+    background-color: #179c9c;
+    color: #fef5e7;
+    margin-top: auto;
 }
 
 footer .social-media a {
@@ -151,7 +344,6 @@ footer .social-media a {
     text-decoration: none;
 }
 
-/* Optional Footer styling for better integration with main page */
 footer a:hover {
     color: #ffa07a;
 }

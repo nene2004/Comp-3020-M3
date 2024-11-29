@@ -16,9 +16,15 @@
     
     <!-- Navigation Bar and Search Section -->
     <header class="navbar">
-        <div class="logo">
-            <h1>GEMSS</h1>
-            <h2>Gift Baskets</h2>
+        <div class="logo-description">
+            <!-- Make the logo clickable and link it to the homepage -->
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="GEMSS Logo" class="logo-img">
+            </a>
+            <a href="index.html" class="description">
+                <h1>GEMSS</h1>
+                <h2>Gift Baskets</h2>
+            </a>
         </div>
         <nav>
             <ul>
@@ -40,19 +46,14 @@
         
     </header>
 
-    <!-- Search Section -->
-    <div class="search-section">
-        <input type="text" placeholder="Search for items..." class="search-input">
-        <button class="search-button">Search</button>
-    </div>
 
    <!-- Main Image Section with Slideshow -->
 <div class="main-image-section">
     <!-- Slideshow Container -->
     <div class="background-slideshow">
-        <div class="slide" style="background-image: url('basket1.png');"></div>
-        <div class="slide" style="background-image: url('basket2.png');"></div>
-        <div class="slide" style="background-image: url('basket3.png');"></div>
+        <div class="slide" style="background-image: url('basket/basket1.png');"></div>
+        <div class="slide" style="background-image: url(basket/basket2.png);"></div>
+        <div class="slide" style="background-image: url('basket/basket3.png');"></div>
     </div>
 
     <!-- Overlay -->
@@ -67,8 +68,8 @@
     <!-- Main Content with Options -->
     <main class="main-content">
         <div class="options">
-            <a href="#" class="option browse-items disabled">Browse All Items</a>
             <a href="#" class="option pre-made-basket disabled">Pre-Made Gift Basket</a>
+            <a href="browse_items.html" class="option browse-items">Browse All Items</a>
             <a href="custom_basket.html" class="option custom-basket">Create Custom Gift Basket</a>
         </div>
     </main>
@@ -91,14 +92,14 @@
             <img src="f2.png" alt="Basket 2">
             <div class="basket-hover">
                 <p>Birthday Special Basket with themed items for celebrations.</p>
-                <a href="basket.details.html" class="view-basket-link">View Basket</a>
+                <a href="basket.details2.html" class="view-basket-link">View Basket</a>
             </div>
         </div>
         <div class="basket-card">
             <img src="f3.png" alt="Basket 3">
             <div class="basket-hover">
                 <p>Holiday Delight Basket with festive treats and gifts.</p>
-                <a href="basket.details.html" class="view-basket-link">View Basket</a>
+                <a href="basket.details3.html" class="view-basket-link">View Basket</a>
             </div>
         </div>
     </div>

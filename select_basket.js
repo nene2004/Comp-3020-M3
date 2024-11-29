@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+    // Load and save items from localStorage
     function loadItems(key) {
         return JSON.parse(localStorage.getItem(key)) || [];
     }
@@ -7,14 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function saveItems(key, items) {
         localStorage.setItem(key, JSON.stringify(items));
     }
-    
-    function toggleFilterSort() {
-        const panel = document.getElementById("filterSortPanel");
-        if (panel) {
-            panel.style.display = panel.style.display === "none" || panel.style.display === "" ? "block" : "none";
-        }
+ // Toggle visibility of filter/sort panel
+ function toggleFilterSort() {
+    const panel = document.getElementById("filterSortPanel");
+    if (panel) {
+        panel.style.display = panel.style.display === "none" || panel.style.display === "" ? "block" : "none";
     }
-// Function to toggle the visibility of categories content
+}
+
+// Toggle categories visibility
 function toggleCategories(header) {
     const categoriesContent = header.nextElementSibling; // Get the next sibling
     const arrow = header.querySelector(".arrow");
@@ -28,9 +30,9 @@ function toggleCategories(header) {
     }
 }
 
-// Function to toggle the visibility of subcategories
+// Toggle subcategories visibility
 function toggleSubCategories(categoryId, header) {
-    console.log(`Toggling cSubcategory for: ${categoryId}`); // Debugging line
+    console.log(`Toggling Subcategory for: ${categoryId}`); // Debugging line
     const subcategories = document.getElementById(categoryId);
     const arrow = header.querySelector(".arrow");
 
@@ -42,79 +44,106 @@ function toggleSubCategories(categoryId, header) {
         arrow.textContent = "▼";
     }
 }
-  // Toggle main categories
-  const categoriesHeader = document.querySelector('.categories-container .section-header');
-  categoriesHeader.addEventListener('click', toggleCategories);
 
-    // Toggle subcategories
-    const subcategoryHeaders = document.querySelectorAll(".subcategory-header");
-    subcategoryHeaders.forEach(header => {
-        const categoryId = header.nextElementSibling?.id; // Get corresponding subcategory ID
-        if (categoryId) {
-            header.addEventListener("click", () => {
-                toggleSubCategories(categoryId, header);
-            });
-        }
-    });
-// You can also define the filterBaskets function here if needed
-function filterBaskets() {
-    const selectedFilters = [];
-    document.querySelectorAll('.subcategories input:checked').forEach(input => {
-        selectedFilters.push(input.value);
-    });
-    console.log("Selected Filters:", selectedFilters);
+// Attach event listener for toggling main categories
+const categoriesHeader = document.querySelector('.categories-container .section-header');
+if (categoriesHeader) {
+    categoriesHeader.addEventListener('click', toggleCategories);
 }
-    // Toggle Collapsible Sections
-    function toggleCollapse(header) {
-        const content = header.nextElementSibling;
-        const arrow = header.querySelector(".arrow");
-        if (content) {
-            content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
-            arrow.textContent = content.style.display === "block" ? "▲" : "▼";
-        }
-    }
 
-    // Apply Filters
-    function filterBaskets() {
-        const filters = {};
-        document.querySelectorAll(".filter-section input:checked").forEach(input => {
-            filters[input.value] = true;
+// Attach event listeners for subcategories
+const subcategoryHeaders = document.querySelectorAll(".subcategory-header");
+subcategoryHeaders.forEach(header => {
+    const categoryId = header.nextElementSibling?.id; // Get corresponding subcategory ID
+    if (categoryId) {
+        header.addEventListener("click", () => {
+            toggleSubCategories(categoryId, header);
         });
-
-        const minPrice = parseFloat(document.getElementById("min-price")?.value) || 0;
-        const maxPrice = parseFloat(document.getElementById("max-price")?.value) || Infinity;
-
-        console.log("Applied Filters:", filters);
-        console.log("Price Range:", { minPrice, maxPrice });
-
-        // Add your custom filtering logic here based on the selected filters and price range
     }
+});
 
-    // Apply Sort
-    function sortBaskets() {
-        const sortOption = document.querySelector(".sort-section input:checked")?.value;
-        if (sortOption) {
-            console.log("Applied Sort:", sortOption);
+function filterBaskets() {
+    console.log("Filter function triggered");
+    // Collect selected filters from each category
+    const occasionFilters = Array.from(document.querySelectorAll('#occasion input:checked')).map(input => input.value);
+    const recipientFilters = Array.from(document.querySelectorAll('#recipient input:checked')).map(input => input.value);
+    const themeFilters = Array.from(document.querySelectorAll('#theme input:checked')).map(input => input.value);
 
-            // Add your custom sorting logic here based on the selected option
+    // Get all items to filter (e.g., baskets)
+    const baskets = document.querySelectorAll('.image-box');
+
+    // Iterate through each item
+    baskets.forEach(basket => {
+        // Get item attributes
+        const occasion = basket.getAttribute('data-occasion') || "";
+        const recipient = basket.getAttribute('data-recipient') || "";
+        const theme = basket.getAttribute('data-theme') || "";
+
+        // Convert attributes to arrays
+        const occasionArray = occasion.split(',').map(item => item.trim());
+        const recipientArray = recipient.split(',').map(item => item.trim());
+        const themeArray = theme.split(',').map(item => item.trim());
+
+        // Check if the item matches any selected filters
+        const matchesOccasion = occasionFilters.length === 0 || occasionFilters.some(filter => occasionArray.includes(filter));
+        const matchesRecipient = recipientFilters.length === 0 || recipientFilters.some(filter => recipientArray.includes(filter));
+        const matchesTheme = themeFilters.length === 0 || themeFilters.some(filter => themeArray.includes(filter));
+
+        // Display item if it matches all selected filters, otherwise hide it
+        if (matchesOccasion && matchesRecipient && matchesTheme) {
+            basket.style.display = 'block'; // Show
+        } else {
+            basket.style.display = 'none'; // Hide
         }
+    });
+}
+
+const inputs = document.querySelectorAll('#recipient input[type="checkbox"]');
+inputs.forEach(input => {
+    input.addEventListener('change', filterBaskets);
+});
+
+// Clear all filters and show all baskets
+function clearFilters() {
+    // Uncheck all checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+
+    // Show all baskets (no filters applied)
+    document.querySelectorAll('.image-box').forEach(basket => basket.style.display = 'block');
+}
+
+// Attach event listeners for filter inputs
+const filterInputs = document.querySelectorAll('.filter-section input[type="checkbox"]');
+filterInputs.forEach(input => {
+    input.addEventListener('change', filterBaskets);
+});
+
+// Attach clear filters button event
+const clearFiltersButton = document.getElementById('clearFiltersButton');
+if (clearFiltersButton) {
+    clearFiltersButton.addEventListener('click', clearFilters);
+}
+console.log("Script loaded and ready.");
+
+// Toggle collapsible sections
+function toggleCollapse(header) {
+    const content = header.nextElementSibling;
+    const arrow = header.querySelector(".arrow");
+    if (content) {
+        content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+        arrow.textContent = content.style.display === "block" ? "▲" : "▼";
     }
+}
 
-    // Clear Filters
-    function clearFilters() {
-        document.querySelectorAll(".filter-section input:checked").forEach(input => {
-            input.checked = false;
-        });
-
-        const minPrice = document.getElementById("min-price");
-        const maxPrice = document.getElementById("max-price");
-        if (minPrice) minPrice.value = "";
-        if (maxPrice) maxPrice.value = "";
-
-        console.log("Filters Cleared");
-
-        // Add logic to reset filtered items
+// Sorting functionality (placeholder for custom logic)
+function sortBaskets() {
+    const sortOption = document.querySelector(".sort-section input:checked")?.value;
+    if (sortOption) {
+        console.log("Applied Sort:", sortOption);
+        // Add your sorting logic here
     }
+}
+
 
     function addToWishlist(event) {
         const productBox = event.target.closest('.image-box');
@@ -220,6 +249,37 @@ function filterBaskets() {
         }
     }
 
+    function addToBasket(button) {
+        const productBox = button.closest('.image-box');
+        const item = {
+            name: productBox.querySelector('.basket-name').textContent,
+            price: productBox.querySelector('.basket-price').textContent,
+            image: productBox.querySelector('img').src,
+            quantity: 1,
+        };
+
+        const basket = loadItems('basket');
+        const existingItem = basket.find((b) => b.name === item.name);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            basket.push(item);
+        }
+
+        saveItems('basket', basket);
+        updateBasketSidebar();
+          // Show confirmation message
+    const confirmationMessage = document.getElementById('basketConfirmation');
+    if (confirmationMessage) {
+        confirmationMessage.textContent = `${item.name} has been added to your Basket!`;
+        confirmationMessage.style.display = 'block';
+        setTimeout(() => {
+            confirmationMessage.style.display = 'none';
+        }, 6000);
+    }
+    }
+
     function modifyBasketQuantity(index, action) {
         const basket = loadItems('basket');
 
@@ -246,42 +306,43 @@ function filterBaskets() {
     
             // Show confirmation message with undo option
             const confirmationMessage = document.getElementById('basketConfirmation');
+            const undoButtonContainer = document.getElementById('undoContainer');
+            const undoButton = document.getElementById('undoButton');
+            
             if (confirmationMessage) {
                 confirmationMessage.innerHTML = `
                     ${item.name} has been removed from your Basket!
-                    <button id="undoButton" class="show">
-                        <i class="fas fa-undo"></i> Undo
-                    </button>
                 `;
                 confirmationMessage.style.display = 'flex';
                 confirmationMessage.style.justifyContent = 'space-between';
     
-                // Show the undo button with a delay
-                const undoButton = document.getElementById('undoButton');
-                setTimeout(() => {
-                    undoButton.classList.add('show');
-                }, 100);
+                // Show the undo button inside the sidebar
+                undoButtonContainer.style.display = 'block'; // Show the undo button container
     
-                // Add undo functionality
+                // Add undo functionality directly
                 undoButton.addEventListener('click', () => {
                     // Undo the removal: add the item back to the basket
                     basket.splice(index, 0, item);
                     saveItems('basket', basket);
                     updateBasketSidebar();
     
-                    // Hide the confirmation message
+                    // Hide the confirmation message and the undo button
                     confirmationMessage.style.display = 'none';
+                    undoButtonContainer.style.display = 'none'; // Hide undo button
                 });
     
-                // Hide the confirmation message after 10 seconds
+                // Hide the confirmation message and the undo button after 10 seconds
                 setTimeout(() => {
                     confirmationMessage.style.display = 'none';
-                }, 10000);
+                    undoButtonContainer.style.display = 'none'; // Hide undo button after timeout
+                }, 8000);
             }
         } else {
             console.error('Invalid index provided for removal.');
         }
     }
+    
+    
     
     // Attach Event Listeners
     document.querySelector(".filter-toggle")?.addEventListener("click", toggleFilterSort);

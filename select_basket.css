@@ -9,40 +9,55 @@ body {
     min-height: 100vh;
 }
 
-/* Header - Matching main page design */
+/* Navigation Bar */
 header.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;  /* Place logo/description on the left and nav on the right */
     align-items: center;
     padding: 15px 25px;
     background-color: #179c9c;
-    /* Use the same background color as the main page */
     color: white;
     position: relative;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-header .logo {
-    text-align: center;
-    margin-right: auto;
-    padding-left: 25px;
-    /* Space for alignment */
+header .logo-description {
+    display: flex;
+    align-items: center;  /* Align items horizontally */
 }
 
-header .logo h1 {
+header .logo {
+    width: 60px;  /* Set size for logo (a bit bigger than before) */
+    height: 60px; /* Set size for logo */
+    margin-right: 10px;  /* Space between logo and description */
+    overflow: hidden;  /* Prevent logo from spilling out of the container */
+    border-radius: 50%;  /* Circular logo container */
+}
+
+header .logo img {
+    width: 100%;  /* Make the logo image fit the container */
+    height: 100%;
+    object-fit: cover;  /* Ensure the logo doesn't get stretched */
+}
+
+header .description {
+    text-decoration: none;
+    color: white;
+}
+
+header .description h1 {
     font-size: 30px;
     font-weight: bold;
-    color: #ffffff;
     margin: 0;
 }
 
-header .logo h2 {
+header .description h2 {
     font-size: 15px;
     font-weight: normal;
     color: #d3f4dd;
-    /* Lighter text color for the subtitle */
     margin: 0;
 }
+
 
 header nav {
     margin-left: auto;
@@ -709,15 +724,6 @@ input[type="checkbox"] {
 }
 
 
-/* Optional: Styling for the image box */
-.image-box {
-    position: relative;
-    /* Ensure the button is positioned correctly */
-    overflow: visible;
-    /* Make sure the button appears outside the image box if necessary */
-}
-
-
 /* Basket Grid */
 #basketGrid {
     display: grid;
@@ -811,40 +817,32 @@ input[type="checkbox"] {
 /* Confirmation message styling */
 .basket-confirmation {
     display: none;
-    /* Initially hidden */
     position: fixed;
-    bottom: 0%;
-    /* Centered on the screen */
+    bottom: 20px; /* Fixed to the bottom */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%); /* Centered horizontally */
     background-color: white;
-
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    text-align: center; /* Center text inside */
+    max-width: 300px; /* Limit the width of the confirmation message */
+    border-radius: 5px; /* Rounded corners for better look */
 }
 
+/* Undo button styling inside the sidebar */
 #undoButton {
     background-color: #007bff;
     color: white;
     border: none;
-    top: 0%;
-    padding: 5px 10px;
+    padding: 10px 20px;
     cursor: pointer;
     border-radius: 3px;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    /* Space between text and icon */
-    margin-left: 240px;
-    /* Space from the confirmation text */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-#undoButton.show {
-    opacity: 1;
-    /* Make button visible */
+    gap: 5px; /* Space between text and icon */
+    opacity: 1; /* Make button visible immediately */
+    transition: background-color 0.3s ease;
 }
 
 #undoButton:hover {
@@ -854,8 +852,6 @@ input[type="checkbox"] {
 #undoButton i {
     font-size: 14px;
 }
-
-
 /* Navigation Buttons Container */
 .navigation-buttons {
     display: flex;
