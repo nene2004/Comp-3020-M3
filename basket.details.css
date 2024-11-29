@@ -179,19 +179,19 @@ header nav ul li a.active {
     z-index: 1000;
 }
 /* Confirmation message styling */
-.add-to-cart-confirmation {
+.cart-confirmation {
     display: none;
+    /* Initially hidden */
     position: fixed;
-    bottom: 20px; /* Fixed to the bottom */
+    bottom: 0%;
+    /* Centered on the screen */
     left: 50%;
-    transform: translateX(-50%); /* Centered horizontally */
+    transform: translate(-50%, -50%);
     background-color: white;
+    border: 1px solid black;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    text-align: center; /* Center text inside */
-    max-width: 300px; /* Limit the width of the confirmation message */
-    border-radius: 5px; /* Rounded corners for better look */
 }
 .basket-details {
     display: flex;

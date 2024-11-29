@@ -3,11 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return JSON.parse(localStorage.getItem(key)) || [];
     }
 
+    function saveItems(key, items) {
+        localStorage.setItem(key, JSON.stringify(items));
+    }
+
     function displayWishlist() {
         const wishlistItems = loadItems('wishlist');
         const wishlistContainer = document.getElementById('wishlistItems');
-
-        wishlistContainer.innerHTML = ''; // Clear container first
+        
+        wishlistContainer.innerHTML = ''; 
 
         if (wishlistItems.length > 0) {
             wishlistItems.forEach((item) => {
@@ -32,19 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 moveButton.classList.add('move-btn');
                 moveButton.textContent = 'Move to Cart';
 
-                // Create the 'X' button instead of the heart
                 const removeButton = document.createElement('span');
                 removeButton.classList.add('wishlist-remove');
-                removeButton.innerHTML = '❌'; // Red X character
+                removeButton.innerHTML = '❌'; 
+
+                moveButton.addEventListener('click', () => {
+                    moveToCart(item); // Move item to cart
+                });
 
                 removeButton.addEventListener('click', () => {
-                    removeFromWishlist(item);
+                    removeFromWishlist(item); // Remove item from wishlist
                 });
 
                 div.appendChild(img);
                 div.appendChild(itemDetails);
                 div.appendChild(moveButton);
-                div.appendChild(removeButton); // Append the 'X' button instead of heart
+                div.appendChild(removeButton);
 
                 wishlistContainer.appendChild(div);
             });
@@ -57,11 +64,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function removeFromWishlist(item) {
         let wishlist = loadItems('wishlist');
-        wishlist = wishlist.filter(wishItem => wishItem.name !== item.name); // Remove the item by name
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-        displayWishlist(); // Re-display the wishlist after removal
+        wishlist = wishlist.filter(wishItem => wishItem.name !== item.name); // Remove the item from the wishlist
+        saveItems('wishlist', wishlist); // Update wishlist in localStorage
+        displayWishlist(); // Re-render the wishlist
     }
+    function moveToCart(item) {
+        let cart = loadItems('cart');
 
+        // Ensure the price is a number or properly formatted
+        if (typeof item.price === 'string') {
+            item.price = parseFloat(item.price.replace(/[^0-9.]/g, "")); // Clean the price if it's a string
+        }
+    
+        if (isNaN(item.price)) {
+            item.price = 0;  // Set to 0 if price is still invalid
+        }
+    
+        const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({...item, quantity: 1});
+        }
+        saveItems('cart', cart);
+        updateCartDisplay();  // Update cart display after adding item
+    
+        const cartConfirmation = document.getElementById("cartConfirmation");
+        if (cartConfirmation) {
+            cartConfirmation.textContent = `${item.name} has been moved to your cart!`;
+            cartConfirmation.style.display = "block";
+            setTimeout(() => {
+                cartConfirmation.style.display = "none";
+            }, 4000); 
+        }
+    }
+    
     // Sorting functionality
     const sortDropdown = document.querySelector('.sort-dropdown');
     sortDropdown.addEventListener('change', (e) => {
@@ -76,21 +114,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 wishlistItems.sort((a, b) => b.name.localeCompare(a.name));
                 break;
             case 'priceLowToHigh':
-                wishlistItems.sort((a, b) => {
-                    // Convert price to float for comparison
-                    return parseFloat(a.price.replace(/[^\d.-]/g, '')) - parseFloat(b.price.replace(/[^\d.-]/g, ''));
-                });
+                wishlistItems.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
                 break;
             case 'priceHighToLow':
-                wishlistItems.sort((a, b) => {
-                    // Convert price to float for comparison
-                    return parseFloat(b.price.replace(/[^\d.-]/g, '')) - parseFloat(a.price.replace(/[^\d.-]/g, ''));
-                });
+                wishlistItems.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
                 break;
         }
-        localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
-        displayWishlist(); // Re-display the sorted wishlist
+        saveItems('wishlist', wishlistItems); // Save sorted wishlist
+        displayWishlist(); // Re-render wishlist after sorting
     });
 
-    displayWishlist();
+    displayWishlist(); // Initial rendering of wishlist
 });
