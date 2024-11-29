@@ -61,13 +61,18 @@ subcategoryHeaders.forEach(header => {
         });
     }
 });
-
+// Filter functionality
 function filterBaskets() {
     console.log("Filter function triggered");
+
     // Collect selected filters from each category
     const occasionFilters = Array.from(document.querySelectorAll('#occasion input:checked')).map(input => input.value);
     const recipientFilters = Array.from(document.querySelectorAll('#recipient input:checked')).map(input => input.value);
     const themeFilters = Array.from(document.querySelectorAll('#theme input:checked')).map(input => input.value);
+    
+    // Price filters
+    const minPrice = parseFloat(document.getElementById('min-price')?.value) || 0;
+    const maxPrice = parseFloat(document.getElementById('max-price')?.value) || Infinity;
 
     // Get all items to filter (e.g., baskets)
     const baskets = document.querySelectorAll('.image-box');
@@ -78,6 +83,7 @@ function filterBaskets() {
         const occasion = basket.getAttribute('data-occasion') || "";
         const recipient = basket.getAttribute('data-recipient') || "";
         const theme = basket.getAttribute('data-theme') || "";
+        const price = parseFloat(basket.getAttribute('data-price') || 0);
 
         // Convert attributes to arrays
         const occasionArray = occasion.split(',').map(item => item.trim());
@@ -88,9 +94,10 @@ function filterBaskets() {
         const matchesOccasion = occasionFilters.length === 0 || occasionFilters.some(filter => occasionArray.includes(filter));
         const matchesRecipient = recipientFilters.length === 0 || recipientFilters.some(filter => recipientArray.includes(filter));
         const matchesTheme = themeFilters.length === 0 || themeFilters.some(filter => themeArray.includes(filter));
+        const matchesPrice = price >= minPrice && price <= maxPrice;
 
         // Display item if it matches all selected filters, otherwise hide it
-        if (matchesOccasion && matchesRecipient && matchesTheme) {
+        if (matchesOccasion && matchesRecipient && matchesTheme && matchesPrice) {
             basket.style.display = 'block'; // Show
         } else {
             basket.style.display = 'none'; // Hide
@@ -98,49 +105,100 @@ function filterBaskets() {
     });
 }
 
-const inputs = document.querySelectorAll('#recipient input[type="checkbox"]');
-inputs.forEach(input => {
-    input.addEventListener('change', filterBaskets);
+// Sorting functionality
+function sortBaskets() {
+    const sortOption = document.querySelector(".sort-section input:checked")?.value;
+    if (!sortOption) {
+        console.error("No sort option selected.");
+        return;
+    }
+
+    console.log("Applied Sort:", sortOption);
+
+    // Get all baskets
+    const baskets = Array.from(document.querySelectorAll('.image-box'));
+
+    // Helper function to clean price strings
+    function cleanPrice(priceString) {
+        return parseFloat(priceString.replace(/[^0-9.-]+/g, '')) || 0;
+    }
+
+    // Sort baskets based on the selected option
+    baskets.sort((a, b) => {
+        const priceA = cleanPrice(a.getAttribute('data-price') || '0');
+        const priceB = cleanPrice(b.getAttribute('data-price') || '0');
+        const nameA = a.querySelector('.basket-name').textContent.trim();
+        const nameB = b.querySelector('.basket-name').textContent.trim();
+
+        switch (sortOption) {
+            case 'price-low-high':
+                return priceA - priceB; // Low to high
+            case 'price-high-low':
+                return priceB - priceA; // High to low
+            case 'name-az':
+                return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' }); // A to Z, case-insensitive
+            case 'name-za':
+                return nameB.localeCompare(nameA, undefined, { sensitivity: 'base' }); // Z to A, case-insensitive
+            default:
+                return 0; // Default, no sorting
+        }
+    });
+
+    // Get the container where the baskets are
+    const container = document.querySelector('.baskets-container'); 
+    if (container) {
+        // Re-append baskets in the new sorted order
+        baskets.forEach(basket => container.appendChild(basket));
+    } else {
+        console.error("Baskets container not found.");
+    }
+}
+
+
+
+// Attach event listeners for filter inputs
+const filterInputs = document.querySelectorAll('.filter-section input[type="checkbox"], #min-price, #max-price');
+filterInputs.forEach(input => {
+    input.addEventListener('change', () => {
+        filterBaskets();
+        sortBaskets(); // Trigger sort after filter changes
+    });
+});
+
+// Attach event listeners for sort inputs
+const sortInputs = document.querySelectorAll('.sort-section input[type="radio"]');
+sortInputs.forEach(input => {
+    input.addEventListener('change', sortBaskets); // Trigger sort when sort option is selected
 });
 
 // Clear all filters and show all baskets
 function clearFilters() {
-    // Uncheck all checkboxes
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+    document.querySelectorAll('.filter-section input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+    document.querySelectorAll('#min-price, #max-price').forEach(input => input.value = '');
 
-    // Show all baskets (no filters applied)
+    // Show all baskets
     document.querySelectorAll('.image-box').forEach(basket => basket.style.display = 'block');
 }
-
-// Attach event listeners for filter inputs
-const filterInputs = document.querySelectorAll('.filter-section input[type="checkbox"]');
-filterInputs.forEach(input => {
-    input.addEventListener('change', filterBaskets);
-});
 
 // Attach clear filters button event
 const clearFiltersButton = document.getElementById('clearFiltersButton');
 if (clearFiltersButton) {
     clearFiltersButton.addEventListener('click', clearFilters);
 }
+
+// Initialize filters
+filterBaskets(); // Apply filters on initial load
+sortBaskets(); // Apply sort on initial load
+
 console.log("Script loaded and ready.");
 
 // Toggle collapsible sections
-function toggleCollapse(header) {
-    const content = header.nextElementSibling;
-    const arrow = header.querySelector(".arrow");
-    if (content) {
-        content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
-        arrow.textContent = content.style.display === "block" ? "▲" : "▼";
-    }
-}
-
-// Sorting functionality (placeholder for custom logic)
-function sortBaskets() {
-    const sortOption = document.querySelector(".sort-section input:checked")?.value;
-    if (sortOption) {
-        console.log("Applied Sort:", sortOption);
-        // Add your sorting logic here
+function toggleCollapse(element) {
+    const content = element.nextElementSibling;
+    if (content.style.display === "none" || !content.style.display) {
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
     }
 }
 
