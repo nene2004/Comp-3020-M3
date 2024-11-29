@@ -1,16 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const sortDropdown = document.querySelector('.sort-dropdown');
+    const wishlistContainer = document.getElementById('wishlistItems');
+
     function loadItems(key) {
         return JSON.parse(localStorage.getItem(key)) || [];
+    }
+
+    function addToWishlist(item) {
+        const wishlist = loadItems('wishlist');
+        // Assign a unique ID if the item doesn't already have one
+        if (!item.id) {
+            item.id = new Date().getTime(); // Generates a unique ID based on the current timestamp
+        }
+        wishlist.push(item);
+        saveItems('wishlist', wishlist);
     }
 
     function saveItems(key, items) {
         localStorage.setItem(key, JSON.stringify(items));
     }
 
+    function formatCurrency(amount) {
+        if (typeof amount !== "number") {
+            amount = parseFloat(amount.toString().replace(/[^0-9.]/g, "")); // Strip extra characters
+        }
+        return `$${amount.toFixed(2)}`;  // Format as currency
+    }
+
+    if (sortDropdown) {
+        sortDropdown.addEventListener('change', (e) => {
+            const wishlistItems = loadItems('wishlist');
+            const value = e.target.value;
+
+            // Parse prices as numbers for sorting
+            const sanitizedItems = wishlistItems.map(item => ({
+                ...item,
+                price: typeof item.price === 'string'
+                    ? parseFloat(item.price.replace(/[^0-9.]/g, "")) // Ensure price is a number
+                    : item.price
+            }));
+
+            switch (value) {
+                case 'nameAZ':
+                    sanitizedItems.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'nameZA':
+                    sanitizedItems.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+                case 'priceLowToHigh':
+                    sanitizedItems.sort((a, b) => a.price - b.price);
+                    break;
+                case 'priceHighToLow':
+                    sanitizedItems.sort((a, b) => b.price - a.price);
+                    break;
+            }
+
+            saveItems('wishlist', sanitizedItems); // Save sorted wishlist
+            displayWishlist(); // Re-render wishlist after sorting
+        });
+    } else {
+        console.error('Sort dropdown not found in the DOM');
+    }
+
     function displayWishlist() {
         const wishlistItems = loadItems('wishlist');
-        const wishlistContainer = document.getElementById('wishlistItems');
-        
+
+        // Check if the wishlist container exists before trying to update its content
+        if (!wishlistContainer) {
+            console.error('Wishlist container not found in the DOM');
+            return;
+        }
+
         wishlistContainer.innerHTML = ''; 
 
         if (wishlistItems.length > 0) {
@@ -29,20 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemDetails.classList.add('wishlist-item-details');
                 itemDetails.innerHTML = `
                     <span class="wishlist-item-name">${item.name}</span>
-                    <span class="wishlist-item-price">${item.price}</span>
+                    <span class="wishlist-item-price">${formatCurrency(item.price)}</span> <!-- Format price here -->
                 `;
 
-                const moveButton = document.createElement('button');
-                moveButton.classList.add('move-btn');
-                moveButton.textContent = 'Move to Cart';
-
+                // Remove the "Move to Cart" button and related functionality
                 const removeButton = document.createElement('span');
                 removeButton.classList.add('wishlist-remove');
                 removeButton.innerHTML = '❌'; 
-
-                moveButton.addEventListener('click', () => {
-                    moveToCart(item); // Move item to cart
-                });
 
                 removeButton.addEventListener('click', () => {
                     removeFromWishlist(item); // Remove item from wishlist
@@ -50,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 div.appendChild(img);
                 div.appendChild(itemDetails);
-                div.appendChild(moveButton);
                 div.appendChild(removeButton);
 
                 wishlistContainer.appendChild(div);
@@ -68,61 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         saveItems('wishlist', wishlist); // Update wishlist in localStorage
         displayWishlist(); // Re-render the wishlist
     }
-    function moveToCart(item) {
-        let cart = loadItems('cart');
-
-        // Ensure the price is a number or properly formatted
-        if (typeof item.price === 'string') {
-            item.price = parseFloat(item.price.replace(/[^0-9.]/g, "")); // Clean the price if it's a string
-        }
-    
-        if (isNaN(item.price)) {
-            item.price = 0;  // Set to 0 if price is still invalid
-        }
-    
-        const existingItem = cart.find(cartItem => cartItem.id === item.id);
-    
-        if (existingItem) {
-            existingItem.quantity++;
-        } else {
-            cart.push({...item, quantity: 1});
-        }
-        saveItems('cart', cart);
-        updateCartDisplay();  // Update cart display after adding item
-    
-        const cartConfirmation = document.getElementById("cartConfirmation");
-        if (cartConfirmation) {
-            cartConfirmation.textContent = `${item.name} has been moved to your cart!`;
-            cartConfirmation.style.display = "block";
-            setTimeout(() => {
-                cartConfirmation.style.display = "none";
-            }, 4000); 
-        }
-    }
-    
-    // Sorting functionality
-    const sortDropdown = document.querySelector('.sort-dropdown');
-    sortDropdown.addEventListener('change', (e) => {
-        const wishlistItems = loadItems('wishlist');
-        const value = e.target.value;
-
-        switch (value) {
-            case 'nameAZ':
-                wishlistItems.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-            case 'nameZA':
-                wishlistItems.sort((a, b) => b.name.localeCompare(a.name));
-                break;
-            case 'priceLowToHigh':
-                wishlistItems.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-                break;
-            case 'priceHighToLow':
-                wishlistItems.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-                break;
-        }
-        saveItems('wishlist', wishlistItems); // Save sorted wishlist
-        displayWishlist(); // Re-render wishlist after sorting
-    });
 
     displayWishlist(); // Initial rendering of wishlist
 });

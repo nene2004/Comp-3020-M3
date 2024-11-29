@@ -1,82 +1,86 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve cart data from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0;
+    const nameInput = document.getElementById("name");
+    const addressInput = document.getElementById("address");
+    const zipInput = document.getElementById("zip");  // Separate zip code input field
+    const cardNumberInput = document.getElementById("card-number");
+    const cvvInput = document.getElementById("cvv");
 
-    // Get the order-items and order-total elements
-    const orderItemsContainer = document.getElementById('order-items');
-    const orderTotalElement = document.getElementById('order-total');
+    const namePreview = document.getElementById("name-preview");
+    const addressPreview = document.getElementById("address-preview");
+    const zipPreview = document.getElementById("zip-preview");  // Zip code preview
+    const cardNumberPreview = document.getElementById("card-number-preview");
+    const cvvPreview = document.getElementById("cvv-preview");
+    const cardNumberError = document.getElementById("card-number-error");
+    // Name Validation: Only letters and apostrophes allowed
+    nameInput.addEventListener("input", function () {
+        const validName = nameInput.value.replace(/[^a-zA-Z\s']/g, ''); // Allow letters, spaces, and apostrophes
+        nameInput.value = validName;  // Update the input field
+        namePreview.textContent = `Name Preview: ${validName}`;  // Update preview
+    });
 
-    // If the cart is empty, show a message
-    if (cart.length === 0) {
-        orderItemsContainer.innerHTML = '<p>Your cart is empty!</p>';
-        orderTotalElement.textContent = '0.00';
-        return;
+    // Address Validation (Street Address): Allow alphanumeric, spaces, commas, and basic punctuation
+    addressInput.addEventListener("input", function () {
+        let formattedAddress = addressInput.value.replace(/[^a-zA-Z0-9\s,.'-]/g, '');  // Allow letters, numbers, spaces, commas, periods, apostrophes, and hyphens
+        addressInput.value = formattedAddress;  // Update the input field
+        addressPreview.textContent = `Address Preview: ${formattedAddress}`;  // Update preview
+    });
+
+    // Zip Code / Postal Code Validation (Postal Code for Canada, Zip Code for US)
+    zipInput.addEventListener("input", function () {
+        const country = document.getElementById("country").value;
+        let formattedZip = zipInput.value.toUpperCase();
+
+        if (country === 'CA') { // Canada: Postal Code Format (A1A 1A1)
+            formattedZip = formattedZip.replace(/[^A-Z0-9]/g, '').slice(0, 6); // Remove non-alphanumeric characters
+            if (formattedZip.length >= 3) {
+                formattedZip = formattedZip.slice(0, 3) + ' ' + formattedZip.slice(3, 6); // Format it correctly
+            }
+        } else if (country === 'US') { // United States: Zip Code Format (12345)
+            formattedZip = formattedZip.replace(/[^0-9]/g, '').slice(0, 5); // Only digits allowed for zip code
+        }
+
+        zipInput.value = formattedZip;  // Update the input field
+        zipPreview.textContent = `Zip/Postal Code Preview: ${formattedZip}`;  // Update preview
+    });
+
+    // CVV Validation: Only 3 digits allowed
+    cvvInput.addEventListener("input", function () {
+        const validCVV = cvvInput.value.replace(/[^0-9]/g, '');  // Only digits allowed
+        if (validCVV.length > 3) {
+            cvvInput.value = validCVV.slice(0, 3);  // Restrict to 3 digits
+        } else {
+            cvvInput.value = validCVV;  // Update the input field
+        }
+        cvvPreview.textContent = `CVV Preview: ${validCVV}`;  // Update preview
+    });
+// Card Number Validation: Only 16 digits allowed
+ // Card Number Validation: Only 16 digits allowed
+ cardNumberInput.addEventListener("input", function () {
+    let validCardNumber = cardNumberInput.value.replace(/[^0-9]/g, ''); // Only digits allowed
+
+    // If the length exceeds 16, slice it to the first 16 digits
+    if (validCardNumber.length > 16) {
+        validCardNumber = validCardNumber.slice(0, 16);
     }
 
-    // Loop through the cart items and display them
-    cart.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('order-item');
-        
-        // Create the image element with desired size and styling
-        const img = document.createElement('img');
-        img.src = item.image; // Image URL from the cart item
-        img.alt = item.name; // Alt text for accessibility
-        img.style.width = '120px'; // Image size 120px by 120px
-        img.style.height = '120px';
-        img.style.objectFit = 'cover'; // Ensures the image fits the box without distortion
+    // Set the input field value to the valid card number
+    cardNumberInput.value = validCardNumber;
 
-        // Create the details div for the order item
-        const itemDetailsDiv = document.createElement('div');
-        itemDetailsDiv.classList.add('order-item-details');
+    // Update the card number preview
+    cardNumberPreview.textContent = `Card Number Preview: ${validCardNumber}`;
 
-        // Populate the item details with item info
-        itemDetailsDiv.innerHTML = `
-            <p><strong>${item.name}</strong></p>
-            <p>Price: $${item.price.toFixed(2)}</p>
-            <p>Quantity: ${item.quantity}</p>
-            <p>Total: $${(item.price * item.quantity).toFixed(2)}</p>
-        `;
+    // Show error message if the card number is not exactly 16 digits
+    if (validCardNumber.length !== 16) {
+        cardNumberError.style.display = 'block';  // Show error message
+        submitButton.disabled = true;  // Disable submit button
+    } else {
+        cardNumberError.style.display = 'none';  // Hide error message
+        submitButton.disabled = false;  // Enable submit button
+    }
+});
 
-        // Append the image and details div to the itemDiv
-        itemDiv.appendChild(img); // Append image first
-        itemDiv.appendChild(itemDetailsDiv); // Append item details second
-        
-        // Append the itemDiv to the order items container
-        orderItemsContainer.appendChild(itemDiv);
-    });
-    // Update the total price
-    orderTotalElement.textContent = cartTotal.toFixed(2);
-
-    // Handle form validation
+    // Handle form submission
     const checkoutForm = document.getElementById('checkout-form');
-
-    checkoutForm.addEventListener('submit', function (e) {
-        // Validate Card Number (16 digits)
-        const cardNumber = document.getElementById('card-number').value;
-        if (!/^\d{16}$/.test(cardNumber)) {
-            alert('Please enter a valid 16-digit card number.');
-            e.preventDefault();
-            return;
-        }
-
-        // Validate ZIP Code (5 digits)
-        const zipCode = document.getElementById('zip').value;
-        if (!/^\d{5}$/.test(zipCode)) {
-            alert('Please enter a valid 5-digit ZIP code.');
-            e.preventDefault();
-            return;
-        }
-
-        // Validate Cardholder Name
-        const cardholderName = document.getElementById('name').value.trim();
-        if (cardholderName === '') {
-            alert('Please enter the cardholder name.');
-            e.preventDefault();
-            return;
-        }
-    });
     checkoutForm.addEventListener('submit', function (e) {
         e.preventDefault(); // Prevent form submission
 
@@ -84,9 +88,38 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('checkout-container').style.display = 'none';
         document.getElementById('thank-you-container').style.display = 'block';
 
-        // Clear cart data from localStorage (optional)
+        // Optionally: Clear cart data from localStorage after checkout
         localStorage.removeItem('cart');
         localStorage.removeItem('cartTotal');
     });
-    
+
+    // Retrieve cart data from localStorage for order summary (your existing code)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartTotal = 0;
+
+    const orderItemsContainer = document.getElementById('order-items');
+    const orderTotalElement = document.getElementById('order-total');
+
+    if (cart.length === 0) {
+        orderItemsContainer.innerHTML = '<p>Your cart is empty!</p>';
+        orderTotalElement.textContent = '0.00';
+    } else {
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('order-item');
+            
+            // Image section for preview
+            itemElement.innerHTML = `
+                <div class="order-item-image">
+                    <img src="${item.image}" alt="${item.name}" width="100" height="100"> <!-- Image of the item -->
+                </div>
+                <p>${item.name} x ${item.quantity}</p>
+                <p>$${(item.price * item.quantity).toFixed(2)}</p>
+            `;
+            orderItemsContainer.appendChild(itemElement);
+            cartTotal += item.price * item.quantity;
+        });
+
+        orderTotalElement.textContent = `$${cartTotal.toFixed(2)}`;
+    }
 });
