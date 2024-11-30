@@ -72,7 +72,7 @@ function addToCart(item) {
     let price;
     if (typeof item.price === 'string') {
         // Remove non-numeric characters if price is a string (e.g., dollar sign)
-        price = parseFloat(item.price.replace(/[^\d.-]/g, ""));
+        price = parseFloat(item.price.replace(/[^0-9.]/g, ""));  
     } else if (typeof item.price === 'number') {
         // If it's already a number, just use it
         price = item.price;

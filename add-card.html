@@ -179,7 +179,7 @@
     <div class="image-grid" id="basketGrid">
         <ul>
             <!-- Repeat similar blocks for other images -->
-            <li class="image-box" data-id="140" data-name="Thank You" data-price="5.99">
+            <li class="image-box" data-id="140" data-name="Thank You" data-price="5.99" data-occasion="birthday" data-recipient="men,women,children" data-theme="seasonal">
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                         <path
@@ -187,17 +187,17 @@
                             fill="none" stroke="black" stroke-width="2" />
                     </svg>
                 </div>
-                <img src="cards/card1.png" alt="Blank">
+                <img src="cards/card1.png" alt="Thank You">
                 <p class="basket-name">Thank You</p>
                 <p class="basket-price">$5.99</p>
                 <div class="add-to-basket">
                     <button>Add to Basket</button>
                 </div>
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation" style="display: none;">Added to Wishlist</p>
             </li>
 
 
-            <li class="image-box " data-id="141" data-name=" Birthday" data-price="5.99">
+            <li class="image-box " data-id="141" data-name=" Birthday" data-price="5.99" data-occasion="birthday" data-recipient="men,women,children" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -207,7 +207,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card2.png" alt="Small Basket">
+                <img src="cards/card2.png" alt="Birthday">
                 <!-- Basket details -->
                 <p class="basket-name">Birthday</p>
                 <p class="basket-price">$5.99</p>
@@ -216,10 +216,10 @@
                     <button>Add to Basket</button>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation" ></p>
             </li>
 
-            <li class="image-box " data-id="142" data-name="Brisk Basket" data-price="5.99">
+            <li class="image-box " data-id="142" data-name="Valentine's Day" data-price="5.99" data-occasion="anniversary" data-recipient="men,women" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -229,7 +229,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card3.png" alt="Small Basket">
+                <img src="cards/card3.png" alt="Valentine's Day">
                 <!-- Basket details -->
                 <p class="basket-name">Valentine's Day</p>
                 <p class="basket-price">$6.99 </p>
@@ -240,7 +240,7 @@
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
             </li>
 
-            <li class="image-box " data-id="143" data-name="Round Basket" data-price="5.99">
+            <li class="image-box " data-id="143" data-name="Baby Shower" data-price="5.99" data-occasion="birthday" data-recipient="women" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -250,7 +250,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card4.png" alt="Small Basket">
+                <img src="cards/card4.png" alt="Baby Shower">
                 <!-- Basket details -->
                 <p class="basket-name">Baby Shower</p>
                 <p class="basket-price">$5.99</p>
@@ -258,10 +258,10 @@
                     <button>Add to Basket</button>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation" ></p>
             </li>
 
-            <li class="image-box " data-id="144" data-name="Vintage Basket" data-price="5.99">
+            <li class="image-box " data-id="144" data-name="Bridal Shower" data-price="5.99" data-occasion="anniversary" data-recipient="women" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -271,7 +271,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card5.jpg" alt="Small Basket">
+                <img src="cards/card5.jpg" alt="Bridal Shower">
                 <!-- Basket details -->
                 <p class="basket-name">Bridal Shower</p>
                 <p class="basket-price">$5.99</p>
@@ -282,7 +282,7 @@
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
             </li>
 
-            <li class="image-box " data-id="145" data-name="Wooden Basket" data-price="5.99">
+            <li class="image-box " data-id="145" data-name="Blank Card" data-price="5.99" data-occasion="birthday,anniversary,holiday" data-recipient="men,women,children" data-theme="luxury,eco-friendly,seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -292,7 +292,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card6.png" alt="Small Basket">
+                <img src="cards/card6.png" alt="Blank Card">
                 <!-- Basket details -->
                 <p class="basket-name">Blank Card</p>
                 <p class="basket-price">$9.99</p>
@@ -303,7 +303,7 @@
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
             </li>
 
-            <li class="image-box " data-id="146" data-name="Boho Basket" data-price="5.99">
+            <li class="image-box " data-id="146" data-name="Christmas" data-price="5.99" data-occasion="holiday" data-recipient="men,women,children" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -313,7 +313,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card7.png" alt="Small Basket">
+                <img src="cards/card7.png" alt="Christmas">
                 <!-- Basket details -->
                 <p class="basket-name">Christmas</p>
                 <p class="basket-price">$6.99</p>
@@ -325,7 +325,7 @@
             </li>
 
 
-            <li class="image-box " data-id="147" data-name="Chic Basket" data-price="5.99">
+            <li class="image-box " data-id="147" data-name="Retirement" data-price="5.99", data-occasion="anniversary" data-recipient="men,women" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -335,18 +335,19 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card8.jpg" alt="Small Basket">
+                <img src="cards/card8.jpg" alt="Retirement">
                 <!-- Basket details -->
                 <p class="basket-name">Retirement</p>
                 <p class="basket-price">$5.99</p>
                 <div class="add-to-basket">
                     <button>Add to Basket</button>
+                    <p class="basket-confirmation" id="basketConfirmation"></p>
                 </div>
                 <!-- Confirmation message -->
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
             </li>
 
-            <li class="image-box " data-id="146" data-name="Boho Basket" data-price="5.99">
+            <li class="image-box " data-id="146" data-name="Father's Day" data-price="5.99" data-occasion="holiday" data-recipient="men" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -356,7 +357,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card9.jpg" alt="Small Basket">
+                <img src="cards/card9.jpg" alt="Father's Day">
                 <!-- Basket details -->
                 <p class="basket-name">Father's Day</p>
                 <p class="basket-price">$6.99</p>
@@ -366,7 +367,7 @@
                 <!-- Confirmation message -->
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
             </li>
-            <li class="image-box " data-id="146" data-name="Boho Basket" data-price="5.99">
+            <li class="image-box " data-id="146" data-name="Mother's Day" data-price="5.99" data-occasion="holiday" data-recipient="women" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -376,7 +377,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card10.jpg" alt="Small Basket">
+                <img src="cards/card10.jpg" alt="Mother's Day">
                 <!-- Basket details -->
                 <p class="basket-name">Mother's Day</p>
                 <p class="basket-price">$36.99</p>
@@ -386,7 +387,7 @@
                 <!-- Confirmation message -->
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
             </li>
-            <li class="image-box " data-id="146" data-name="Boho Basket" data-price="5.99">
+            <li class="image-box " data-id="146" data-name="Congratulations" data-price="5.99" data-occasion="birthday" data-recipient="men,women,children" data-theme="seasonal">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -396,7 +397,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card11.jpg" alt="Small Basket">
+                <img src="cards/card11.jpg" alt="Congratulations">
                 <!-- Basket details -->
                 <p class="basket-name">Congratulations</p>
                 <p class="basket-price">$6.99</p>
@@ -406,7 +407,7 @@
                 <!-- Confirmation message -->
                 <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
             </li>
-            <li class="image-box " data-id="146" data-name="Boho Basket" data-price="5.99">
+            <li class="image-box " data-id="146" data-name="Anniversary" data-price="5.99" data-occasion="anniversary" data-recipient="men,women" data-theme="luxury">
                 <!-- Wishlist heart icon inside a white circle -->
                 <div class="wishlist-heart" id="wishlistIcon" onclick="addToWishlist(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -416,7 +417,7 @@
                     </svg>
                 </div>
                 <!-- Image of the basket -->
-                <img src="cards/card12.png" alt="Small Basket">
+                <img src="cards/card12.png" alt="Anniversary">
                 <!-- Basket details -->
                 <p class="basket-name">Anniversary</p>
                 <p class="basket-price">$6.99</p>
@@ -447,6 +448,12 @@
         <div id="basketTotal">
             <strong>Total:</strong> $<span id="totalBalance">0.00</span>
         </div>
+             <!-- Undo button will be dynamically inserted here -->
+    <div id="undoContainer" style="display: none;">
+        <button id="undoButton">
+            <i class="fas fa-undo"></i> Undo
+        </button>
+    </div>
     </div>
 
     <!-- Footer -->
@@ -461,10 +468,11 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="select_basket.js"></script>
+   
     <script src="wishlist.js"></script>
     <script src="script.js"></script>
     <script src="conversion.js"></script>
+    <script src="select_basket.js"></script>
 </body>
 
 </html>
