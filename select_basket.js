@@ -455,21 +455,9 @@ document.querySelectorAll('.wishlist-heart, .wishlist-btn').forEach((button) => 
     const basketButton = document.getElementById('basketButton');
     const basketSummary = document.getElementById('basketSummary');
 
-    // basketButton.addEventListener('click', () => {
-    //     basketSummary.classList.toggle('open');
-    // });
-
     
     // Check if the current page is "review-basket.html"
-    if (window.location.pathname === "/review-basket.html") {
-
-        // basketSummary.classList.add('open');
-        basketSummary.classList.add('basket-main-display');
-        basketSummary.classList.remove('collapsible-sidebar');
-        basketSummary.classList.remove('open');
-    } else {
-        basketSummary.classList.remove('open');
-
+    if (!window.location.pathname === "/review-basket.html") {
         basketButton.addEventListener('click', () => {
             basketSummary.classList.toggle('open');
         }); 

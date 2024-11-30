@@ -15,9 +15,15 @@
 <body>
     <!-- Header -->
     <header class="navbar">
-        <div class="logo">
-            <h1>GEMSS</h1>
-            <h2>Gift Baskets</h2>
+        <div class="logo-description">
+            <!-- Make the logo clickable and link it to the homepage -->
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="GEMSS Logo" class="logo-img">
+            </a>
+            <a href="index.html" class="description">
+                <h1>GEMSS</h1>
+                <h2>Gift Baskets</h2>
+            </a>
         </div>
         <nav>
             <ul>
@@ -43,7 +49,6 @@
         <span class="breadcrumb-current">Custom Gift Basket</span>
     </div>
 
-
     <!-- Progress Indicator -->
     <div class="progress-indicator">
         <a href="custom_basket.html" class="step completed">Step 1: Name Your Basket</a>
@@ -52,26 +57,15 @@
         <a href="add-card.html" class="step completed">Step 4: Add a Card</a>
         <span class="step active">Step 5: Review Basket</span>
     </div>
-    <main class="main-content review-basket-page">
-        <h2>Review Basket</h2>
 
-        <!-- Categories Section -->
- 
-
-       
-
-    
-
+    <main class="main-content review-basket-page">    
     <h2>Review the items in your basket here</h2>
   
     <div class="add-to-cart-cont">
          <button class="add-to-cart">Otherwise, add basket to cart by clicking me</button>
      </div>
 
-     <!-- display basket contents -->
-    <!-- <div class="basket-main-display"  id ="basketSummary"> -->
-
-        <div class="basket-main-display" id="basketSummary">
+    <div class="basket-main-display" id="basketSummary">
         <h3>Review Basket Summary</h3>
         <ul id="basketItems">
             <!-- Items will be dynamically added here -->
@@ -81,29 +75,16 @@
         </div>
     </div>
 
-
    
-    <!-- bottom navigation Buttons -->
-    <div class="navigation-buttons">
-        <a href="custom_basket.html" class="back-button">Previous</a>
-    </div>
-    </main>
-    <!-- Sidebar Toggle Button -->
-    <button class="sidebar-toggle" id="basketButton">🛒 Basket</button>
+  <!-- Navigation Buttons -->
+  <div class="navigation-buttons">
+    <a href="select_basket.html" class="back-button">Previous</a>   
+</div>
 
-    <!-- Collapsible Sidebar -->
-    <div class="collapsible-sidebar" id="basketSummary">
-        <h3>Basket Summary</h3>
-        <ul id="basketItems">
-            <!-- Items will be dynamically added here -->
-        </ul>
-        <div id="basketTotal">
-            <strong>Total:</strong> $<span id="totalBalance">0.00</span>
-        </div>
-    </div>
-    
+ <main>
+
   
-</main>
+
 
     <!-- Footer -->
     <footer>

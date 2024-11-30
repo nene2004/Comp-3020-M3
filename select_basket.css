@@ -379,16 +379,14 @@ header nav ul li a.active {
 
 /* FOR THE REVIEW PAGE */
 .basket-main-display {
-   
-    /* Halved to make it thinner */
+     
     background-color: #fef5e7;
+    border-left: 2px solid #ffa07a;
     border-right: 2px solid #ffa07a;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     transition: transform 0.3s ease-in-out;
-    /* Hidden by default */
-    z-index: 1000;
-
+   
 }
 
 .basket-main-display h3 {
@@ -396,7 +394,7 @@ header nav ul li a.active {
     background-color: #ffa07a;
     color: white;
     text-align: center;
-    font-size: 1px;
+    font-size: 20px;
     /* Slightly smaller font for thin sidebar */
 }
 
@@ -710,6 +708,7 @@ input[type="checkbox"] {
 
 /* Hover and Active States */
 .add-to-basket button:hover {
+    transform: scale(1.1);
     background-color: #333;
     /* Slightly lighter black for hover */
 }
