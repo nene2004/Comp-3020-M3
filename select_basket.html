@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select a Basket - GEMSS</title>
     <link rel="stylesheet" href="select_basket.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -128,15 +127,13 @@
                     <div class="section-content">
                         <label><input type="radio" name="sort" value="popularity" onchange="sortBaskets()">
                             Popularity</label>
-                        <label><input type="radio" name="sort" value="newest" onchange="sortBaskets()"> Newest
-                            Designs</label>
-                        <label><input type="radio" name="sort" value="price-asc" onchange="sortBaskets()"> Price (Low to
+                        <label><input type="radio" name="sort" value="price-asc" > Price (Low to
                             High)</label>
-                        <label><input type="radio" name="sort" value="price-desc" onchange="sortBaskets()"> Price (High
+                        <label><input type="radio" name="sort" value="price-desc"> Price (High
                             to Low)</label>
-                        <label><input type="radio" name="sort" value="az" onchange="sortBaskets()"> Alphabetically
+                        <label><input type="radio" name="sort" value="az"> Alphabetically
                             (A-Z)</label>
-                        <label><input type="radio" name="sort" value="za" onchange="sortBaskets()"> Alphabetically
+                        <label><input type="radio" name="sort" value="za" > Alphabetically
                             (Z-A)</label>
                     </div>
                 </div>
@@ -267,7 +264,7 @@
                     <p class="basket-confirmation" id="basketConfirmation"></p>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation"></p>
             </li>
 
             <li class="image-box " data-id="128" data-name="Vintage Basket" data-price="12.99">
@@ -289,7 +286,7 @@
                     <button>Add to Basket</button>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation"></p>
             </li>
 
             <li class="image-box " data-id="129" data-name="Wooden Basket" data-price="29.99">
@@ -311,7 +308,7 @@
                     <button>Add to Basket</button>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation"></p>
             </li>
 
 
@@ -357,7 +354,7 @@
                     <button>Add to Basket</button>
                 </div>
                 <!-- Confirmation message -->
-                <p class="wishlist-confirmation" id="wishlistConfirmation"></p>
+                <p class="wishlist-confirmation"></p>
             </li>
         </ul>
     </div>
@@ -400,10 +397,9 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="select_basket.js"></script>
-    <script src="wishlist.js"></script>
     <script src="script.js"></script>
 <script src="conversion.js"></script>
+<script src="select_basket.js"></script>
 </body>
 
 </html>

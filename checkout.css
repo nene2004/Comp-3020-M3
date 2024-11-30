@@ -1,0 +1,355 @@
+/* General Body Styles */
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+header.navbar {
+    display: flex;
+    justify-content: space-between;  /* Place logo/description on the left and nav on the right */
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #179c9c;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo-description {
+    display: flex;
+    align-items: center;  /* Align items horizontally */
+}
+
+header .logo {
+    width: 60px;  /* Set size for logo (a bit bigger than before) */
+    height: 60px; /* Set size for logo */
+    margin-right: 10px;  /* Space between logo and description */
+    overflow: hidden;  /* Prevent logo from spilling out of the container */
+    border-radius: 50%;  /* Circular logo container */
+}
+
+header .logo img {
+    width: 100%;  /* Make the logo image fit the container */
+    height: 100%;
+    object-fit: cover;  /* Ensure the logo doesn't get stretched */
+}
+
+header .description {
+    text-decoration: none;
+    color: white;
+}
+
+header .description h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+}
+
+header .description h2 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #d3f4dd;
+    margin: 0;
+}
+
+
+header nav {
+    margin-left: auto;
+    padding-right: 25px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #f7f9fc;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #abd1c6;
+    /* Soft green to match theme */
+    color: #004643;
+}
+
+header nav ul li a.active {
+    border-bottom: 2px solid #ffa07a;
+}
+
+/* Currency Selector */
+.currency-selector {
+    position: relative;
+    display: inline-flex;
+    /* Use inline-flex for compactness */
+    align-items: center;
+    /* Align the flag and label */
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    /* Default size */
+    cursor: pointer;
+    user-select: none;
+}
+
+.currency-selector .currency-icon {
+    margin-right: 4px;
+    /* Reduced space between icon and label */
+    font-size: 16px;
+    /* Icon size */
+}
+
+.currency-selector .currency-label {
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+/* When a currency is selected, the label becomes smaller */
+.currency-selector .currency-label.smaller {
+    font-size: 12px;
+}
+
+/* Dropdown Menu */
+.currency-selector .currency-menu {
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Smaller shadow */
+    border-radius: 5px;
+    padding: 5px 0;
+    /* Reduced padding */
+    z-index: 10;
+    width: 100px;
+    /* Set a specific width for the dropdown */
+    margin-top: 4px;
+}
+
+.currency-selector .currency-menu li {
+    padding: 8px 12px;
+    /* Reduced padding for smaller options */
+    font-size: 12px;
+    /* Smaller text for dropdown items */
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+.currency-selector .currency-menu li:hover {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+/* Show menu when clicked */
+.currency-selector.open .currency-menu {
+    display: block;
+}
+
+/* Remove list-style from the dropdown */
+.currency-selector .currency-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb {
+    margin: 15px 20px;
+    padding: 10px;
+    background-color: #ffffff; /* Soft yellow for contrast */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight elevation */
+}
+
+.breadcrumb a.breadcrumb-link {
+    text-decoration: none;
+    color: #179c9c; /* Vibrant link color */
+    font-weight: bold;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.breadcrumb a.breadcrumb-link:hover {
+    color: #ff6f61; /* Peach for hover effect */
+    text-decoration: underline;
+}
+
+.breadcrumb-current {
+    color: #555; /* Muted color for current location */
+    font-weight: normal;
+}
+
+/* Add arrow styling */
+.breadcrumb a::after {
+    content: '>';
+    margin: 0 8px;
+    color: #bbb; /* Arrow color */
+}
+
+.breadcrumb a:last-child::after {
+    content: ''; /* Remove arrow after last item */
+}
+/* Checkout Container */
+.checkout-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Checkout Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Shipping Info */
+.shipping-info, .order-summary, .payment-method {
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button.checkout-button {
+    padding: 15px;
+    font-size: 18px;
+    background-color: #179c9c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button.checkout-button:hover {
+    background-color: #146b6b;
+    transform: scale(1.05);
+}
+.thank-you-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.thank-you-heading {
+    font-size: 2em;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.thank-you-message {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+.feedback-form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Styles for stars */
+.star {
+    cursor: pointer;
+    font-size: 30px;
+    color: gray;  /* Default empty star color */
+}
+
+/* Styles for hovered and selected stars */
+.star.hovered {
+    color: gold;  /* Gold color for hovered stars */
+}
+
+.star.selected {
+    color: gold;  /* Gold color for selected stars */
+}
+
+.user-rating {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff6600;
+}
+
+#rating-message {
+    color: green;
+    font-weight: bold;
+}
+
+
+/* Footer - Matching main page design */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #179c9c; /* Same background color as header */
+    color: #fef5e7; /* Lighter text color for footer */
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer .social-media a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+/* Optional Footer styling for better integration with main page */
+footer a:hover {
+    color: #ffa07a;
+}

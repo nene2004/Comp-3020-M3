@@ -464,7 +464,21 @@ input[type="checkbox"] {
     background-color: #444;
     /* Darker shade for active */
 }
-
+/* Confirmation message styling */
+.cart-confirmation {
+    display: none;
+    /* Initially hidden */
+    position: fixed;
+    bottom: 0%;
+    /* Centered on the screen */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
 
 /* Optional: Styling for the image box */
 .image-box {

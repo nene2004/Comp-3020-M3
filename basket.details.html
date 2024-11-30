@@ -56,6 +56,9 @@
             <button class="add-to-cart">Add to Cart</button>
             <button class="wishlist-btn">Add to Wishlist</button>
         </div>
+            <!-- Confirmation message -->
+            <p class="cart-confirmation" id="cartConfirmation"></p>
+     <p class="wishlist-confirmation" id="wishlistConfirmation" ></p>
     </div>
     <div class="basket-info">
     
@@ -89,7 +92,20 @@
             <p class="review-comment">"This gift basket was a hit! The chocolates were exquisite, and the candles created the perfect atmosphere. Highly recommend!" - Jane Doe</p>
             <p>"Great product! Highly recommend."- Stan Mike</p>
         </div>
-
+ <!-- User rating submission -->
+ <div class="user-rating">
+    <label for="user-comment">Leave a review:</label>
+    <textarea id="user-comment" placeholder="Write your review here..."></textarea>
+    <div class="rating-stars">
+        <span class="star" data-value="1">☆</span>
+        <span class="star" data-value="2">☆</span>
+        <span class="star" data-value="3">☆</span>
+        <span class="star" data-value="4">☆</span>
+        <span class="star" data-value="5">☆</span>
+    </div>
+    <button id="submit-rating">Submit Review</button>
+    <p id="rating-message" style="display: none;">Thank you for your feedback!</p>
+</div>
         <!-- Price and Buttons -->
         <div class="price-and-buttons">
             <p class="price">$69.99</p>
@@ -110,6 +126,9 @@
     </footer>
 
     <script src="cart.js"></script>
+    <script src="select_basket.js"></script>
+    <script src="conversion.js"></script>
     <script src="script.js"></script>
+    <script src="social.js"></script>
 </body>
 </html>

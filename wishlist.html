@@ -41,12 +41,14 @@
     <div class="wishlist-container">
         <h1>My Wishlist</h1>
         <select class="sort-dropdown">
-            <option value="nameAZ">Sort By: Name A-Z</option>
-            <option value="nameZA">Name Z-A</option>
-            <option value="priceLowToHigh">Price Low to High</option>
-            <option value="priceHighToLow">Price High to Low</option>
+            <option value="nameAZ">Sort By: Name (A-Z)</option>
+            <option value="nameZA">Name (Z-A)</option>
+            <option value="priceLowToHigh">Price (Low to High)</option>
+            <option value="priceHighToLow">Price (High to Low)</option>
         </select>
         <div id="wishlistItems"></div>
+        <!-- Cart confirmation message -->
+<p id="cartConfirmation" style="display: none;"></p>
     </div>
 
     <!-- Footer -->
@@ -59,10 +61,10 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
-
-    <script src="wishlist.js"></script>
-    <script src="script.js"></script>
-    <script src="conversion.js"></script>
-
+    <script src="cart.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="select_basket.js" defer></script>
+    <script src="conversion.js" defer></script>
+    <script src="wishlist.js" defer></script>
 </body>
 </html>

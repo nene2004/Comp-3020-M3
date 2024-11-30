@@ -61,13 +61,18 @@ subcategoryHeaders.forEach(header => {
         });
     }
 });
-
+// Filter functionality
 function filterBaskets() {
     console.log("Filter function triggered");
+
     // Collect selected filters from each category
     const occasionFilters = Array.from(document.querySelectorAll('#occasion input:checked')).map(input => input.value);
     const recipientFilters = Array.from(document.querySelectorAll('#recipient input:checked')).map(input => input.value);
     const themeFilters = Array.from(document.querySelectorAll('#theme input:checked')).map(input => input.value);
+    
+    // Price filters
+    const minPrice = parseFloat(document.getElementById('min-price')?.value) || 0;
+    const maxPrice = parseFloat(document.getElementById('max-price')?.value) || Infinity;
 
     // Get all items to filter (e.g., baskets)
     const baskets = document.querySelectorAll('.image-box');
@@ -78,6 +83,7 @@ function filterBaskets() {
         const occasion = basket.getAttribute('data-occasion') || "";
         const recipient = basket.getAttribute('data-recipient') || "";
         const theme = basket.getAttribute('data-theme') || "";
+        const price = parseFloat(basket.getAttribute('data-price') || 0);
 
         // Convert attributes to arrays
         const occasionArray = occasion.split(',').map(item => item.trim());
@@ -88,9 +94,10 @@ function filterBaskets() {
         const matchesOccasion = occasionFilters.length === 0 || occasionFilters.some(filter => occasionArray.includes(filter));
         const matchesRecipient = recipientFilters.length === 0 || recipientFilters.some(filter => recipientArray.includes(filter));
         const matchesTheme = themeFilters.length === 0 || themeFilters.some(filter => themeArray.includes(filter));
+        const matchesPrice = price >= minPrice && price <= maxPrice;
 
         // Display item if it matches all selected filters, otherwise hide it
-        if (matchesOccasion && matchesRecipient && matchesTheme) {
+        if (matchesOccasion && matchesRecipient && matchesTheme && matchesPrice) {
             basket.style.display = 'block'; // Show
         } else {
             basket.style.display = 'none'; // Hide
@@ -98,110 +105,191 @@ function filterBaskets() {
     });
 }
 
-const inputs = document.querySelectorAll('#recipient input[type="checkbox"]');
-inputs.forEach(input => {
-    input.addEventListener('change', filterBaskets);
+// Sorting functionality
+function sortBaskets() {
+    const sortOption = document.querySelector(".sort-section input:checked")?.value;
+    if (!sortOption) {
+        console.error("No sort option selected.");
+        return;
+    }
+
+    console.log("Applied Sort:", sortOption);
+
+    // Get all baskets
+    const baskets = Array.from(document.querySelectorAll('.image-box'));
+
+    // Helper function to clean price strings
+    function cleanPrice(priceString) {
+        return parseFloat(priceString.replace(/[^0-9.-]+/g, '')) || 0;
+    }
+
+    // Sort baskets based on the selected option
+    baskets.sort((a, b) => {
+        const priceA = cleanPrice(a.getAttribute('data-price') || '0');
+        const priceB = cleanPrice(b.getAttribute('data-price') || '0');
+        const nameA = a.querySelector('.basket-name').textContent.trim();
+        const nameB = b.querySelector('.basket-name').textContent.trim();
+
+        switch (sortOption) {
+            case 'price-low-high':
+                return priceA - priceB; // Low to high
+            case 'price-high-low':
+                return priceB - priceA; // High to low
+            case 'name-az':
+                return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' }); // A to Z, case-insensitive
+            case 'name-za':
+                return nameB.localeCompare(nameA, undefined, { sensitivity: 'base' }); // Z to A, case-insensitive
+            default:
+                return 0; // Default, no sorting
+        }
+    });
+
+    // Get the container where the baskets are
+    const container = document.querySelector('.baskets-container'); 
+    if (container) {
+        // Re-append baskets in the new sorted order
+        baskets.forEach(basket => container.appendChild(basket));
+    } else {
+        console.error("Baskets container not found.");
+    }
+}
+
+
+
+// Attach event listeners for filter inputs
+const filterInputs = document.querySelectorAll('.filter-section input[type="checkbox"], #min-price, #max-price');
+filterInputs.forEach(input => {
+    input.addEventListener('change', () => {
+        filterBaskets();
+        sortBaskets(); // Trigger sort after filter changes
+    });
+});
+
+// Attach event listeners for sort inputs
+const sortInputs = document.querySelectorAll('.sort-section input[type="radio"]');
+sortInputs.forEach(input => {
+    input.addEventListener('change', sortBaskets); // Trigger sort when sort option is selected
 });
 
 // Clear all filters and show all baskets
 function clearFilters() {
-    // Uncheck all checkboxes
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+    document.querySelectorAll('.filter-section input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+    document.querySelectorAll('#min-price, #max-price').forEach(input => input.value = '');
 
-    // Show all baskets (no filters applied)
+    // Show all baskets
     document.querySelectorAll('.image-box').forEach(basket => basket.style.display = 'block');
 }
-
-// Attach event listeners for filter inputs
-const filterInputs = document.querySelectorAll('.filter-section input[type="checkbox"]');
-filterInputs.forEach(input => {
-    input.addEventListener('change', filterBaskets);
-});
 
 // Attach clear filters button event
 const clearFiltersButton = document.getElementById('clearFiltersButton');
 if (clearFiltersButton) {
     clearFiltersButton.addEventListener('click', clearFilters);
 }
+
+// Initialize filters
+filterBaskets(); // Apply filters on initial load
+sortBaskets(); // Apply sort on initial load
+
 console.log("Script loaded and ready.");
 
 // Toggle collapsible sections
-function toggleCollapse(header) {
-    const content = header.nextElementSibling;
-    const arrow = header.querySelector(".arrow");
-    if (content) {
-        content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
-        arrow.textContent = content.style.display === "block" ? "▲" : "▼";
+function toggleCollapse(element) {
+    const content = element.nextElementSibling;
+    if (content.style.display === "none" || !content.style.display) {
+        content.style.display = "block";
+    } else {
+        content.style.display = "none";
     }
 }
 
-// Sorting functionality (placeholder for custom logic)
-function sortBaskets() {
-    const sortOption = document.querySelector(".sort-section input:checked")?.value;
-    if (sortOption) {
-        console.log("Applied Sort:", sortOption);
-        // Add your sorting logic here
+function addToWishlist(event) {
+    // Find the closest product box (handles both structures)
+    const productBox = event.target.closest('.image-box') || event.target.closest('.basket-image');
+
+    if (!productBox) {
+        console.error('Could not find the product container.');
+        return;
+    }
+
+    // Extract product details
+    const item = {
+        name: productBox.querySelector('.basket-name')?.textContent || productBox.dataset.name,
+        price: productBox.querySelector('.basket-price')?.textContent || `$${productBox.dataset.price}`,
+        image: productBox.querySelector('img')?.src,
+    };
+
+    if (!item.name || !item.price || !item.image) {
+        console.error('Missing product details:', item);
+        return;
+    }
+
+    let wishlist = loadItems('wishlist');
+    const existingItemIndex = wishlist.findIndex((i) => i.name === item.name);
+
+    // Toggle wishlist state
+    if (existingItemIndex !== -1) {
+        // Remove item
+        wishlist.splice(existingItemIndex, 1);
+        console.log(`${item.name} removed from wishlist.`);
+        productBox.querySelector('.wishlist-heart')?.classList.remove('active');
+        productBox.querySelector('.wishlist-btn')?.classList.remove('active');
+    } else {
+        // Add item
+        wishlist.push(item);
+        console.log(`${item.name} added to wishlist.`);
+        productBox.querySelector('.wishlist-heart')?.classList.add('active');
+        productBox.querySelector('.wishlist-btn')?.classList.add('active');
+    }
+
+    // Save to localStorage
+    saveItems('wishlist', wishlist);
+
+    
+    const confirmationMessage = document.getElementById('wishlistConfirmation');
+    if (confirmationMessage) {
+        confirmationMessage.textContent = existingItemIndex === -1
+            ? `${item.name} added to wishlist.`
+            : `${item.name} removed from wishlist.`;
+
+        confirmationMessage.style.display = 'block';
+        setTimeout(() => (confirmationMessage.style.display = 'none'), 4000);
     }
 }
 
+function initializeWishlistState() {
+    const wishlist = loadItems('wishlist');
+    console.log('Loaded Wishlist:', wishlist);
 
-    function addToWishlist(event) {
-        const productBox = event.target.closest('.image-box');
-        const wishlistHeart = productBox.querySelector('.wishlist-heart');
-        const item = {
-            name: productBox.querySelector('.basket-name').textContent,
-            price: productBox.querySelector('.basket-price').textContent,
-            image: productBox.querySelector('img').src,
-        };
+    // Handle 'image-box' structure
+    document.querySelectorAll('.image-box').forEach((box) => {
+        const productName = box.querySelector('.basket-name').textContent;
+        const wishlistHeart = box.querySelector('.wishlist-heart');
+        console.log('Checking image-box:', productName);
 
-        let wishlist = loadItems('wishlist');
-
-        // Check if item is already in the wishlist
-        const existingItemIndex = wishlist.findIndex((i) => i.name === item.name);
-
-        if (existingItemIndex !== -1) {
-            // Remove item from wishlist if already exists (toggle effect)
-            wishlist.splice(existingItemIndex, 1);
-            wishlistHeart.classList.remove('active');
-            console.log(`${item.name} removed from wishlist.`);
-        } else {
-            // Add item to wishlist if not exists
-            wishlist.push(item);
-            wishlistHeart.classList.add('active');
-            console.log(`${item.name} added to wishlist.`);
+        if (wishlist.some(item => item.name === productName)) {
+            wishlistHeart?.classList.add('active');
         }
+    });
 
-        // Save updated wishlist to localStorage
-        saveItems('wishlist', wishlist);
+    // Handle 'basket-image' structure
+    document.querySelectorAll('.basket-image').forEach((box) => {
+        const productName = box.dataset.name;
+        const wishlistButton = box.querySelector('.wishlist-btn');
+        console.log('Checking basket-image:', productName);
 
-        // Show confirmation message
-        const confirmationMessage = document.getElementById('wishlistConfirmation');
-        if (confirmationMessage) {
-            confirmationMessage.textContent = wishlistHeart.classList.contains('active')
-                ? `${item.name} has been added to your wishlist!`
-                : `${item.name} has been removed from your wishlist.`;
-
-            confirmationMessage.style.display = 'block';
-            setTimeout(() => (confirmationMessage.style.display = 'none'), 4000);
+        if (wishlist.some(item => item.name === productName)) {
+            wishlistButton?.classList.add('active');
         }
-    }
+    });
+}
 
-    function initializeWishlistState() {
-        const wishlist = loadItems('wishlist');
-        document.querySelectorAll('.wishlist-heart').forEach((heart) => {
-            const productName = heart.closest('.image-box').querySelector('.basket-name').textContent;
-            if (wishlist.some(item => item.name === productName)) {
-                heart.classList.add('active');
-            }
-        });
-    }
+document.querySelectorAll('.wishlist-heart, .wishlist-btn').forEach((button) => {
+    button.addEventListener('click', addToWishlist);
 
     // Initialize wishlist state on page load
     initializeWishlistState();
 
-    // Add event listeners for wishlist icons
-    document.querySelectorAll('.wishlist-heart').forEach((heart) => {
-        heart.addEventListener('click', addToWishlist);
+
     });
 
     function calculateTotal(items) {
