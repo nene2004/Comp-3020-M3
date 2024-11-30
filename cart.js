@@ -1,4 +1,9 @@
-// Utility to load cart items from local storage
+
+
+// Event listeners for dynamically generated content
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Utility to load cart items from local storage
 function loadCart() {
     return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -115,8 +120,6 @@ function showAddToCartConfirmation(itemName) {
     }
 }
 
-// Event listeners for dynamically generated content
-document.addEventListener("DOMContentLoaded", () => {
     // Update cart display on load
     updateCartDisplay();
 
@@ -178,4 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+
+
+
 });

@@ -379,6 +379,11 @@ header nav ul li a.active {
 
 
 /* FOR THE REVIEW PAGE */
+
+#basket-name{
+    font-size: 23px;
+}
+
 .basket-main-display {
      
     background-color: #fef5e7;

@@ -336,7 +336,7 @@ header nav ul li a.active {
     left: 0;
     height: calc(100% - 150px);
     /* Adjusted for progress bar height */
-    width: 200px;
+    width: 250px;
     /* Halved to make it thinner */
     background-color: #fef5e7;
     border-right: 2px solid #ffa07a;

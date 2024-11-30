@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const basketItems = loadItems("basket");
     const basketItemsList = document.getElementById("basketItems");
     const totalBalanceElement = document.getElementById("totalBalance");
-
+    
     basketItemsList.innerHTML = "";
     if (basketItems.length > 0) {
       basketItems.forEach((item, index) => {
@@ -471,16 +471,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Attach Event Listeners
-  document
-    .querySelector(".filter-toggle")
+  document.querySelector(".filter-toggle")
     ?.addEventListener("click", toggleFilterSort);
 
   document.querySelectorAll(".section-header").forEach((header) => {
     header.addEventListener("click", () => toggleCollapse(header));
   });
 
-  document
-    .querySelectorAll(".filter-section input, #min-price, #max-price")
+  document.querySelectorAll(".filter-section input, #min-price, #max-price")
     .forEach((input) => {
       input.addEventListener("change", filterBaskets);
     });
@@ -489,17 +487,23 @@ document.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("change", sortBaskets);
   });
 
-  document
-    .querySelector(".clear-filters")
+  document.querySelector(".clear-filters")
     ?.addEventListener("click", clearFilters);
 
   // Event listeners for basket actions
   const basketButton = document.getElementById("basketButton");
   const basketSummary = document.getElementById("basketSummary");
 
-
-  if (window.location.pathname === "/review-basket.html") {
+  if (window.location.pathname === "/review-basket.html" ) {
     //do nothing
+
+    const basketName = localStorage.getItem('basketName');
+    const namedBasket = document.getElementById("basket-name");
+
+    if(basketName != null){
+      namedBasket.textContent += basketName;
+    }
+
   } else {
     basketButton.addEventListener("click", () => {
       basketSummary.classList.toggle("open");
@@ -525,6 +529,9 @@ document.addEventListener("DOMContentLoaded", () => {
       removeBasketItem(index);
     }
   });
+
+
+
 
   updateBasketSidebar();
 });

@@ -62,11 +62,14 @@
     <h2>Review the items in your basket here</h2>
   
     <div class="add-to-cart-cont">
-         <button class="add-to-cart">Otherwise, add basket to cart by clicking me</button>
-     </div>
+        <a href="cart.html">
+            <button class="add-to-cart">Otherwise, add basket to cart by clicking me</button>
+        </a>
+    </div>
 
     <div class="basket-main-display" id="basketSummary">
         <h3>Review Basket Summary</h3>
+        <strong>Basket Name: </strong><span id="basket-name"></span>
         <ul id="basketItems">
             <!-- Items will be dynamically added here -->
         </ul>
