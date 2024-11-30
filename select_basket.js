@@ -457,7 +457,11 @@ document.querySelectorAll('.wishlist-heart, .wishlist-btn').forEach((button) => 
 
     
     // Check if the current page is "review-basket.html"
-    if (!window.location.pathname === "/review-basket.html") {
+    if (window.location.pathname === "/review-basket.html") {
+
+     basketSummary.classList.remove('open');
+    }else{
+
         basketButton.addEventListener('click', () => {
             basketSummary.classList.toggle('open');
         }); 
