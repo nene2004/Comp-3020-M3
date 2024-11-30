@@ -494,9 +494,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const basketButton = document.getElementById("basketButton");
   const basketSummary = document.getElementById("basketSummary");
 
-  if (window.location.pathname === "/review-basket.html" ) {
+  if (window.location.pathname === "/Comp-3020-M3/review-basket.html" ) {
     //do nothing
-
     const basketName = localStorage.getItem('basketName');
     const namedBasket = document.getElementById("basket-name");
 
@@ -505,9 +504,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   } else {
+    
     basketButton.addEventListener("click", () => {
       basketSummary.classList.toggle("open");
     });
+
   }
 
   document.querySelectorAll(".add-to-basket button").forEach((button) => {
