@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Items - GEMSS</title>
-    <link rel="stylesheet" href="select_item.css">
+    <link rel="stylesheet" href="select_basket.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200;1,300;1,600&display=swap"
         rel="stylesheet" />
@@ -753,6 +753,12 @@
         <div id="basketTotal">
             <strong>Total:</strong> $<span id="totalBalance">0.00</span>
         </div>
+                 <!-- Undo button will be dynamically inserted here -->
+    <div id="undoContainer" style="display: none;">
+        <button id="undoButton">
+            <i class="fas fa-undo"></i> Undo
+        </button>
+    </div>
     </div>
 
     <!-- Footer -->

@@ -48,7 +48,7 @@
     <!-- Progress Indicator -->
     <div class="progress-indicator">
         <a href="custom_basket.html" class="step completed">Step 1: Name Your Basket</a>
-        <a href="select_basket.html" class="step completed">: Select a Basket</span>
+        <a href="select_basket.html" class="step completed">Step 2  : Select a Basket</span>
         <a href="select_item.html" class="step completed">Step 3: Select Your Items</a>
         <a href="add-card.html" class="step completed">Step 4: Add a Card</a>
         <span class="step active">Step 5: Review Basket</a>
@@ -56,24 +56,27 @@
 
     <main class="main-content review-basket-page">
 
-    </main>
+    
 
-
+    <h2>Review the items in your basket here</h2>
   
     <div class="add-to-cart-cont">
-         <button class="add-to-cart"> Otherwise, add basket to cart by clicking me</button>
+         <button class="add-to-cart">Otherwise, add basket to cart by clicking me</button>
      </div>
-    
-    <h2>Review Basket</h2>
-    <div class="basket-main-display" id="reviewBasket">
+
+     <!-- display basket contents -->
+    <!-- <div class="basket-main-display"  id ="basketSummary"> -->
+
+        <div class="basket-main-display" id="basketSummary">
         <h3>Review Basket Summary</h3>
-        <ul id="basket">
+        <ul id="basketItems">
             <!-- Items will be dynamically added here -->
         </ul>
-        <div id="reviewBasketTotal">
-            <strong>Total:</strong> $<span id="reviewTotalBalance">0.00</span>
+        <div id="basketTotal">
+            <strong>Total:</strong> $<span id="totalBalance">0.00</span>
         </div>
     </div>
+
 
    
     <!-- bottom navigation Buttons -->
@@ -83,6 +86,7 @@
     </div>
     
   
+</main>
 
     <!-- Footer -->
     <footer>

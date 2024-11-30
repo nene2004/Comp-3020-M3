@@ -218,8 +218,7 @@ function sortBaskets() {
         const basketItemsList = document.getElementById('basketItems');
         const totalBalanceElement = document.getElementById('totalBalance');
 
-        basketItemsList.innerHTML = '';
-
+        basketItemsList.innerHTML = '';  
         if (basketItems.length > 0) {
             basketItems.forEach((item, index) => {
                 const li = document.createElement('li');
@@ -269,6 +268,7 @@ function sortBaskets() {
 
         saveItems('basket', basket);
         updateBasketSidebar();
+        
           // Show confirmation message
     const confirmationMessage = document.getElementById('basketConfirmation');
     if (confirmationMessage) {
@@ -279,7 +279,7 @@ function sortBaskets() {
         }, 6000);
     }
     }
-
+   
     function modifyBasketQuantity(index, action) {
         const basket = loadItems('basket');
 
@@ -303,6 +303,7 @@ function sortBaskets() {
             basket.splice(index, 1);
             saveItems('basket', basket);
             updateBasketSidebar();
+
     
             // Show confirmation message with undo option
             const confirmationMessage = document.getElementById('basketConfirmation');
@@ -325,6 +326,7 @@ function sortBaskets() {
                     basket.splice(index, 0, item);
                     saveItems('basket', basket);
                     updateBasketSidebar();
+             
     
                     // Hide the confirmation message and the undo button
                     confirmationMessage.style.display = 'none';
@@ -365,9 +367,25 @@ function sortBaskets() {
     const basketButton = document.getElementById('basketButton');
     const basketSummary = document.getElementById('basketSummary');
 
-    basketButton.addEventListener('click', () => {
-        basketSummary.classList.toggle('open');
-    });
+    // basketButton.addEventListener('click', () => {
+    //     basketSummary.classList.toggle('open');
+    // });
+
+    
+    // Check if the current page is "review-basket.html"
+    if (window.location.pathname === "/review-basket.html") {
+
+        // basketSummary.classList.add('open');
+        basketSummary.classList.add('basket-main-display');
+        basketSummary.classList.remove('collapsible-sidebar');
+        basketSummary.classList.remove('open');
+    } else {
+        basketSummary.classList.remove('open');
+
+        basketButton.addEventListener('click', () => {
+            basketSummary.classList.toggle('open');
+        }); 
+    }
 
     document.querySelectorAll('.add-to-basket button').forEach((button) => {
         button.addEventListener('click', (event) => {
@@ -390,4 +408,5 @@ function sortBaskets() {
     });
 
     updateBasketSidebar();
+
 });
