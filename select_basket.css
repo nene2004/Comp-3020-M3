@@ -335,7 +335,7 @@ header nav ul li a.active {
     left: 0;
     height: calc(100% - 150px);
     /* Adjusted for progress bar height */
-    width: 200px;
+    width: 250px;
     /* Halved to make it thinner */
     background-color: #fef5e7;
     border-right: 2px solid #ffa07a;
@@ -348,9 +348,9 @@ header nav ul li a.active {
 }
 
 .collapsible-sidebar.open {
-    transform: translateX(0);
-    /* Slide in when open */
+ transform: translateX(0);
 }
+
 
 .collapsible-sidebar h3 {
     padding: 10px;
@@ -376,56 +376,51 @@ header nav ul li a.active {
     color: #333;
 }
 
-.collapsible-sidebar.open {
-    left: 0;
-    /* Visible when open */
-}
+
 
 /* FOR THE REVIEW PAGE */
-
-#reviewBasket {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 20px 0;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    width: 100%;
+.basket-main-display {
+     
+    background-color: #fef5e7;
+    border-left: 2px solid #ffa07a;
+    border-right: 2px solid #ffa07a;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+   
 }
 
-#reviewBasketItems .basket-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+.basket-main-display h3 {
+    padding: 10px;
+    background-color: #ffa07a;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    /* Slightly smaller font for thin sidebar */
 }
 
-#reviewBasketItems .basket-item img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+.basket-main-display ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    /* Remove default margin */
 }
 
-#reviewBasketItems .basket-item-details {
-    flex: 1;
+.basket-main-display ul li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    /* Slightly smaller font for narrow space */
+    color: #333;
 }
 
-#reviewBasketItems .basket-item-remove {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#reviewBasketItems .basket-item-remove:hover {
-    color: #cc0000;
-    transform: scale(1.1);
-}
 
 .add-to-cart-cont{
     display: flex;
     justify-content: center; /* Centers horizontally */
     align-items: center; /* Centers vertically */
-    height: 5vh; 
+    height: 4vh; 
+    margin-bottom: 25px;
 }
 
 .add-to-cart {
@@ -434,7 +429,7 @@ header nav ul li a.active {
     color: white;
     border: none;
     border-radius: 25px;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -714,6 +709,7 @@ input[type="checkbox"] {
 
 /* Hover and Active States */
 .add-to-basket button:hover {
+    transform: scale(1.1);
     background-color: #333;
     /* Slightly lighter black for hover */
 }
