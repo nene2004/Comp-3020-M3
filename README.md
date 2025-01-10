@@ -73,6 +73,6 @@ License
 This project is for personal or educational use only. You are free to use and modify the project as long as you credit the original author.
 
 Contact
-For any questions or issues, feel free to reach out via email at support@gemss.com.
+For any questions or issues, feel free to reach out via email at michealnene8@gmail.com.
 
 End of README.
